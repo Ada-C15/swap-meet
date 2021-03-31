@@ -9,5 +9,8 @@ class Vendor():
         return new_item
     
     def remove(self, item):
-        self.inventory.remove(item)
+        if item in self.inventory:
+            self.inventory.remove(item)
+        else:
+            item = False
         return item
