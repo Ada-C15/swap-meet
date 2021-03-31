@@ -9,10 +9,6 @@ class Vendor:
     def add(self, new_item):
         self.inventory.append(new_item)
         return new_item
-
-    # def remove(self, item):
-    #     self.inventory.remove(item)
-    #     return item
     
     def remove(self, item):
         if item in self.inventory:
@@ -20,4 +16,3 @@ class Vendor:
             return item
         else:
             return False
-        # return item
