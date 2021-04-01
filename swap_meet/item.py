@@ -12,3 +12,6 @@ class Item:
         PARAMETERS: category str (defaults to "")
         """
         self.category = category
+
+    def __str__(self):
+        return "Hello World!"

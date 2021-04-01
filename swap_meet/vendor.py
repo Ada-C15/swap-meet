@@ -44,5 +44,20 @@ class Vendor:
     def get_by_category(self, category):
         """
         Return list of items in vendor's inventory that have a given category
+        PARAMETERS: category str
+        OUTPUT: item list
         """
         return [item for item in self.inventory if item.category == category]
+
+    def swap_items(self, other, own_item, other_item):
+        """
+        Makes an item exchange between vendors
+        PARAMETERS: other Vendor, own_item Item, other_item Item
+        OUTPUT: bool (represents if the swap was successful)
+        """
+        if own_item not in self.inventory or other_item not in other.inventory:
+            return False
+
+        other.add(self.remove(own_item))
+        self.add(other.remove(other_item))
+        return True
