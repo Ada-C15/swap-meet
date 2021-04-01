@@ -19,7 +19,7 @@ def test_newest():
     newest_item = tai.get_newest()
 
     assert newest_item.category == "Clothing"
-    assert newest_item.age == pytest.approx(4.0)
+    assert newest_item.age == pytest.approx(1.0)
 
 
 def test_newest_max_age_is_zero_returns_none():
@@ -87,11 +87,7 @@ def test_swap_by_newest_no_match_is_false():
         inventory=[item_a, item_b, item_c]
     )
 
-    result = tai.swap_by_newest(
-        other=jesse,
-        my_priority="Clothing",
-        their_priority="Decor"
-    )
+    result = tai.swap_by_newest(other=jesse)
 
     assert result is False
     assert len(tai.inventory) is 0
@@ -113,11 +109,7 @@ def test_swap_by_newest_no_other_match():
         inventory=[]
     )
 
-    result = tai.swap_by_newest(
-        other=jesse,
-        my_priority="Decor",
-        their_priority="Clothing"
-    )
+    result = tai.swap_by_newest(other=jesse)
 
     assert result is False
     assert len(tai.inventory) is 3

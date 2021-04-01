@@ -142,3 +142,26 @@ class Vendor:
 
         return self.swap_items(other, i_have, they_have)
 
+    def get_newest(self) -> Union[Item, None]:
+        """
+        Returns the item with the smallest non zero age.
+        Otherwise it returns None
+        """
+        items = [item for item in self.inventory if item.age != 0.0]
+        if not items:
+            return None
+
+        return min(items, key=lambda item: item.age)
+
+    def swap_by_newest(self, other: Vendor) -> bool:
+        """
+        Swaps vendors items according to the items with the smallest non zero age
+        OUTPUT: represents if the swap was successful
+        """
+        my_newest = self.get_newest()
+        other_newest = other.get_newest()
+
+        if not my_newest or not other_newest:
+            return False
+
+        return self.swap_items(other, my_newest, other_newest)
