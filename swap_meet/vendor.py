@@ -1,5 +1,4 @@
-
-
+from .item import Item
 # Create a vendor class that has an inventory attribute 
 # the inventory attribute can come as a parameter but should not be required 
 
@@ -34,11 +33,19 @@ class Vendor:
             if item == item_a:
                 self.remove(item)
                 vendor.add(item)
-                self.add(item_b)
-                vendor.remove(item_b)
-                return True
-        else:
-            return False
+                print(self.inventory)
+                print(vendor.inventory)
+                if item_b not in vendor.inventory:
+                    return False
+                else:
+                    self.add(item_b)
+                    vendor.remove(item_b)
+                    return True
+            else:
+                return False
+        return True
+
+
 
 
 
