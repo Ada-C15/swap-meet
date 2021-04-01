@@ -1,5 +1,9 @@
 
 class Item:
-    def __init__(self):
-        pass
-#something also goes here
+    
+    def __init__(self, category = None):
+        self.category = ""
+        if category:
+            self.category = category
+
+    
