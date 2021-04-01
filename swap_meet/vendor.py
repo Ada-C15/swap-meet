@@ -36,7 +36,9 @@ class Vendor:
                 vendor.add(item)
                 self.add(item_b)
                 vendor.remove(item_b)
-        return True
+                return True
+        else:
+            return False
 
 
 
