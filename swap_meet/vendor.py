@@ -29,21 +29,14 @@ class Vendor:
         return item_by_category
 
     def swap_items(self, vendor, item_a, item_b):
-        for item in self.inventory:
-            if item == item_a:
-                self.remove(item)
-                vendor.add(item)
-                print(self.inventory)
-                print(vendor.inventory)
-                if item_b not in vendor.inventory:
-                    return False
-                else:
-                    self.add(item_b)
-                    vendor.remove(item_b)
-                    return True
-            else:
+            if item_a in self.inventory and item_b in vendor.inventory:
+                self.remove(item_a)
+                vendor.add(item_a)
+                self.add(item_b)
+                vendor.remove(item_b)
+            else: 
                 return False
-        return True
+            return True
 
 
 
