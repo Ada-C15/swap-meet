@@ -26,18 +26,16 @@ class Vendor:
 
         if my_item not in self.inventory or their_item not in vendor.inventory:
             return contains_item
+        else:
+            contains_item = True
 
-        for item in self.inventory:
-            if item == my_item:
-                self.inventory.remove(item)
-                vendor.inventory.append(item)
-                contains_item = True
-        
-        for item in vendor.inventory:
-            if item == their_item:
-                vendor.inventory.remove(item)
-                self.inventory.append(item)
-                contains_item = True
+        if my_item in self.inventory:
+            self.inventory.remove(my_item)
+            vendor.inventory.append(my_item)
+
+        if their_item in vendor.inventory:
+            vendor.inventory.remove(their_item)
+            self.inventory.append(their_item)
         
         return contains_item
 
