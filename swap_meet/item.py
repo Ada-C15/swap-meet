@@ -1,3 +1,6 @@
+# Necessary import for use of the Item type inside its own class
+from __future__ import annotations
+
 
 class Item:
     """
@@ -5,24 +8,28 @@ class Item:
 
     Attributes
     category: str (default is "")
-    condition: int or float (default is 0)
+    condition: float (default is 0)
     """
 
-    def __init__(self, category="", condition=0):
+    def __init__(self, category: str = "", condition: float = 0):
         """
         PARAMETERS: category str (defaults to "")
-                    condition int or float (defaults to 0)
+                    condition float (defaults to 0)
         """
         self.category = category
         self.condition = condition
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "Hello World!"
 
-    def condition_description(self):
+    def __eq__(self, other: Item) -> bool:
+        if self.category == other.category and self.condition == other.condition:
+            return True
+        return False
+
+    def condition_description(self) -> str:
         """
         Returns a descriptive phrase according to the item's condition
-        OUTPUT: str
         """
         if self.condition < 1.0:
             return "Maybe it could be upcycled??"
