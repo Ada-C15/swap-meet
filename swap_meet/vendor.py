@@ -7,4 +7,11 @@ class Vendor:
 
     def add(self, item):
         self.inventory.append(item)
-        return " ".join(self.inventory) 
+        return " ".join(self.inventory)
+
+    def remove(self, item):
+        if item in self.inventory:
+            self.inventory.remove(item)
+        else:
+            return False
+        return item
