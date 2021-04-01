@@ -1,5 +1,5 @@
 #_______________WAVE 1_______________________
-#from swap_meet.item import Item
+#from item import Item
 
 class Vendor:
     def __init__(self, inventory = None): 
