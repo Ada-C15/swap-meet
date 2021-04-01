@@ -33,12 +33,23 @@ class Vendor:
             # remove their_item from other_vendor.inventory
             # and add their_item to self_inventory.inventory
             # return True
+        # ???? tests pass with **.inventory.remove but not with **.inventory.add
         if my_item in self.inventory and their_item in other_vendor.inventory:
-            self.inventory.remove(my_item)
+            self.remove(my_item)
             other_vendor.add(my_item)
-            other_vendor.inventory.remove(their_item)
+            other_vendor.remove(their_item)
             self.add(their_item)
             return True
-        # else, return False
         else:
             return False
+    
+    def swap_first_item(self, other_vendor):
+        if len(self.inventory) == 0 or len(other_vendor.inventory) == 0:
+            return False
+        else:
+            other_vendor.add(self.inventory[0])
+            self.remove(self.inventory[0])
+            self.add(other_vendor.inventory[0])
+            other_vendor.remove(other_vendor.inventory[0])
+            return True
+
