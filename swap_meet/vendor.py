@@ -1,9 +1,12 @@
 #_______________WAVE 1_______________________
-from swap_meet.item import Item
+#from swap_meet.item import Item
 
 class Vendor:
-    def __init__(self, inventory = []): 
-        self.inventory = inventory 
+    def __init__(self, inventory = None): 
+        if inventory is None:
+            self.inventory = []
+        else:
+            self.inventory = inventory
         
         #self.inventory = list(inventory)
      
@@ -75,9 +78,11 @@ class Vendor:
         my_inventory = self.inventory
         their_inventory = Vendor.inventory
         
+        #return flase if either of the 2 vendors have an empty list
         if (len(my_inventory) == 0) or (len(their_inventory) == 0):
            return False
         
+        #remove first item from both vendors and add it to the other's list
         my_inventory.append(their_inventory.pop(0)) 
         their_inventory.append(my_inventory.pop(0))     
         
@@ -86,6 +91,7 @@ class Vendor:
         
 #_______________wave 6___________________________
 #composite class function
+
     def get_best_by_category(self, category = ""):
         pass
         #for thing in self.inventory
