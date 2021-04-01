@@ -54,6 +54,7 @@ class Vendor(Item):
     representing a friend. Swap first element in both inventories
     (instance's inventory and friend's inventory)
     Return False if any inventory is empty
+    Function created for wave 4
     '''
     def swap_first_item(self, vendor_friend):
         if not vendor_friend.inventory or not self.inventory:
@@ -61,5 +62,29 @@ class Vendor(Item):
         my_item = self.inventory[0]
         their_item = vendor_friend.inventory[0]
         return self.swap_items(vendor_friend, my_item, their_item)
+    
+
+    '''
+    This function takes one argument: a category (str).
+    Will return the item with bet condition, and if there is no
+    item matching the category, will return None 
+    Function created for wave 6
+    '''
+    def get_best_by_category(self, category):
+        best_item = None
+        best_condition = 0
+        category_items = self.get_by_category(category)
+        if len(category_items) != 0:
+            for item in category_items:
+                if item.condition > best_condition:
+                    best_item = item
+                    best_condition = item.condition
+        return best_item
+    
+
+
+
+
+
 
 
