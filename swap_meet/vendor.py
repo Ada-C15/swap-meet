@@ -71,9 +71,17 @@ class Vendor:
             
 #_______________wave 4___________________________
 
-    def swap_first_items(self, Vendor):
-        pass
+    def swap_first_item(self, Vendor):
+        my_inventory = self.inventory
+        their_inventory = Vendor.inventory
         
+        if (len(my_inventory) == 0) or (len(their_inventory) == 0):
+           return False
+        
+        my_inventory.append(their_inventory.pop(0)) 
+        their_inventory.append(my_inventory.pop(0))     
+        
+        return True
         
         
 #_______________wave 6___________________________
