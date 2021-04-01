@@ -18,12 +18,48 @@ class Vendor(Item):
         else:
             return False
     
+    '''
+    This function takes one argument: a string, representing a category
+    and returns a list of Items in the inventory with that category
+    Function created for wave 2
+    '''
     def get_by_category(self, category):
         category_inventory = []
         for item in self.inventory:
             if item.category == category:
                 category_inventory.append(item)
         return category_inventory
+    
 
+    '''
+    This function takes 3 arguments: another friend Vendor, instance of an Item 
+    (my_item) and another instance of an Item (their_item).
+    It swaps items and return True in case items were in inventories, otherwise
+    return False.
+    Function created for wave 3
+    '''
+    def swap_items(self,vendor_friend, my_item, their_item):
+        if my_item in self.inventory and \
+            their_item in vendor_friend.inventory:
+            self.inventory.remove(my_item)
+            vendor_friend.inventory.append(my_item)
+            vendor_friend.inventory.remove(their_item)
+            self.inventory.append(their_item)
+            return True
+        else:
+            return False
+
+    '''
+    This function takes one argument: an instance of another Vendor
+    representing a friend. Swap first element in both inventories
+    (instance's inventory and friend's inventory)
+    Return False if any inventory is empty
+    '''
+    def swap_first_item(self, vendor_friend):
+        if not vendor_friend.inventory or not self.inventory:
+            return False
+        my_item = self.inventory[0]
+        their_item = vendor_friend.inventory[0]
+        return self.swap_items(vendor_friend, my_item, their_item)
 
 

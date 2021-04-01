@@ -5,6 +5,15 @@ class Item:
         else:
             self.category = category
     
+    '''
+    This function is created to customize the string representation 
+    of this self instance.
+    Python call __str__ method automatically when str() is called,
+    then overrides its str() method to return "Hello World!"
+    '''
+    def __str__(self):
+        return "Hello World!"
+    
     
 
 
