@@ -6,7 +6,7 @@ class Vendor:
             self.inventory = []
         else:
             self.inventory = inventory
-            
+
     def add(self, item):
         self.inventory.append(item)
         return item
@@ -23,3 +23,11 @@ class Vendor:
             if item.category == category:
                 items.append(item)
         return items
+
+    def swap_items(self, friend, my_item, their_item):
+        if my_item in self.inventory and \
+            their_item in friend.inventory:
+            friend.add(self.remove(my_item))
+            self.add(friend.remove(their_item))
+            return True
+        return False
