@@ -1,7 +1,8 @@
 #_______________WAVE 1_______________________
+from swap_meet.item import Item
 
 class Vendor:
-    def __init__(self, inventory = []): #does not expect an argument to be passed
+    def __init__(self, inventory = []): 
         self.inventory = inventory 
         
         #self.inventory = list(inventory)
@@ -22,14 +23,20 @@ class Vendor:
         return False         
         
 #_______________WAVE 2_________________________
-
+    #every instance of the item class becomes an element in the inventory list
+    #returns list of class Item's objects inventory = [Item_a, Item_b, Item_c]
     def get_by_category(self, category):
-        new_dict_of_items_category = {}
         
+        new_list_with_items = []
+        
+        #iterate on the list for each category (state) and check if the item is in there 
         for thing in self.inventory:
-            new_dict_of_items_category[thing] = category
-            
-        return new_dict_of_items_category
+            if thing.category == category:
+                new_list_with_items.append(thing)
+    
+        return new_list_with_items
+
+        
 
 #_______________Wave 3_________________________
 
