@@ -25,6 +25,7 @@ class Vendor:
 #_______________WAVE 2_________________________
     #every instance of the item class becomes an element in the inventory list
     #returns list of class Item's objects inventory = [Item_a, Item_b, Item_c]
+    
     def get_by_category(self, category):
         
         new_list_with_items = []
@@ -50,7 +51,6 @@ class Vendor:
             return False
 
         # at this point, both vendors have item available to swap
-        
         my_inventory.remove(my_item)
         their_inventory.append(my_item)
         
