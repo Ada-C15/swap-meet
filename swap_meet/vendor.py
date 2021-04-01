@@ -39,18 +39,41 @@ class Vendor:
         
 
 #_______________Wave 3_________________________
-
-    def swap_items(self, Vendor):
-        self.item = my_item
-        self.item = their_item
-        
-        #for things in Vendor:
+          
             
+    def swap_items(self, Vendor, my_item, their_item):
+        
+        my_inventory = self.inventory
+        their_inventory = Vendor.inventory
+        
+        if self.does_item_exist(my_item, my_inventory) == False or self.does_item_exist(their_item, their_inventory) == False:
+            return False
+
+        # at this point, both vendors have item available to swap
+        
+        my_inventory.remove(my_item)
+        their_inventory.append(my_item)
+        
+        their_inventory.remove(their_item)
+        my_inventory.append(their_item)
+        
+        return True
+
+    #helper function
+    def does_item_exist(self, item, item_list):
+        for i in item_list:
+            if i == item:
+                return True
+            
+        return False
+         
+ 
             
 #_______________wave 4___________________________
 
     def swap_first_items(self, Vendor):
         pass
+        
         
         
 #_______________wave 6___________________________
