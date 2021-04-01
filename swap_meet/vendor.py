@@ -40,3 +40,21 @@ class Vendor:
                 contains_item = True
         
         return contains_item
+
+
+    def swap_first_item(self, vendor):
+        contains_item = False
+        if not self.inventory or not vendor.inventory:
+            return contains_item
+        else:
+            contains_item = True
+        
+        my_first_item = self.inventory[0]
+        self.inventory.remove(my_first_item)
+        vendor.inventory.append(my_first_item)
+
+        their_first_item = vendor.inventory[0]
+        vendor.inventory.remove(their_first_item)
+        self.inventory.append(their_first_item)
+
+        return contains_item
