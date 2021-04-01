@@ -1,5 +1,5 @@
-# Necessary import for use of the Item type inside its own class
 from __future__ import annotations
+# Necessary import for use of the Item type inside its own class
 
 
 class Item:
@@ -8,24 +8,20 @@ class Item:
 
     Attributes
     category: str (default is "")
-    condition: float (default is 0)
+    condition: float (default is 0) on a scale of 0-5
+    age: float (default is 0) in years
     """
 
-    def __init__(self, category: str = "", condition: float = 0):
-        """
-        PARAMETERS: category str (defaults to "")
-                    condition float (defaults to 0)
-        """
+    def __init__(self, category: str = "", condition: float = 0, age: float = 0):
         self.category = category
         self.condition = condition
+        self.age = age
 
     def __str__(self) -> str:
         return "Hello World!"
 
     def __eq__(self, other: Item) -> bool:
-        if self.category == other.category and self.condition == other.condition:
-            return True
-        return False
+        return id(self) == id(other)
 
     def condition_description(self) -> str:
         """

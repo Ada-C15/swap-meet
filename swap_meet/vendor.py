@@ -1,9 +1,50 @@
-from .item import Item
-from typing import List, Union
-# Necessary import for use of the Vendor type inside its own class
 from __future__ import annotations
+# Necessary import for use of the Vendor type inside its own class
+
+from .item import Item
+from typing import List, Literal, Union
+
+# Vendor class that uses str items
+# For use in test_wave_01.py
+class StrVendor:
+    """
+    A class to represent a vendor
+
+    Attributes
+    inventory: list of items (default is [])
+    """
+
+    def __init__(self, inventory: List[str] = None):
+        """
+        PARAMETERS: list of items, optional (default is [])
+        """
+        if inventory is None:
+            inventory = []
+
+        self.inventory = inventory
+
+    def add(self, item: str) -> str:
+        """
+        Adds an item to the Vendor's inventory
+        returns that same item
+        """
+        self.inventory.append(item)
+        return item
+
+    def remove(self, item: str) -> Union[str, bool]:
+        """
+        Removes and returns the item from the Vendor's inventory
+        if the item was present.
+        Otherwise returns False
+        """
+        if item not in self.inventory:
+            return False
+
+        self.inventory.remove(item)
+        return item
 
 
+# Vendor class that uses Item items
 class Vendor:
     """
     A class to represent a vendor
@@ -11,6 +52,7 @@ class Vendor:
     Attributes
     inventory: list of items (default is [])
     """
+
     def __init__(self, inventory: List[Item] = None):
         """
         PARAMETERS: list of items, optional (default is [])
@@ -28,7 +70,7 @@ class Vendor:
         self.inventory.append(item)
         return item
 
-    def remove(self, item: Item) -> Union[Item, bool]:
+    def remove(self, item: Item) -> Union[Item, Literal[False]]:
         """
         Removes and returns the item from the Vendor's inventory
         if the item was present.
@@ -52,15 +94,18 @@ class Vendor:
         Makes an item exchange between vendors
         OUTPUT: represents if the swap was successful
         """
-        my_item = self.remove(own_item)
-        their_item = self.remove(other_item)
-
-        if isinstance(my_item, bool) or isinstance(their_item, bool):
+        if own_item not in self.inventory or other_item not in other.inventory:
             return False
 
-        other.add(my_item)
-        self.add(their_item)
-        return True
+        my_item = self.remove(own_item)
+        their_item = other.remove(other_item)
+        
+        if my_item and their_item:
+            other.add(my_item)
+            self.add(their_item)
+            return True
+        
+        return False
 
     def swap_first_item(self, other: Vendor) -> bool:
         """
@@ -96,3 +141,4 @@ class Vendor:
             return False
 
         return self.swap_items(other, i_have, they_have)
+

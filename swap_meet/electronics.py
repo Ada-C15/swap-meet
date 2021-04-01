@@ -7,15 +7,12 @@ class Electronics(Item):
 
     Attributes
     category: "Electronics"
-    condition: default is 0
+    condition: float (default is 0) on a scale of 0-5
+    age: float (default is 0) in years
     """
 
-    def __init__(self, condition: float = 0):
-        """
-        PARAMETERS: condition defaults to 0
-                    category is "Electronics"
-        """
-        super().__init__("Electronics", condition)
+    def __init__(self, condition: float = 0, age: float = 0):
+        super().__init__("Electronics", condition, age)
 
     def __str__(self) -> str:
         return "A gadget full of buttons and secrets."
