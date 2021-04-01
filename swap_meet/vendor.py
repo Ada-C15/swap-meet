@@ -17,6 +17,11 @@ class Vendor:
             self.inventory.remove(item_to_remove)
             return item_to_remove
          
-
+    def get_by_category(self, type_of_stuff):
+        matching_items = []
+        for item in self.inventory:
+            if item.category == type_of_stuff:
+                matching_items.append(item)
+        return matching_items
         
             
