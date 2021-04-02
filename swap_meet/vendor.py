@@ -10,10 +10,6 @@ class Vendor:
             self.inventory = []
         else:
             self.inventory = inventory
-        
-        #self.class_item = Item(self.category, self.condition)
-        
-        
      
         
     def add(self, item):
@@ -45,9 +41,7 @@ class Vendor:
     
         return new_list_with_items
 
-        
-
-#_______________Wave 3_________________________
+#_______________Wave 3___________________________
    
     #helper function
     def does_item_exist(self, item, item_list):
@@ -90,9 +84,7 @@ class Vendor:
         
         return True
         
-        
 #_______________wave 6___________________________
-#composite class function
 
     def get_best_by_category(self, category):
         
@@ -101,7 +93,6 @@ class Vendor:
         best_item = None
         
         for thing in self.inventory:
-      
             if thing.category == category: 
                new_list_by_category.append(thing)
                
@@ -122,13 +113,46 @@ class Vendor:
             if thing.condition == max_condition_value:
                 best_item = thing
                 
+            
         return best_item
             
-
     
     def swap_best_by_category(self, other, my_priority, their_priority):
-        pass
-        #best_item = self.get_best_by_category()
+        
+        #call the function with the correct parameter to get the best_item for self and other
+        my_best_item = self.get_best_by_category(their_priority)
+        
+        their_best_item = other.get_best_by_category(my_priority)
+        
+        #Fail first if either of the inventory is empty
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
+            return False
+        
+        #fail second if best item is None for either vendor
+        if my_best_item == None or their_best_item == None:
+            return False
+        
+        #fail third if the best item category for either vendor doesn't match 
+        if my_best_item.category != their_priority or their_best_item.category != my_priority:
+           return False
+        
+        #if the categories match then remove the best item from self vendor to other vendor
+        for thing in self.inventory:
+            if thing == my_best_item:
+                self.inventory.remove(my_best_item)
+                other.inventory.append(my_best_item)
+                break
+        
+        #remove the best_item of other vendor and add to self vendor  
+        for thing in other.inventory:
+            if thing == their_best_item:
+                other.inventory.remove(their_best_item)
+                self.inventory.append(their_best_item)
+                break
+            
+        return True
+        
+    
         
 #____________optional enhancement__________________  
 
