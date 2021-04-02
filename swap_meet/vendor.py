@@ -63,3 +63,23 @@ class Vendor:
         else:
             self.swap_items(other, other_priority_item, vendor_priority_item)
             return True
+
+    #optional enhancements -- need to be tested
+    def get_newest(self):
+        youngest_item = None
+        age_of_youngest = 100000
+        for item in self.inventory:
+            if item.age < age_of_youngest:
+                youngest_item = item
+                age_of_youngest = item.age
+        return youngest_item
+
+    def swap_by_newest(self, other):
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
+            return False
+        else:
+            self.swap_items(self, other, self.get_newest(), other.get_newest()) 
+            return True
+
+    # make an "eligible to participate in swap" method to replace
+    # all of the len > 0 

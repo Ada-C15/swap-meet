@@ -1,6 +1,6 @@
 class Item:
     
-    def __init__(self, category="", condition=None):
+    def __init__(self, category="", condition=None, age=None):
         if category == "":
             self.category = ""
         else:
@@ -9,6 +9,11 @@ class Item:
             self.condition = 0
         else:
             self.condition = condition 
+        if age == None:
+            # assume item is VERY old if no age is given
+            self.age = 1000
+        else:
+            self.age = age
 
     def __str__(self):
         return "Hello World!"
