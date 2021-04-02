@@ -1,3 +1,4 @@
+
 class Vendor:
     def __init__(self, inventory = None):
         if inventory is None:
@@ -23,5 +24,13 @@ class Vendor:
             return False 
             
         return item 
+
+    def get_by_category(self, category):
+        item_by_category = []
+        for item in self.inventory:
+            if item.category == category:
+                item_by_category.append(item)
+        return item_by_category
+
 
 
