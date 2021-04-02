@@ -27,12 +27,6 @@ class Vendor:
         return items_in_category
     
     def swap_items(self, other_vendor, my_item, their_item):
-        # if my_item in self.inventory AND their_item in other_vendor.inventory
-            # remove my_item from self.inventory
-            # and add my_item to other_ventory.inventory
-            # remove their_item from other_vendor.inventory
-            # and add their_item to self_inventory.inventory
-            # return True
         # ???? tests pass with **.inventory.remove but not with **.inventory.add
         if my_item in self.inventory and their_item in other_vendor.inventory:
             self.remove(my_item)
@@ -43,14 +37,11 @@ class Vendor:
         else:
             return False
     
-    def swap_first_item(self, other_vendor):
+    def swap_first_item(self, other_vendor):        
         if len(self.inventory) == 0 or len(other_vendor.inventory) == 0:
             return False
         else:
-            other_vendor.add(self.inventory[0])
-            self.remove(self.inventory[0])
-            self.add(other_vendor.inventory[0])
-            other_vendor.remove(other_vendor.inventory[0])
+            self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
             return True
 
     def get_best_by_category(self, category):
