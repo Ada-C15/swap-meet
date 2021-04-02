@@ -122,7 +122,7 @@ class Vendor(Item):
     def swap_by_newest (self, other, my_priority, their_priority):
         my_newest = self.get_best_by_edge(their_priority)
         their_newest = other.get_best_by_edge(my_priority)
-        return self.swap_items(other, my_best_item, their_best_item)
+        return self.swap_items(other, my_newest, their_newest)
 
 
 
