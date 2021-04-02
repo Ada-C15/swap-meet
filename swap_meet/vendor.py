@@ -69,7 +69,6 @@ class Vendor:
         if not items:
             return None
         sorted_items = sorted(items, key=operator.attrgetter('condition'))
-
         return sorted_items[-1]
     
     def swap_best_by_category(self, other, my_priority, their_priority):
@@ -78,11 +77,8 @@ class Vendor:
 
         vendor_best = self.get_best_by_category(their_priority)
         other_vendor_best = other.get_best_by_category(my_priority)
-        if other_vendor_best and vendor_best:
-            return self.swap_items(other, vendor_best, other_vendor_best)
-        else:
-            return False
-        
+        return self.swap_items(other, vendor_best, other_vendor_best)
+
 
 
 
