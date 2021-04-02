@@ -44,10 +44,7 @@ class Vendor:
         else:
             my_first_item = self.inventory[0]
             their_first_item = friend.inventory[0]
-            self.add(their_first_item)
-            friend.remove(their_first_item)
-            friend.add(my_first_item)
-            self.remove(my_first_item)
+            self.swap_items(friend, my_first_item, their_first_item)
             return True
 
     def get_best_by_category(self, category):
@@ -70,7 +67,6 @@ class Vendor:
             my_item_to_swap = self.get_best_by_category(their_priority)
             their_item_to_swap = other.get_best_by_category(my_priority)
             self.swap_items(other, my_item_to_swap, their_item_to_swap)
-            #other.swap_items(self, their_item, my_item)
             return True
 
 
