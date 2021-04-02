@@ -52,31 +52,25 @@ class Vendor:
 
     def get_best_by_category(self, category):
         list_by_category = self.get_by_category(category)
-        if list_by_category == None:
+        if list_by_category == []: # why does None not work?
             return None
         else:
             best_item = list_by_category[0]
-        # if category not in self.inventory:
-        #     return None
-        # how to I access the category of each item in the inventory?
-        # for item in self.inventory:
-        #     if item.category != category:
-        #         return None
         for item in list_by_category:
             if item.condition >= best_item.condition:
                 best_item = item
         return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
-        my_list_by_category = self.get_by_category(my_priority)
-        their_list_by_category = other.get_by_category(their_priority)
-        if their_priority not in my_list_by_category or\
-            my_priority not in their_list_by_category:
-                return False
+        my_list_by_category = self.get_by_category(their_priority)
+        their_list_by_category = other.get_by_category(my_priority)
+        if my_list_by_category == [] or their_list_by_category == []:
+            return False
         else:
-            my_item = self.get_best_by_category(their_priority)
-            their_item = other.get_best_by_category(my_priority)
-            self.swap_items(other, my_item, their_item)
+            my_item_to_swap = self.get_best_by_category(their_priority)
+            their_item_to_swap = other.get_best_by_category(my_priority)
+            self.swap_items(other, my_item_to_swap, their_item_to_swap)
+            #other.swap_items(self, their_item, my_item)
             return True
 
 
@@ -90,9 +84,12 @@ sid.add(Electronics(condition=3))
 sid.add(Clothing(condition=2))
 #print(sid.inventory) # is there a way to get the __str__ for the entire list?
 
+# self.inventory looks like: [Decor(condition=4), Electronics(condition=3), Clothing(condition=2)]
+
 print(sid.inventory)
 print(sid.get_by_category("Electronics"))
 print(sid.get_best_by_category("Clothing"))
+print(sid.inventory[0].category)
 
 # ren = Vendor()
 # print(ren.inventory)
