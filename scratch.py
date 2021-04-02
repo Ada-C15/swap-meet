@@ -6,11 +6,19 @@ from swap_meet.electronics import Electronics
 
 
 item_a = Item(category="clothing")
-item_b = Item(category="electronics")
+item_b = Item(category="clothing")
 item_c = Item(category="clothing")
-vendor = Vendor(
+fatimah = Vendor(
     inventory=[item_a, item_b, item_c]
 )
 
-items = vendor.get_by_category("clothing")
-print(items)
+item_d = Item(category="electronics")
+item_e = Item(category="decor")
+jolie = Vendor(
+    inventory=[item_d, item_e]
+)
+
+result = fatimah.swap_first_item(jolie)
+print(result)
+print(fatimah.inventory)
+print(jolie.inventory)
