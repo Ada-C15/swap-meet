@@ -24,13 +24,9 @@ class Vendor(Item):
     Returns a list of Items in the inventory with that category
     Function created for wave 2
     '''
-    def get_by_category(self, category, inventory = None):
+    def get_by_category(self, category):
         category_inventory = []
-        if inventory == None:
-            inventory_to_check = self.inventory
-        else:
-            inventory_to_check = inventory
-        for item in inventory_to_check:
+        for item in self.inventory:
             if item.category == category:
                 category_inventory.append(item)
         return category_inventory
@@ -75,14 +71,10 @@ class Vendor(Item):
     item matching the category, will return None 
     Function created for wave 6
     '''
-    def get_best_by_category(self, category, inventory = None):
-        if inventory == None:
-            inventory_to_check = self.inventory
-        else:
-            inventory_to_check = inventory
+    def get_best_by_category(self, category):
         best_item = None
         best_condition = 0
-        category_items = self.get_by_category(category, inventory_to_check)
+        category_items = self.get_by_category(category)
         if len(category_items) != 0:
             for item in category_items:
                 if item.condition > best_condition:
@@ -99,7 +91,7 @@ class Vendor(Item):
     ''' 
     def swap_best_by_category (self, other, my_priority, their_priority):
         my_best_item = self.get_best_by_category(their_priority)
-        their_best_item = self.get_best_by_category(my_priority, other.inventory)
+        their_best_item = other.get_best_by_category(my_priority)
         return self.swap_items(other, my_best_item, their_best_item)
 
 
