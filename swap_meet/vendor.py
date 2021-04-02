@@ -49,7 +49,6 @@ class Vendor:
             # remove their first item and add to my invent. 
             self.inventory.append(other_vendor.inventory[0])
             other_vendor.inventory.remove(other_vendor.inventory[0])
-
             return True
         else:
             return False
