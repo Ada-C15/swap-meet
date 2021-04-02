@@ -4,7 +4,7 @@ class Vendor:
     def __init__(self, inventory = None):
         self.inventory = []
         if inventory: 
-            self.inventory.extend(inventory) 
+            self.inventory = inventory 
 
     def add(self, item):
         self.inventory.append(item)
