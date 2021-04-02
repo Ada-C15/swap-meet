@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, category = None, condition = None):
+    def __init__(self, category = None, condition = None, edge = None):
         if category == None:
             self.category = ""
         else:
@@ -8,6 +8,10 @@ class Item:
             self.condition = 0
         else:
             self.condition = condition
+        if edge == None:
+            self.edge = 0
+        else:
+            self.edge = edge
     
     '''
     This function is created to customize the string representation 

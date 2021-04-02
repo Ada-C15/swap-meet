@@ -2,12 +2,16 @@ from .item import Item
 
 
 class Decor(Item):
-    def __init__(self, condition = None):
+    def __init__(self, condition = None, edge = None):
         self.category = "Decor"
         if condition == None:
             self.condition = 0
         else:
             self.condition = condition
+        if edge == None:
+            self.edge = 0
+        else:
+            self.edge = edge
     
     '''
     This function is created to customize the string representation 
