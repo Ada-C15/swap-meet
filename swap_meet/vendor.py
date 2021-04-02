@@ -4,7 +4,7 @@ class Vendor:
     def __init__(self, inventory = None):
         self.inventory = []
         if inventory: 
-            self.inventory.extend(inventory) # self.inventory = inventory?
+            self.inventory.extend(inventory) 
 
     def add(self, item):
         self.inventory.append(item)
@@ -27,7 +27,7 @@ class Vendor:
     def swap_items(self, vendor, my_item, their_item):
         if my_item in self.inventory and their_item in vendor.inventory:
             self.inventory.remove(my_item)
-            vendor.inventory.append(my_item) # will call function later
+            vendor.inventory.append(my_item) 
             vendor.inventory.remove(their_item)
             self.inventory.append(their_item)
             return True
@@ -52,4 +52,7 @@ class Vendor:
                     best_item = item
         return best_item
 
-    
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_best = self.get_best_by_category(their_priority)
+        their_best = other.get_best_by_category(my_priority)
+        return self.swap_items(other, my_best, their_best)
