@@ -32,9 +32,10 @@ class Vendor:
         return(list(result))
 
         # return [item for item in self.inventory if item.category == category]
-    
-        # if item.category == category:
-        #     self.remove(item)
+
+        # for item in self.inventory:
+        #     if item.category == category:
+        #         self.remove(item)
 
     '''
     Wave 3
@@ -64,3 +65,49 @@ class Vendor:
         #     return False
         else:
             return self.swap_items(friend, self.inventory[0], friend.inventory[0])
+
+    '''
+    Wave 6
+
+    This method gets the item with the highest condition and matching category
+    '''
+    def get_best_by_category(self, category):
+
+        if not self.get_by_category(category):
+            return None
+        else:
+            items = self.get_by_category(category) # this returns a list of items in the inventory with that matching category
+        
+            condition_list = []
+            
+            for item in items: 
+                # return item if item.condition == max(item.condition)
+                condition_list.append(item.condition)
+       
+            max_condition = (max(condition_list))
+
+            for item in items:
+                if item.condition == max_condition:
+                    return item
+                # print(f"item condition is {item.condition}")
+
+            # (max(genre_map, key=genre_map.get)) if genre_map else None
+    
+    '''
+    This method swaps the best item of certain categories with another Vendor
+    '''
+    def swap_best_by_category(self, other, my_priority, their_priority):
+
+        my_item = self.get_best_by_category(their_priority)
+        their_item = other.get_best_by_category(my_priority)
+        
+        # if their_priority not in self.inventory or my_priority not in other.inventory:
+        #     return False
+        if not my_item or not their_item:
+            return False
+        else:
+            self.swap_items(other, my_item, their_item)
+            return True
+
+
+
