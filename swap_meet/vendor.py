@@ -27,7 +27,6 @@ class Vendor:
         return items_in_category
     
     def swap_items(self, other_vendor, my_item, their_item):
-        # ???? tests pass with **.inventory.remove but not with **.inventory.add
         if my_item in self.inventory and their_item in other_vendor.inventory:
             self.remove(my_item)
             other_vendor.add(my_item)
@@ -51,8 +50,6 @@ class Vendor:
         else:
             best_condition = 0
             for item in items_in_category:
-                # ??? should below be > OR >= ???? 
-                # thinking it needs to be >= because if we need to return an item even if all have a condition value of 0
                 if item.condition >= best_condition:
                     best_condition = item.condition
                     best_item = item
