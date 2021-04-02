@@ -1,4 +1,4 @@
-from swap_meet.item import Item
+from swap_meet.item import Item # Do I need this
 
 class Vendor:
     def __init__(self, inventory = None):
@@ -24,8 +24,11 @@ class Vendor:
     def get_by_category(self, category):
         by_category_list = []
         print("Category:", category)
-        for item in category:
+        for item in self.inventory:
+            print("item>>", item)
             if item.category == "clothing":
+                print("I am category clothing")
                 by_category_list.append(item)
+        return by_category_list
         
             
