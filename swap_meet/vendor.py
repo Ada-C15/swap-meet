@@ -28,17 +28,24 @@ class Vendor:
         return result
     
     def swap_items(self, vendor, item_1, item_2):
+        if item_1 not in self.inventory or item_2 not in vendor.inventory:
+            return False
+        
+        found = False
         for item in self.inventory:
             if item == item_1:
                 self.inventory.remove(item)
                 vendor.inventory.append(item)
-            else:
-                return False
+                found = True
+
+        if not found:
+            return False
+
+        found = False
         for item in vendor.inventory:
             if item == item_2:
                 vendor.inventory.remove(item)
                 self.inventory.append(item)
-            else:
-                return False
-        return True
-    
+                found = True
+        
+        return found
