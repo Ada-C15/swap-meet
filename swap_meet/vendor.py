@@ -18,7 +18,8 @@ class Vendor:
         else:
             return False
         return item_name
-    
+# Cd in terminal up 1 folder then run the specific 
+# file w/ python3 -m swap_meet.vendor
     def get_by_category(self, category):
         category_list = []
         for items in self.inventory:
@@ -28,6 +29,17 @@ class Vendor:
                 category_list.append(items)
         return category_list
 
-# Cd in terminal up 1 folder then run the specific 
-# file w/ python3 -m swap_meet.vendor
+    def swap_items(self, vendor, my_item, their_item):
+        if my_item in self.inventory and their_item in vendor.inventory:
+            # remove my item and give it to them
+            self.inventory.remove(my_item)
+            vendor.inventory.append(my_item)
+            # remove their item and add to me
+            vendor.inventory.remove(their_item)
+            self.inventory.append(their_item)
+            return True
+        else:
+            return False
+
+
 
