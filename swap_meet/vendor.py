@@ -1,21 +1,23 @@
 class Vendor:
     # wave 01
     def __init__(self, inventory=None):
-        if inventory == None:
-            self.inventory = []
-        else:
-            self.inventory = inventory
+        self.inventory = [] if inventory == None else inventory
 
     def add(self, item):
         self.inventory.append(item)
         return item
     
     def remove(self, item):
-        if item not in self.inventory:
-            return False
-            
-        self.inventory.remove(item)
-        return item
+        for i, thing in enumerate(self.inventory):
+            if thing == item:
+                del self.inventory[i]
+                return item
+        return False
+
+        # if item not in self.inventory:
+        #     return False
+        # self.inventory.remove(item)
+        # return item
 
     # wave 02
     def get_by_category(self, category):
@@ -36,3 +38,13 @@ class Vendor:
             friend.inventory.remove(item_2)
             return True        
         return False
+
+    def swap_first_item(self, friend):
+        if len(self.inventory) == 0 or len(friend.inventory) == 0:
+            return False
+        else:
+            friend.inventory.append(self.inventory[0])
+            del self.inventory[0]
+            self.inventory.append(friend.inventory[0])
+            del friend.inventory[0]
+            return True        
