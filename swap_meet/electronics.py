@@ -8,4 +8,4 @@ class Electronics(Item):
         return "A gadget full of buttons and secrets."
     
     def condition_description(self):
-        return super(Electronics, self).condition_description()
+        return super().condition_description()

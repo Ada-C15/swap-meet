@@ -8,4 +8,4 @@ class Clothing(Item):
         return "The finest clothing you could wear."
 
     def condition_description(self):
-        return super(Clothing, self).condition_description()
+        return super().condition_description()
