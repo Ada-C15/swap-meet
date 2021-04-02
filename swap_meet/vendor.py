@@ -19,13 +19,18 @@ class Vendor(Item):
             return False
     
     '''
-    This function takes one argument: a string, representing a category
-    and returns a list of Items in the inventory with that category
+    This function takes two argument: a string, representing a category
+    and an inventory that is optional. 
+    Returns a list of Items in the inventory with that category
     Function created for wave 2
     '''
-    def get_by_category(self, category):
+    def get_by_category(self, category, inventory = None):
         category_inventory = []
-        for item in self.inventory:
+        if inventory == None:
+            inventory_to_check = self.inventory
+        else:
+            inventory_to_check = inventory
+        for item in inventory_to_check:
             if item.category == category:
                 category_inventory.append(item)
         return category_inventory
@@ -70,10 +75,14 @@ class Vendor(Item):
     item matching the category, will return None 
     Function created for wave 6
     '''
-    def get_best_by_category(self, category):
+    def get_best_by_category(self, category, inventory = None):
+        if inventory == None:
+            inventory_to_check = self.inventory
+        else:
+            inventory_to_check = inventory
         best_item = None
         best_condition = 0
-        category_items = self.get_by_category(category)
+        category_items = self.get_by_category(category, inventory_to_check)
         if len(category_items) != 0:
             for item in category_items:
                 if item.condition > best_condition:
@@ -81,7 +90,17 @@ class Vendor(Item):
                     best_condition = item.condition
         return best_item
     
-
+    '''
+    This function takes three parameters: other Vendor, my priority for category
+    and their priority for category.
+    Swap items with the best items for each category.
+    Return True is swap was succesful or False if no item matched.
+    Function created for wave 6
+    ''' 
+    def swap_best_by_category (self, other, my_priority, their_priority):
+        my_best_item = self.get_best_by_category(their_priority)
+        their_best_item = self.get_best_by_category(my_priority, other.inventory)
+        return self.swap_items(other, my_best_item, their_best_item)
 
 
 
