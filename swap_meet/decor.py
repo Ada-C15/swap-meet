@@ -1,4 +1,5 @@
-from .item import Item
+# wave 05
+from swap_meet.item import Item
 
 class Decor(Item):
     def __init__(self, condition=0.0):
