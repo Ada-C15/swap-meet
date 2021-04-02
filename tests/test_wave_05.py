@@ -5,25 +5,29 @@ from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
 
-
+# TEST 18
+@pytest.mark.skip(reason="no way of currently testing this")
 def test_clothing_has_default_category_and_to_str():
     cloth = Clothing()
     assert cloth.category is "Clothing"
     assert str(cloth) == "The finest clothing you could wear."
 
-
+# TEST 19
+@pytest.mark.skip(reason="no way of currently testing this")
 def test_decor_has_default_category_and_to_str():
     decor = Decor()
     assert decor.category is "Decor"
     assert str(decor) == "Something to decorate your space."
 
-
+# TEST 20
+@pytest.mark.skip(reason="no way of currently testing this")
 def test_electronics_has_default_category_and_to_str():
     electronics = Electronics()
     assert electronics.category is "Electronics"
     assert str(electronics) == "A gadget full of buttons and secrets."
 
-
+# TEST 21
+@pytest.mark.skip(reason="no way of currently testing this")
 def test_items_have_condition_as_float():
     items = [
         Clothing(condition=3.5),
@@ -32,7 +36,8 @@ def test_items_have_condition_as_float():
     ]
     for item in items:
         assert item.condition == pytest.approx(3.5)
-
+# TEST 22
+@pytest.mark.skip(reason="no way of currently testing this")
 def test_items_have_condition_descriptions_that_are_the_same_regardless_of_type():
     items = [
         Clothing(condition=5),
