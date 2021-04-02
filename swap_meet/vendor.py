@@ -66,7 +66,7 @@ class Vendor:
             returns last/highest item in the sorted list'''
 
         items = self.get_by_category(category)
-        if len(items) == 0:
+        if not items:
             return None
         sorted_items = sorted(items, key=operator.attrgetter('condition'))
 
