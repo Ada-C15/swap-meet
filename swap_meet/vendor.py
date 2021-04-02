@@ -23,4 +23,28 @@ class Vendor:
                 item_list.append(item)
         
         return item_list
+    
+    def swap_items(self, other_vendor, my_item, their_item): 
+        if my_item in self.inventory and their_item in other_vendor.inventory: 
+            self.inventory.remove(my_item) 
+            other_vendor.inventory.append(my_item)
+            other_vendor.inventory.remove(their_item)
+            self.inventory.append(their_item)
+            return True 
+        else: 
+            return False
+
+    def swap_first_item(self, other_vendor): 
+        if len(self.inventory) and len(other_vendor.inventory) > 0: 
+            self_inventory_1 = self.inventory[0]  
+            other_vendor_invetory_1 = other_vendor.inventory[0]
+            self.inventory.remove(self_inventory_1) 
+            other_vendor.inventory.append(self_inventory_1)
+            other_vendor.inventory.remove(other_vendor_invetory_1)
+            self.inventory.append(other_vendor_invetory_1)
+            return True
+        else: 
+            return False
+
+            
 
