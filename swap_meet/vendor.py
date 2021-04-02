@@ -40,3 +40,6 @@ class Vendor():
             return True
         else:
             return False
+
+    def get_best_by_category(self, category):
+        pass
