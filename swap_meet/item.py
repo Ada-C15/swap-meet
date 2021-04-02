@@ -4,7 +4,6 @@ class Item():
             category = ""
         self.category = category
         self.condition = condition
-        self.description = self.condition_description()
 
     def __str__(self):
         return "Hello World!"
