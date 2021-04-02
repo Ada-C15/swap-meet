@@ -93,6 +93,36 @@ class Vendor(Item):
         my_best_item = self.get_best_by_category(their_priority)
         their_best_item = other.get_best_by_category(my_priority)
         return self.swap_items(other, my_best_item, their_best_item)
+    
+
+    '''
+    This function takes one argument: a category (str).
+    Will return the newest item and if there is no item matching 
+    the category, will return None.
+    Function created for Optional Enhancements
+    '''
+    def get_best_by_edge(self, category):
+        newest_item = None
+        edge = 1000
+        category_items = self.get_by_category(category)
+        if len(category_items) != 0:
+            for item in category_items:
+                if item.edge < edge:
+                    newest_item = item
+                    edge = item.edge
+        return newest_item
+    
+        '''
+    This function takes three parameters: other Vendor, my priority 
+    for category and their priority for category.
+    Swap items with the best items for each category.
+    Return True is swap was succesful or False if no item matched.
+    Function created for Optional Enhancements
+    ''' 
+    def swap_by_newest (self, other, my_priority, their_priority):
+        my_newest = self.get_best_by_edge(their_priority)
+        their_newest = other.get_best_by_edge(my_priority)
+        return self.swap_items(other, my_best_item, their_best_item)
 
 
 
