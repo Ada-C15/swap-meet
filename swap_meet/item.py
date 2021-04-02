@@ -14,6 +14,7 @@ class Item:
     def __str__(self):
         return "Hello World!"
     
+    # ****make these descriptions FUN
     def condition_description(self):
         if self.condition == 0:
             return "You'd be a sucker to buy this"

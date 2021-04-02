@@ -53,3 +53,16 @@ class Vendor:
             other_vendor.remove(other_vendor.inventory[0])
             return True
 
+    def get_best_by_category(self, category):
+        items_in_category = self.get_by_category(category)
+        if len(items_in_category) == 0:
+            return None
+        else:
+            best_condition = 0
+            for item in items_in_category:
+                # ??? should below be > OR >= ???? 
+                # thinking it needs to be >= because if we need to return an item even if all have a condition value of 0
+                if item.condition >= best_condition:
+                    best_condition = item.condition
+                    best_item = item
+            return best_item
