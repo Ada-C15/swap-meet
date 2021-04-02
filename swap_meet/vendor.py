@@ -1,4 +1,4 @@
-
+from .item import Item
 
 class Vendor:
     def __init__(self, inventory = None):
@@ -9,7 +9,7 @@ class Vendor:
 
     def add(self, item):
         self.inventory.append(item)
-        return " ".join(self.inventory)
+        return item
 
     def remove(self, item):
         if item in self.inventory:
@@ -43,5 +43,29 @@ class Vendor:
             return True
         else:
             return False
+    
+    def get_best_by_category(self, category):
+        items = self.get_by_category(category)
+        if len(items) == 0:
+            return None
+        else:
+            best_item = items[0]
+        for item in items:
+            if item.condition >= best_item.condition:
+                best_item = item
+        return best_item
+    
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        vendor_best = self.get_best_by_category(their_priority)
+        other_vendor_best = other.get_best_by_category(my_priority)
+        self.swap_items(other, vendor_best, other_vendor_best)
+        return True
 
+
+
+            
+            
+                
+        
+        
 
