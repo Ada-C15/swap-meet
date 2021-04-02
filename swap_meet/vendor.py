@@ -108,11 +108,11 @@ class Vendor:
             
         max_condition_value = max(list_by_condition) 
         
-        #returns a single item even if there are duplicates
-        for thing in self.inventory:
+        #returns a single item even if there are duplicates with best condtition filtered by category
+        for thing in new_list_by_category:
             if thing.condition == max_condition_value:
                 best_item = thing
-                
+                break
             
         return best_item
             
@@ -137,9 +137,8 @@ class Vendor:
            return False
         
         #calling swap item function from wave 3
-        self_swap_items = self.swap_items(other, my_best_item, their_best_item)
+        return self.swap_items(other, my_best_item, their_best_item)
         
-        return True
     
         #OMMITED LINES OF CODE DUE TO DRY YOUR CODE
         ''' #if the categories match then remove the best item from self vendor to other vendor
