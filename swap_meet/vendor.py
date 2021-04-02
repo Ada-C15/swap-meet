@@ -5,7 +5,8 @@ class Vendor:
 
 
     def __init__(self, inventory = None):
-    '''constructs instance of Vendor, initializing inventory with default None'''
+        '''constructs instance of Vendor, 
+        initializing inventory with default None'''
         
         if inventory == None:
             self.inventory = []
@@ -13,13 +14,13 @@ class Vendor:
             self.inventory = inventory
 
     def add(self, item):
-    '''receives item as an argument and adds it to Vendor inventory'''
+        '''receives item as an argument and adds it to Vendor inventory'''
         
         self.inventory.append(item)
         return item
 
     def remove(self, item):
-    '''receives item as an argument and removes it from Vendor inventory'''
+        '''receives item as an argument and removes it from Vendor inventory'''
         
         if item in self.inventory:
             self.inventory.remove(item)
@@ -28,7 +29,7 @@ class Vendor:
         return item
     
     def get_by_category(self, category):
-    '''receives category as an argument,
+        '''receives category as an argument,
         creates and returns a list of items in that category'''
 
         items = []
@@ -38,7 +39,7 @@ class Vendor:
         return items
     
     def swap_items(self, other_vendor, item_a, item_b):
-    '''receives other vendor and items as arguments,
+        '''receives other vendor and items as arguments,
         exchanges those items using add and remove methods'''
 
         if item_a in self.inventory and item_b in other_vendor.inventory:
@@ -51,7 +52,7 @@ class Vendor:
             return False
         
     def swap_first_item(self, other_vendor):
-    '''exchanges first item in self.inventory with first item in other_vendor.inventory'''
+        '''exchanges first item in self.inventory with first item in other_vendor.inventory'''
 
         if self.inventory and other_vendor.inventory:
             self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
@@ -72,9 +73,9 @@ class Vendor:
         return sorted_items[-1]
     
     def swap_best_by_category(self, other, my_priority, their_priority):
-    '''swaps best items from two vendors,
+        '''swaps best items from two vendors,
         employs get_best_by_category, using opposing priorities as an argument'''
-        
+
         vendor_best = self.get_best_by_category(their_priority)
         other_vendor_best = other.get_best_by_category(my_priority)
         if other_vendor_best and vendor_best:
