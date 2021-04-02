@@ -66,8 +66,9 @@ class Vendor:
             if item.age < least_old_item:
                 least_old_item = item.age
                 newest_item = item
-        print(newest_item)
         return newest_item
 
     def swap_by_newest(self, other, my_newest, their_newest):
-        pass
+        my_newest = self.get_newest(self)
+        their_newest = other.get_newest(other)
+        return self.swap_items(other, my_newest, their_newest)
