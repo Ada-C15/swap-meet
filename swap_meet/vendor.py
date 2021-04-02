@@ -49,12 +49,7 @@ class Vendor:
         else:
             return False
 
-
-
-
-
     def get_best_by_category(self, category):
-
         if len(self.inventory) == 0:
             return None
         
@@ -69,7 +64,6 @@ class Vendor:
         if 'best_so_far' not in locals():
             return None
         return best_so_far
-
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         my_best = self.get_best_by_category(their_priority)
