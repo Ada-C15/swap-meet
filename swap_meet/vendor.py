@@ -72,4 +72,4 @@ class Vendor:
         my_newest_item = self.get_newest()
         their_newest_item = other.get_newest()
 
-        return self.swap_items(my_newest_item, their_newest_item)
+        return self.swap_items(other, my_newest_item, their_newest_item)
