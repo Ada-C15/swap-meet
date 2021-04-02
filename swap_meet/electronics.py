@@ -4,8 +4,8 @@ class Electronics(Item):
     
     def __init__(self, condition=None, age=None):
         self.category = "Electronics"
-        self.condition = condition
-        self.age = age
+        super().__init__(self.category, condition, age)
+
 
     def __str__(self):
         return "A gadget full of buttons and secrets."
