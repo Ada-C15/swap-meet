@@ -58,6 +58,10 @@ class Vendor:
             else: 
                 return False
         return False 
+    
+    
+    def swap_first_item(self, vendor):
+
 
 
 
