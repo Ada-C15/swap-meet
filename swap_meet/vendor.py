@@ -56,3 +56,18 @@ class Vendor:
         my_best = self.get_best_by_category(their_priority)
         their_best = other.get_best_by_category(my_priority)
         return self.swap_items(other, my_best, their_best)
+
+########################### This is the optional part #####################################
+
+    def get_newest(self, age):
+        least_old_item = 99
+        newest_item = None
+        for item in self.inventory:
+            if item.age < least_old_item:
+                least_old_item = item.age
+                newest_item = item
+        print(newest_item)
+        return newest_item
+
+    def swap_by_newest(self, other, my_newest, their_newest):
+        pass
