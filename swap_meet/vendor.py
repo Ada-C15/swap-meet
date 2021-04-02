@@ -6,7 +6,7 @@ class Vendor:
             self.inventory = []      # instances
         else:
             self.inventory = inventory
-            # friend = Vendor()     
+            
         
     def add(self, item):   # adds item to inventory and returns item
         self.inventory.append(item)
@@ -28,14 +28,16 @@ class Vendor:
 
     
     def swap_items(self, friend, my_item, their_item):
-        if my_item  not in self.inventory:
+        if my_item not in self.inventory:
             return False
         if their_item not in friend.inventory:
             return False 
-
+        
         self.remove(my_item)
         friend.add(my_item)
         friend.remove(their_item)
         self.add(their_item)
         return True 
 
+        
+        
