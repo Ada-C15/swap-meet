@@ -1,5 +1,4 @@
 class Item:
-     def __init__(self, category = None):
+    def __init__(self, category = ""):
         self.category = category
-        if self.category is None:
-            self.category = ""
+
