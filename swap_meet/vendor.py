@@ -20,12 +20,11 @@ class Vendor:
             return False
     
     def get_by_category(self, category):
-    # We have [item_a, item_b, _item_c] as "inventory"
-        res = []
-        for item in self.inventory: # item_a
-            if item.category == category: # if "clothing == clothing": (TRUE)
-                res.append(item)
+        result = []
+        for item in self.inventory: 
+            if item.category == category: 
+                result.append(item)
 
-        return res
+        return result
         
 
