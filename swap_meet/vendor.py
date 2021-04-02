@@ -33,11 +33,11 @@ class Vendor:
             other_vendor.inventory.remove(other_item)
             return True
     
-    def swap_first_item(self, other_vendor):
-        if len(self.inventory) == 0 or len(other_vendor.inventory) == 0:
+    def swap_first_item(self, other):
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
             return False
-            
-        return self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
+
+        return self.swap_items(other, self.inventory[0], other.inventory[0])
 
     def get_best_by_category(self, category):
         best_item = None
@@ -56,3 +56,20 @@ class Vendor:
         their_best_item_I_want = other.get_best_by_category(my_priority)
 
         return self.swap_items(other, my_best_item_other_wants, their_best_item_I_want)
+
+    def get_newest(self):
+        newest_item = None
+        newest_item_age = 999999999999999999
+
+        for item in self.inventory:
+            if item.age < newest_item_age:
+                newest_item = item
+                newest_item_age = item.age
+        
+        return newest_item
+
+    def swap_by_newest(self, other):
+        my_newest_item = self.get_newest()
+        their_newest_item = other.get_newest()
+
+        return self.swap_items(my_newest_item, their_newest_item)
