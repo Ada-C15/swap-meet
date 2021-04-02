@@ -7,6 +7,8 @@ class Vendor:
         else:
             self.inventory = inventory 
 
+friend = Vendor()
+friend.inventory
 
 bob = Vendor()
 print(bob.inventory)
