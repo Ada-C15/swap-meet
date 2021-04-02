@@ -36,7 +36,7 @@ def test_adding_to_inventory():
     assert item in vendor.inventory
     assert result is item
 
-# TEST 4
+# TEST 4 - PASSED
 # @pytest.mark.skip(reason="no way of currently testing this")
 def test_removing_from_inventory_returns_item():
     # arrange
@@ -51,7 +51,7 @@ def test_removing_from_inventory_returns_item():
     assert item not in vendor.inventory
     assert result is item
 
-# TEST 5
+# TEST 5 - PASSED
 # @pytest.mark.skip(reason="no way of currently testing this")
 def test_removing_not_found_is_false():
     # arrange

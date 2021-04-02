@@ -49,4 +49,11 @@ class Vendor:
     # else return False
 
 # For TEST 4 & 5
+# - Instances of `Vendor` have an instance method named `get_by_category`
+#   - It takes one argument: a string, representing a category
+#   - This method returns a list of `Item`s in the inventory with that categor
+        
+    def get_by_category(self, category):
+        return [item for item in self.inventory if item.category == category] 
+        
 
