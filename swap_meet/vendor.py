@@ -7,7 +7,7 @@ class Vendor:
 
     def add(self, item):
         self.inventory.append(item)
-        return new_item
+        return item
     
     def remove(self, item):
         if item in self.inventory:
