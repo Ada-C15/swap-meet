@@ -26,5 +26,19 @@ class Vendor:
                 result.append(item)
 
         return result
-        
-
+    
+    def swap_items(self, vendor, item_1, item_2):
+        for item in self.inventory:
+            if item == item_1:
+                self.inventory.remove(item)
+                vendor.inventory.append(item)
+            else:
+                return False
+        for item in vendor.inventory:
+            if item == item_2:
+                vendor.inventory.remove(item)
+                self.inventory.append(item)
+            else:
+                return False
+        return True
+    
