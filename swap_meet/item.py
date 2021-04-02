@@ -3,3 +3,6 @@ class Item():
         if category == None:
             category = ""
         self.category = category
+
+    def __str__(self):
+        return "Hello World!"
