@@ -68,3 +68,41 @@ class Vendor:
                     highest_cat = item
 
         return highest_cat
+    
+    def helper_func(self, type, list=None):
+        best_cond = 0
+        highest_cat = None
+        
+        for item in list.inventory:
+            if item.category == type:
+                if best_cond < item.condition:
+                    best_cond = item.condition
+                    highest_cat = item
+        return highest_cat
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        highest_cat = None
+        contains_item = False
+
+        if not self.inventory or not other.inventory:
+            return contains_item
+        else:
+            contains_item = True
+
+        for item in self.inventory:
+            if item.category == their_priority:
+                highest_cat = self.get_best_by_category(item.category)
+                contains_item = True
+
+        self.inventory.remove(highest_cat)
+        other.inventory.append(highest_cat)
+
+        for item in other.inventory:
+            if item.category == my_priority:
+                highest_cat = self.helper_func(item.category, other)
+                contains_item = True
+
+        other.inventory.remove(highest_cat)
+        self.inventory.append(highest_cat)
+
+        return contains_item
