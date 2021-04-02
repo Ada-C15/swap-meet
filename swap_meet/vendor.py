@@ -1,5 +1,8 @@
 #_______________WAVE 1_______________________
-#from item import Item
+''' from item import Item
+from clothing import Clothing
+from decor import Decor
+from electronics import Electronics '''
 
 class Vendor:
     def __init__(self, inventory = None): 
@@ -8,7 +11,9 @@ class Vendor:
         else:
             self.inventory = inventory
         
-        #self.inventory = list(inventory)
+        #self.class_item = Item(self.category, self.condition)
+        
+        
      
         
     def add(self, item):
@@ -43,7 +48,14 @@ class Vendor:
         
 
 #_______________Wave 3_________________________
-          
+   
+    #helper function
+    def does_item_exist(self, item, item_list):
+        for i in item_list:
+            if i == item:
+                return True
+            
+        return False
             
     def swap_items(self, Vendor, my_item, their_item):
         
@@ -61,16 +73,6 @@ class Vendor:
         my_inventory.append(their_item)
         
         return True
-
-    #helper function
-    def does_item_exist(self, item, item_list):
-        for i in item_list:
-            if i == item:
-                return True
-            
-        return False
-         
- 
             
 #_______________wave 4___________________________
 
@@ -92,14 +94,45 @@ class Vendor:
 #_______________wave 6___________________________
 #composite class function
 
-    def get_best_by_category(self, category = ""):
-        pass
-        #for thing in self.inventory
+    def get_best_by_category(self, category):
+        
+        # step 1: Get list of items with the desired category
+        new_list_by_category = []
+        best_item = None
+        
+        for thing in self.inventory:
+      
+            if thing.category == category: 
+               new_list_by_category.append(thing)
+               
+        # If there are no items in the inventory that match the category, it returns None       
+        if len(new_list_by_category) == 0:
+            return None       
+        
+        # step 2: Get the best item (with highest condition) from the list in Step1, if there are matching items category
+        list_by_condition = []
+        
+        for thing in new_list_by_category:
+            list_by_condition.append(thing.condition)
+            
+        max_condition_value = max(list_by_condition) 
+        
+        #returns a single item even if there are duplicates
+        for thing in self.inventory:
+            if thing.condition == max_condition_value:
+                best_item = thing
+                
+        return best_item
+            
+
     
     def swap_best_by_category(self, other, my_priority, their_priority):
         pass
+        #best_item = self.get_best_by_category()
         
-        
-        
+#____________optional enhancement__________________  
+
+    def swap_by_newest(self):
+        pass   
         
         
