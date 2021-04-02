@@ -38,9 +38,7 @@ class Vendor:
         
     def swap_first_item(self, other_vendor):
         if self.inventory and other_vendor.inventory:
-            temp = other_vendor.inventory[0]
-            other_vendor.inventory[0] = self.inventory[0]
-            self.inventory[0] = temp
+            self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
             return True
         else:
             return False
