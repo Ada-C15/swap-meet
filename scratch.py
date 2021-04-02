@@ -1,24 +1,23 @@
 from swap_meet.vendor import Vendor
 from swap_meet.item import Item
 from swap_meet.electronics import Electronics
-# from swap_meet.cllothing import clothing
-# from swap_meet.decor import Decor
+from swap_meet.clothing import Clothing
+from swap_meet.decor import Decor
 
 
-item_a = Item(category="clothing")
-item_b = Item(category="clothing")
-item_c = Item(category="clothing")
-fatimah = Vendor(
+tai = Vendor(
+    inventory=[]
+)
+
+item_a = Clothing(condition=2.0)
+item_b = Decor(condition=4.0)
+item_c = Clothing(condition=4.0)
+jesse = Vendor(
     inventory=[item_a, item_b, item_c]
 )
 
-item_d = Item(category="electronics")
-item_e = Item(category="decor")
-jolie = Vendor(
-    inventory=[item_d, item_e]
-)
-
-result = fatimah.swap_first_item(jolie)
-print(result)
-print(fatimah.inventory)
-print(jolie.inventory)
+result = tai.swap_best_by_category(
+    other=jesse,
+    my_priority="Clothing",
+    their_priority="Decor"
+    )

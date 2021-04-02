@@ -1,4 +1,8 @@
 from swap_meet.item import Item
+from swap_meet.electronics import Electronics
+from swap_meet.clothing import Clothing
+from swap_meet.decor import Decor
+
 
 class Vendor:
 
@@ -25,7 +29,6 @@ class Vendor:
         for items in self.inventory:
             print(items.category)
             if items.category == category:
-            # if category == item.category:
                 category_list.append(items)
         return category_list
 
@@ -53,5 +56,44 @@ class Vendor:
         else:
             return False
 
+    def get_best_by_category(self, category):
+        if len(self.inventory) == 0:
+            return None
+        # Make a container for items that match category
+        category_finds = []
+        # loop thru invent to find matches and add to list
+        
+        for item in self.inventory:
+            if item.category == category:
+                category_finds.append(item)
+        if len(category_finds) < 1:
+            return None
+        
+        # compare ratings in finds list
+        best_so_far = category_finds[0]
+        if best_so_far.condition == 5:
+            return best_so_far
+        
+        for item in category_finds[1:]:
+            if item.condition > best_so_far.condition:
+                best_so_far = item
+                if best_so_far.condition == 5:
+                    return best_so_far
+        return best_so_far
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_best = self.get_best_by_category(their_priority)
+        their_best = other.get_best_by_category(my_priority)
+        # print(my_best.condition, my_best.category, their_best.condition, their_best.category)
+
+        if my_best != None and their_best != None:
+            other.inventory.append(my_best)
+            self.inventory.remove(my_best)
+
+            self.inventory.append(their_best)
+            other.inventory.remove(their_best)
+            return True
+        else:
+            return False
 
 
