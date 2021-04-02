@@ -141,7 +141,6 @@ class Vendor:
         
         return True
     
-    
         #OMMITED LINES OF CODE DUE TO DRY YOUR CODE
         ''' #if the categories match then remove the best item from self vendor to other vendor
         self_sawp_item = self.swap_item(self.inventory, other.inventory, my_best_item)
