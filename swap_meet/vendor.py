@@ -56,3 +56,15 @@ class Vendor:
         self.inventory.append(their_first_item)
 
         return contains_item
+
+
+    def get_best_by_category(self, type):
+        best_cond = 0
+        highest_cat = None
+        for item in self.inventory:
+            if item.category == type:
+                if best_cond < item.condition:
+                    best_cond = item.condition
+                    highest_cat = item
+
+        return highest_cat
