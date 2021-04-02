@@ -136,12 +136,19 @@ class Vendor:
         if my_best_item.category != their_priority or their_best_item.category != my_priority:
            return False
         
-        #if the categories match then remove the best item from self vendor to other vendor
-        self_sawp_item = self.swap_item(self.inventory, other.inventory, my_best_item)
-        
-        other_swap_item = self.swap_item(other.inventory, self.inventory, their_best_item)
+        #calling swap item function from wave 3
+        self_swap_items = self.swap_items(other, my_best_item, their_best_item)
         
         return True
+    
+    
+        #OMMITED LINES OF CODE DUE TO DRY YOUR CODE
+        ''' #if the categories match then remove the best item from self vendor to other vendor
+        self_sawp_item = self.swap_item(self.inventory, other.inventory, my_best_item)
+        
+        other_swap_item = self.swap_item(other.inventory, self.inventory, their_best_item) 
+        
+        
 
     #helper function   
     def swap_item(self, inventory_list_1, inventory_list_2, best_item):
@@ -149,10 +156,10 @@ class Vendor:
             if i == best_item:
                 inventory_list_1.remove(best_item)
                 inventory_list_2.append(best_item)
-                break
+                break 
 
         #used helper to condense these lines of code further
-        ''' for thing in self.inventory:
+        for thing in self.inventory:
             if thing == my_best_item:
                 self.inventory.remove(my_best_item)
                 other.inventory.append(my_best_item)
