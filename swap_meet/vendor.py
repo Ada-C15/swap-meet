@@ -69,21 +69,26 @@ class Vendor:
             self.swap_items(other, my_item_to_swap, their_item_to_swap)
             return True
 
-    def swap_by_newest(self, other, age):
-        age_sorted = []
+    def get_newest(self):
+        newest_item = self.inventory[0]
         for item in self.inventory:
-            item.age_sorted.append()
-        return age_sorted
+            if item.age < newest_item.age:
+                newest_item = item
+        return newest_item
 
-
+    def swap_by_newest(self, other):
+        my_item_to_swap = self.get_newest()
+        their_item_to_swap = other.get_newest()
+        self.swap_items(other, my_item_to_swap, their_item_to_swap)
+        return True
 
 # test
 
 sid = Vendor()
 # print(sid.inventory)
-sid.add(Decor(condition=4))
-sid.add(Electronics(condition=3))
-sid.add(Clothing(condition=2))
+sid.add(Decor(condition=4, age=2))
+sid.add(Electronics(condition=3, age=25))
+sid.add(Clothing(condition=2, age=30))
 #print(sid.inventory) # is there a way to get the __str__ for the entire list?
 
 # self.inventory looks like: [Decor(condition=4), Electronics(condition=3), Clothing(condition=2)]
@@ -93,11 +98,18 @@ print(sid.get_by_category("Electronics"))
 print(sid.get_best_by_category("Clothing"))
 print(sid.inventory[0].category)
 
-# ren = Vendor()
-# print(ren.inventory)
+ren = Vendor()
+print(ren.inventory)
+ren.add(Decor(condition=2, age=17))
+ren.add(Electronics(condition=5, age=4))
+ren.add(Clothing(condition=4, age=108))
 
-# sid.swap_first_item(ren)
-# print(ren.inventory)
-# print(sid.inventory)
-# for item in sid.inventory:
-#     print(item)
+sid.swap_first_item(ren)
+print(ren.inventory)
+print(sid.inventory)
+for item in sid.inventory:
+    print(item)
+
+sid.swap_by_newest(Ren)
+print(sid.inventory)
+print(ren.inventory)
