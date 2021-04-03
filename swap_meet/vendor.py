@@ -41,11 +41,9 @@ class Vendor:
 
 
     def swap_first_item(self, vendor):
-        contains_item = False
-        if not self.inventory or not vendor.inventory:
+        contains_item = self.check_for_empty_list(vendor)
+        if not contains_item:
             return contains_item
-        else:
-            contains_item = True
         
         my_first_item = self.inventory[0]
         self.inventory.remove(my_first_item)
@@ -74,15 +72,20 @@ class Vendor:
 
         return highest_cat
 
-    def swap_best_by_category(self, other, my_priority, their_priority):
-        highest_cat = None
-        contains_item = False
-
-        if not self.inventory or not other.inventory:
-            return contains_item
+    def check_for_empty_list(self, other_list):
+        empty_list = False
+        if not self.inventory or not other_list.inventory:
+            return empty_list
         else:
-            contains_item = True
+            empty_list = True
+        return empty_list
 
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        contains_item = self.check_for_empty_list(other)
+        if not contains_item:
+            return contains_item
+
+        highest_cat = None
         for item in self.inventory:
             if item.category == their_priority:
                 highest_cat = self.get_best_by_category(item.category)
@@ -100,7 +103,9 @@ class Vendor:
         return contains_item
 
     def swap_by_newest(self, other, my_priority, their_priority):
-        contains_item = False
+        contains_item = self.check_for_empty_list(other)
+        if not contains_item:
+            return contains_item
 
         for item in self.inventory:
             if item.category == their_priority and item.age == "New":
