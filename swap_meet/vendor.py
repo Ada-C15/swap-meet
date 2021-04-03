@@ -25,4 +25,12 @@ class Vendor:
                 category_specific_list.append(item)
         return category_specific_list
 
-
+    def swap_items(self, Vendor, my_item, their_item):
+        if my_item in self.inventory and their_item in Vendor.inventory:
+            self.inventory.remove(my_item)
+            self.inventory.append(their_item)
+            Vendor.inventory.remove(their_item)
+            Vendor.inventory.append(my_item)
+            return True
+        else:
+            return False
