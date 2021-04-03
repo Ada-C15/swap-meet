@@ -1,8 +1,18 @@
-class Decor:
-    def __init__(self, category = "", condition = 0):
-        self.category = category
-        self.condition = condition
-    # do super
-    # super()__init__
+from swap_meet.item import Item
+class Decor(Item):
+    def __init__(self, condition = 0):
+        super().__init__("Decor", condition) 
+
     def __str__(self):
-        return "Something to decorate your space."
+        self.default_str = "Something to decorate your space."
+        return self.default_str
+#________________________________________
+# ## Similar to above but without super:
+# class Decor(Item):
+#     def __init__(self, category = "", condition = 0):
+#         self.category = "Decor"
+#         self.condition = condition
+
+#     def __str__(self):
+#         return "Something to decorate your space."
+
