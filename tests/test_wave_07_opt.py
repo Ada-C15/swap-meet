@@ -27,7 +27,7 @@ def test_get_newest():
         inventory=[item_a, item_b, item_c, item_d, item_e]
     )
 
-    newest_item = tai.get_newest("Clothing")
+    newest_item = tai.get_newest()
 
     assert newest_item.category == "Clothing"
     assert newest_item.age == pytest.approx(2)
@@ -51,8 +51,7 @@ def test_swap_by_newest():
 
     result = tai.swap_by_newest(
         other=jesse,
-        my_newest="Decor",
-        their_newest="Clothing"
+        
     )
 
     assert result is True

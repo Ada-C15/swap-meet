@@ -59,7 +59,7 @@ class Vendor:
 
 ########################### This is the optional part #####################################
 
-    def get_newest(self, age):
+    def get_newest(self):
         least_old_item = 99
         newest_item = None
         for item in self.inventory:
@@ -68,7 +68,7 @@ class Vendor:
                 newest_item = item
         return newest_item
 
-    def swap_by_newest(self, other, my_newest, their_newest):
-        my_newest = self.get_newest(self)
-        their_newest = other.get_newest(other)
+    def swap_by_newest(self, other):
+        my_newest = self.get_newest()
+        their_newest = other.get_newest()
         return self.swap_items(other, my_newest, their_newest)
