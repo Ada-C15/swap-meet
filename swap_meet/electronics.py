@@ -9,7 +9,7 @@ class Electronics(Item):
             self.condition = float(condition)
 
     def condition_description(self):
-        super().condition_description(self)
+        return super().condition_description()
 
     def __str__(self):
         return f"A gadget full of buttons and secrets."

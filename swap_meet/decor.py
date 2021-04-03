@@ -9,7 +9,7 @@ class Decor(Item):
             self.condition = float(condition)
 
     def condition_description(self):
-        super().condition_description(self)
+        return super().condition_description()
     
     def __str__(self):
         return "Something to decorate your space."
