@@ -4,8 +4,9 @@ class Clothing:
         if condition == None:
             self.condition = 0
         else:
-            self.condition = condition
+            self.condition = float(condition)
     
+    # write this in item and use super()
     def condition_description(self):
         if self.condition == 1:
             return "Not in the best shape, but still usable!"

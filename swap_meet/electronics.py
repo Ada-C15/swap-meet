@@ -6,6 +6,7 @@ class Electronics:
         else:
             self.condition = condition
 
+# write this in item and use super()
     def condition_description(self):
         if self.condition == 1:
             return "Not in the best shape, but still usable!"
