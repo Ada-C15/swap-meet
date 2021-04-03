@@ -6,14 +6,14 @@ from swap_meet.electronics import Electronics
 from swap_meet.decor import Decor
 
 items = [
-        Item(condition = 3.5), Item(condition = 4.0)]
-item_a = items[0]
-print(item_a.condition)
+    Clothing(condition=4.8),
+    Decor(condition=2.5),
+    Electronics(condition=3.2), 
+    Clothing(condition=0.8), 
+    Decor(condition = 5)
+]
 
 
-clothing_item = Clothing(condition = 4.5)
-print(clothing_item.condition)
-
-
-
+for item in items:
+    print(item.condition_description())
 
