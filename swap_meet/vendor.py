@@ -36,11 +36,20 @@ class Vendor:
         return False
 
     def swap_first_item(self, vendor):
-        my_first_item = self.inventory[0]
-        friend_first_item = vendor.inventory[0]
-        if len(my_inventory) >= 1 and len(friend_inventory) >= 1:
-            my_inventory[0] = friend_inventory[0]
-            friend_inventory[0] = 
-        
+        if len(self.inventory) >= 1 and len(vendor.inventory) >= 1:
+            my_first_item = self.inventory[0]
+            friend_first_item = vendor.inventory[0]
+
+            vendor.inventory.insert(1, my_first_item)
+            self.inventory.insert(1, friend_first_item)
+
+            del self.inventory[0]
+            del vendor.inventory[0]
+
+            return True
+
+        return False
+
+            
 
     
