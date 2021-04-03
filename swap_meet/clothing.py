@@ -1,4 +1,6 @@
-class Clothing:
+from swap_meet.item import Item
+
+class Clothing(Item):
     def __init__(self, condition=None):
         self.category = "Clothing"
         if condition == None:
@@ -6,18 +8,8 @@ class Clothing:
         else:
             self.condition = float(condition)
     
-    # write this in item and use super()
     def condition_description(self):
-        if self.condition == 1:
-            return "Not in the best shape, but still usable!"
-        elif self.condition == 2:
-            return "Has received a lot of love, and could definitely use more!"
-        elif self.condition == 3:
-            return "In fair condition! Definitely not the worst thing on the shelf!"
-        elif self.condition == 4:
-            return "Very lightly used, but not mint condition."
-        elif self.condition == 5:
-            return "Like new! It's your lucky day!!"
+        super().condition_description(self)
 
     def __str__(self):
         return "The finest clothing you could wear."
