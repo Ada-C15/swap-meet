@@ -32,34 +32,35 @@ class Vendor:
    
     def swap_items(self, swapping_vendor, my_item, their_item):
         
-        if their_item not in self.inventory or my_item not in swapping_vendor.inventory:
+        if my_item not in self.inventory or their_item not in swapping_vendor.inventory:
             return False
         
         else:
-            self.inventory.remove(my_item)
-            self.inventory.add(their_item)
+            self.remove(my_item)
+            self.add(their_item)
             swapping_vendor.remove(their_item)
             swapping_vendor.add(my_item)        
-            return True
+        return True
        
         
     def swap_first_item(self,vendor_friend):
         # method looks at self and vendor_friend first item in their inventories 
         # removing first item in self.inventory and replacing it with vendor_friends first item
         # adding item to vendor_friend.inventory 
-       pass
-       
-        # if self.inventory == [] or vendor_friend.inventory == []:
-        #     return False
+        if len(self.inventory) == 0 or len(vendor_friend.inventory) == 0:
+            return False
         
-        #  first_element = self.inventory.remove(self.inventory[0]):
+        self_first = self.inventory[0]
+        friend_first = vendor_friend.inventory[0]
+        
+        self.inventory.remove(self_first)
+        vendor_friend.inventory.remove(friend_first)
+        self.inventory.add(friend_first)
+        vendor_friend.inventory.add(self_first)
+        return True 
+     
+    
 
-
-        # removing first item from self.inventory
-        # add this item to vendor_friend.inventory 
-        # removes first item from vendor_friend.inventory 
-        # add this item to self.inventory
-        # return True
     
 
     
