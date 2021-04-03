@@ -39,30 +39,35 @@ class Vendor:
         return item_by_category
 
 
-    def swap_items(self, vendor, my_item, their_item):
+    def swap_items(self, friend_vendor, my_item, their_item):
         """
-        check items in Vendor, my_item, their_item
-        input:
-        output: 
+        check inventory items of each Vendor
+        input: adds and removes items from each Vendor inventory 
+        output: Return True or False 
         """
-        for item in self.inventory:
-            if item == my_item:
-                self.remove(item)
-                vendor.add(item)
-                if their_item not in vendor.inventory:
-                    return False 
-                else: 
-                    self.add(their_item)
-                    vendor.remove(their_item)
-                    return True
-            else: 
-                return False
-        return False 
-    
-    
-    def swap_first_item(self, vendor):
+        if my_item in self.inventory and their_item in friend_vendor.inventory:
+            self.add(their_item)
+            self.remove(my_item)
+            friend_vendor.add(my_item)
+            friend_vendor.remove(their_item)
+            return True 
+        else:
+            return False 
 
+    def swap_first_item(self, friend):
+        """
+        checks 1st item in self.inventory & friend's inventory
+        input: remove 1st items from self & friend
+        output: adds 1st items to self & friend. Returns True or False 
+        """
+        if self.inventory and friend.inventory:
+            own_item = self.inventory[0]
+            friend_item = friend.inventory[0]
 
-
-
-
+            self.remove(own_item)
+            friend.add(own_item)
+            friend.remove(friend_item)
+            self.add(friend_item)
+            return True 
+        else:
+            return False
