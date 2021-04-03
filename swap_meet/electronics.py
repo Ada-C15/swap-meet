@@ -1,5 +1,5 @@
 class Electronics:
-    def __init__(self, condition = None, category = "Electronics"):
+    def __init__(self, condition = 0, category = "Electronics"):
         self.condition = condition
         self.category = category
 

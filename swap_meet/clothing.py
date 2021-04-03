@@ -1,6 +1,6 @@
 class Clothing:
-    def __init__(self, condition = None, category = "Clothing"):
-        self.condition = condition
+    def __init__(self, condition = 0, category = "Clothing"):
+        self.condition = condition 
         self.category = category
         
 
