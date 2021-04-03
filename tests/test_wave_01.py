@@ -16,7 +16,6 @@ def test_vendor_takes_optional_inventory():
     assert "b" in inventory
     assert "c" in inventory
 
-
 def test_adding_to_inventory():
     vendor = Vendor()
     item = "new item"
