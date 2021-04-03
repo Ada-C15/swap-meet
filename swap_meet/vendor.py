@@ -25,14 +25,22 @@ class Vendor:
         return items
 
     def swap_items(self, vendor, my_item, their_item):
-        pass
+        my_inventory = self.inventory
+        friend_inventory = vendor.inventory
+        if my_item in my_inventory and their_item in friend_inventory:
+            friend_inventory.append(my_item)
+            my_inventory.remove(my_item)
+            my_inventory.append(their_item)
+            friend_inventory.remove(their_item)
+            return True
+        return False
 
-    #  removes the my_item from this Vendor's inventory and
-    #  adds it to the .friend's inventory   
+    def swap_first_item(self, vendor):
+        my_first_item = self.inventory[0]
+        friend_first_item = vendor.inventory[0]
+        if len(my_inventory) >= 1 and len(friend_inventory) >= 1:
+            my_inventory[0] = friend_inventory[0]
+            friend_inventory[0] = 
+        
 
-    # It removes the their_item from the other Vendor's inventory, 
-    # and adds it to this Vendor's inventory
-
-    # It returns True
-    # If this Vendor's inventory doesn't contain my_item 
-    # or the friend's inventory doesn't contain their_item, the method returns False
+    
