@@ -23,13 +23,10 @@ class Vendor:
 
     def swap_items(self, vendor, my_item, their_item):
         contains_item = False
-        if my_item not in self.inventory or their_item not in vendor.inventory:
-            return contains_item
-        else:
-            contains_item = True
 
         if my_item in self.inventory and their_item in vendor.inventory:
             self.swap_items_helper(vendor, my_item, their_item)
+            contains_item = True
         
         return contains_item
 
