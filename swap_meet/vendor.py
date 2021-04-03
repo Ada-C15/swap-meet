@@ -42,3 +42,11 @@ class Vendor:
             self.inventory.remove(self.inventory[0]) 
             Vendor.inventory.remove(Vendor.inventory[0])
             return True
+    
+    def get_best_by_category(self, category):
+        for item in self.inventory:
+            if category == item.category:
+                if item.condition == max(item.condition):
+                    return item.category
+            else:
+                return None
