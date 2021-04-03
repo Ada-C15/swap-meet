@@ -5,3 +5,5 @@ class Item:
         else:
             self.category = category
     
+    def __str__(self):
+        return f"Hello World!"
