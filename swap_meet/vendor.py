@@ -16,10 +16,10 @@ class Vendor:
             self.inventory.remove(item)
             return item
 
-
-# inventory=[]
-
-# vendor_1 = Vendor(inventory)
-# print(vendor_1.inventory)
-# print(vendor_1.add("chocolate"))
-# print(vendor_1.inventory)
+#Wave 2
+    def get_by_category(self, category):
+        list_of_items_in_category = []
+        for item in self.inventory:
+            if category == item.category:
+                list_of_items_in_category.append(item)
+        return list_of_items_in_category
