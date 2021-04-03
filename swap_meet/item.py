@@ -1,8 +1,9 @@
 class Item:
     # wave 02 & 05
-    def __init__(self, category="", condition=0.0):
+    def __init__(self, category="", condition=0.0, age=0.0):
         self.category = category
         self.condition = condition
+        self.age = age
 
     # wave 03
     def __str__(self):

@@ -1,3 +1,5 @@
+import sys
+
 class Vendor:
     # wave 01
     def __init__(self, inventory=None):
@@ -10,15 +12,9 @@ class Vendor:
     def remove(self, item):
         for i, thing in enumerate(self.inventory):
             if thing == item:
-                del self.inventory[i]
-                return item
+                return self.inventory.pop(i)
 
         return False
-
-        # if item not in self.inventory:
-        #     return False
-        # self.inventory.remove(item)
-        # return item
 
     # wave 02
     def get_by_category(self, category):
@@ -32,14 +28,14 @@ class Vendor:
     
     #  wave 03
     def swap_items(self, friend, my_item, their_item):
-        my_inventory = set(self.inventory)
-        friend_inventory = set(friend.inventory)
+        if len(self.inventory) == 0 or len(friend.inventory) == 0:
+            return False
 
-        if my_item in my_inventory and their_item in friend_inventory:
-            self.inventory.remove(my_item)
-            friend.inventory.append(my_item)
-            self.inventory.append(their_item)
-            friend.inventory.remove(their_item)
+        if my_item in self.inventory and their_item in friend.inventory:
+            friend.add(my_item)
+            self.remove(my_item)
+            self.add(their_item)
+            friend.remove(their_item)
             return True  
 
         return False
@@ -48,12 +44,17 @@ class Vendor:
     def swap_first_item(self, friend):
         if len(self.inventory) == 0 or len(friend.inventory) == 0:
             return False
-        else:
-            friend.inventory.append(self.inventory[0])
-            del self.inventory[0]
-            self.inventory.append(friend.inventory[0])
-            del friend.inventory[0]
-            return True        
+            
+        return self.swap_items(friend, self.inventory[0], friend.inventory[0])
+
+        # if len(self.inventory) == 0 or len(friend.inventory) == 0:
+        #     return False
+        # else:
+        #     friend.add(self.inventory[0])
+        #     del self.inventory[0]
+        #     self.add(friend.inventory[0])
+        #     del friend.inventory[0]
+        #     return True        
 
     #  wave 06
     def get_best_by_category(self, category):
@@ -70,9 +71,35 @@ class Vendor:
 
     # wave 06
     def swap_best_by_category(self, other, my_priority, their_priority):
-        my_preferred_item = other.get_best_by_category(my_priority)
-        their_preferred_item = self.get_best_by_category(their_priority)
+        their_best_offer = other.get_best_by_category(my_priority)
+        my_best_offer = self.get_best_by_category(their_priority)
 
-        swap_result = self.swap_items(other, their_preferred_item, my_preferred_item)
+        swap_result = self.swap_items(other, my_best_offer, their_best_offer)
 
         return swap_result
+
+    # optional wave 07
+    def get_min_age(self):
+        newest_item = None
+        min_age = sys.maxsize
+
+        for item in self.inventory:
+            if item.age <= min_age:
+                newest_item = item
+                min_age = item.age
+        
+        return newest_item
+
+    def swap_by_newest(self, other):
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
+            return False
+
+        my_newest = self.get_min_age()
+        their_newest = other.get_min_age()
+
+        other.add(my_newest)
+        self.remove(my_newest)
+        self.add(their_newest)
+        other.remove(their_newest)
+        
+        return True  
