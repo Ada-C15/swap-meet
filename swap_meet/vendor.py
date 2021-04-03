@@ -5,6 +5,9 @@ class Vendor:
         else:
             self.inventory = inventory
 
+    def __str__(self):
+        return self.inventory
+
     def add(self, item):
         """
         adds the item to the inventory
@@ -35,3 +38,15 @@ class Vendor:
             if item.category == category:
                 same_category_items.append(item)
         return same_category_items
+
+    def swap_items(self, friend_vendor, my_item, friend_item):
+        """
+        takes 3 arguments
+        imitates swap process
+        """
+        if (my_item in self.inventory) and (
+                friend_item in friend_vendor.inventory):
+            friend_vendor.add(self.remove(my_item))
+            self.add(friend_vendor.remove(friend_item))
+            return True
+        return False
