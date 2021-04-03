@@ -69,6 +69,12 @@ class Vendor:
             self.swap_items(other, my_item_to_swap, their_item_to_swap)
             return True
 
+    def swap_by_newest(self, other, age):
+        age_sorted = []
+        for item in self.inventory:
+            item.age_sorted.append()
+        return age_sorted
+
 
 
 # test
