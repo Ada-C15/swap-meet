@@ -88,13 +88,10 @@ class Vendor:
 
     def get_best_by_category(self, category):
         
-        # step 1: Get list of items with the desired category
-        new_list_by_category = []
         best_item = None
         
-        for thing in self.inventory:
-            if thing.category == category: 
-               new_list_by_category.append(thing)
+        # step 1: Get list of items with the desired category
+        new_list_by_category = self.get_by_category(category)
                
         # If there are no items in the inventory that match the category, it returns None       
         if len(new_list_by_category) == 0:
@@ -115,7 +112,7 @@ class Vendor:
                 break
             
         return best_item
-            
+    
     
     def swap_best_by_category(self, other, my_priority, their_priority):
         
