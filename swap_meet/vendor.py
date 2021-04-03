@@ -40,7 +40,7 @@ class Vendor:
         else:
             return False
 
-# FOR TEST  15, 16, 17 - WAVE 04 - 
+# FOR TEST  15, 16, 17 - WAVE 04 - PASSED 
     def swap_first_item(self, friend_vendor):
         friend_list = friend_vendor.inventory  
         my_list = self.inventory  
@@ -55,4 +55,3 @@ class Vendor:
         else:
             return False    
 
-            
