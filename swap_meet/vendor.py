@@ -59,13 +59,10 @@ class Vendor:
             return None 
         return category_list[-1]
 
-    def swap_best_by_category(self, other_vendor, my_desire, other_desire):
-        if other_desire not in self.inventory or my_desire not in other_vendor.inventory:
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        for_me = other.get_best_by_category(my_priority)
+        for_them = self.get_best_by_category(their_priority)
+        if not for_me or not for_them:
             return False
-
-
-        
-        # item_being_swapped = self.remove(item_x)
-        # other_vendor.add(item_being_swapped)
-        # item_being_swapped = other_vendor.remove(item_y)
-        # self.add(item_being_swapped)        
+        self.swap_items(other, for_them, for_me)
+        return True
