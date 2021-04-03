@@ -19,12 +19,9 @@ class Vendor:
     def get_by_category(self, category):
         category_items = []
         for specific_item in self.inventory:
-            category_items.append(specific_item)
+            if specific_item.category == category:
+                category_items.append(specific_item)
 
         return category_items
-    
-    def swap_items(self, vendor, my_item, their_item):
-        #self.vendor = vendor
-        #self.my_item = item.my_item
-        #self.their_item = item.their_item
+
 
