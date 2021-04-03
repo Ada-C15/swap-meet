@@ -18,9 +18,9 @@ class Vendor:
         return item
 
     def remove(self, item):
-        for thing in self.inventory:
-            if item == thing:
-                self.inventory.remove(thing)
-                return thing
-        else:
+        try:
+            self.inventory.remove(item)
+        except ValueError as err:
             return False
+
+        return item
