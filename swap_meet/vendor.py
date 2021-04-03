@@ -21,11 +21,11 @@ class Vendor:
             if item == self.inventory[index]:
                 return self.inventory.pop(index)
         return False
-# For TEST 7 & 8  WAVE 02      # Returns a list of `Item`s in the inventory with that category
+# For TEST 7 & 8  WAVE 02  - PASSED   # Returns a list of `Item`s in the inventory with that category
     def get_by_category(self, category):
         return [item for item in self.inventory if item.category == category] 
 
-# FOR TEST  (10, )WAVE 03 - 11, 12, 13, 14
+# FOR TEST  (10, 11, 12, 13, 14) WAVE 03 - PASSED
     def swap_items(self, friend_vendor, my_item, their_item):
         friend_list = friend_vendor.inventory # ["planta", "gato", "hoja"]
         my_list = self.inventory # ["cel", "pluma", "piedra"]
@@ -40,4 +40,19 @@ class Vendor:
         else:
             return False
 
-        
+# FOR TEST  15, 16, 17 - WAVE 04 - 
+    def swap_first_item(self, friend_vendor):
+        friend_list = friend_vendor.inventory  
+        my_list = self.inventory  
+        # their_item = friend_list[0] # ["planta", "gato", "hoja"] = "planta"
+        # my_item = self.inventory[0] # ["cel", "pluma", "piedra"] = "cel"
+        if  my_list != [] and friend_list !=[]:
+            their_removed = friend_vendor.remove(friend_list[0])
+            my_removed  = self.remove(self.inventory[0]) 
+            friend_list.append(my_removed)
+            my_list.append(their_removed)
+            return True
+        else:
+            return False    
+
+            

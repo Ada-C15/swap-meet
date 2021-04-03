@@ -44,7 +44,7 @@ def test_swap_items_returns_true():
     assert item_b in jolie.inventory
     assert result is True
 
-# TEST 11
+# TEST 11 - PASSED
 # @pytest.mark.skip(reason="no way of currently testing this")
 def test_swap_items_when_my_item_is_missing_returns_false():
     # arrange
@@ -73,7 +73,7 @@ def test_swap_items_when_my_item_is_missing_returns_false():
     assert item_e in jolie.inventory
     assert result is False
 
-# TEST 12
+# TEST 12 - PASSED
 # @pytest.mark.skip(reason="no way of currently testing this")
 def test_swap_items_when_their_item_is_missing_returns_false():
     # arrange
@@ -103,7 +103,7 @@ def test_swap_items_when_their_item_is_missing_returns_false():
     assert item_e in jolie.inventory
     assert result is False
 
-# TEST 13
+# TEST 13 - PASSED
 # @pytest.mark.skip(reason="no way of currently testing this")
 def test_swap_items_from_my_empty_returns_false():
     # arrange
@@ -126,7 +126,7 @@ def test_swap_items_from_my_empty_returns_false():
     assert len(jolie.inventory) is 2
     assert result is False
 
-# TEST 14
+# TEST 14 - PASSED
 # @pytest.mark.skip(reason="no way of currently testing this")
 def test_swap_items_from_their_empty_returns_false():
     # arrange
