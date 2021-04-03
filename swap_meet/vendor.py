@@ -46,5 +46,26 @@ class Vendor:
         other_vendor.add(self.inventory[0])
         self.remove(self.inventory[0])
         self.add(other_vendor.inventory[0])
-        other_vendor.remove(other_vendor.inventory[0])
+        other_vendor.remove(other_vendor.inventory[0])  
         return True
+
+    def get_best_by_category(self, category):
+        category_list = []
+        for item in self.inventory:
+            if item.category == category:
+                category_list.append(item)   
+        category_list.sort(key=lambda x: x.condition)  
+        if not category_list:
+            return None 
+        return category_list[-1]
+
+    def swap_best_by_category(self, other_vendor, my_desire, other_desire):
+        if other_desire not in self.inventory or my_desire not in other_vendor.inventory:
+            return False
+
+
+        
+        # item_being_swapped = self.remove(item_x)
+        # other_vendor.add(item_being_swapped)
+        # item_being_swapped = other_vendor.remove(item_y)
+        # self.add(item_being_swapped)        
