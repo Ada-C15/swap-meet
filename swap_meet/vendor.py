@@ -25,9 +25,9 @@ class Vendor:
         by_category_list = []
         print("Category:", category)
         for item in self.inventory:
-            print("item>>", item)
+            #print("item>>", item)
             if item.category == category:
-                print("I am category clothing")
+                # print("I am category clothing")
                 by_category_list.append(item)
         return by_category_list
         
