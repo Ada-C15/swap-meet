@@ -129,3 +129,24 @@ def test_swap_best_by_category_no_other_match():
     assert item_a in tai.inventory
     assert item_b in tai.inventory
     assert item_c in tai.inventory
+
+def test_swap_best_by_category_no_other_match2():
+    item_a = Clothing(condition=2.0)
+    item_b = Decor(condition=4.0)
+    item_c = Clothing(condition=4.0)
+    item_d = Electronics(condition=4.0)
+    tai = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    jesse = Vendor(
+        inventory=[item_d]
+    )
+
+    result = tai.swap_best_by_category(
+        other=jesse,
+        my_priority="Decor",
+        their_priority="Clothing"
+    )
+
+    assert result is False
