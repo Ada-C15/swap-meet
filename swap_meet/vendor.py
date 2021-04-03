@@ -86,13 +86,11 @@ class Vendor:
         for item in self.inventory:
             if item.category == their_priority:
                 my_item = self.get_best_by_category(item.category, self.inventory)
-                contains_item = True
 
         their_item = None
         for item in other.inventory:
             if item.category == my_priority:
                 their_item = self.get_best_by_category(item.category, other.inventory)
-                contains_item = True
 
         self.swap_items_helper(other, my_item, their_item)
 
@@ -107,13 +105,11 @@ class Vendor:
         for item in self.inventory:
             if item.category == their_priority and item.age == "New":
                 my_item = item
-                contains_item = True
 
         their_item = None
         for item in other.inventory:
             if item.category == my_priority and item.age == "New":
                 their_item = item
-                contains_item = True
 
         self.swap_items_helper(other, my_item, their_item)
 
