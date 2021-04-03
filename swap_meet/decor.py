@@ -1,4 +1,6 @@
 from swap_meet.item import Item
+
+# For TEST 19, 21 WAVE 05 - PASSED!
 class Decor(Item):
     def __init__(self, condition = 0):
         super().__init__("Decor", condition) 

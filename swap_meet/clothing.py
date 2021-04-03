@@ -1,4 +1,6 @@
 from swap_meet.item import Item
+
+# For TEST 18, 21 WAVE 05 - PASSED!
 class Clothing(Item): # I want it to have an attribute name
     def __init__(self, condition = 0):
         super().__init__("Clothing", condition) # doing the same in line 15 and 6
