@@ -39,20 +39,5 @@ class Vendor:
             return True
         else:
             return False
-        # if my_item is in friend_list and my_item. category = category???
-            # call function remove 
-            # assign removed =  
-            # append that removed to my list
-            # repeat - if their_item in 
-            # returns true if swap happens
-            # returns true if it doesn't
 
-
-
-
-    # def list_both_inventories(self, friend_vendor):
-    #     for my_item in self.inventory:
-    #         print(my_item)
-    #     for their_item in friend_vendor.inventory:
-    #         print(their_item)
         
