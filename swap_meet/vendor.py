@@ -1,4 +1,5 @@
-
+#from .item import Item
+#from item import Item
 
 class Vendor:
     def __init__(self, inventory=None): #needs to be optional keyword arg
@@ -29,12 +30,12 @@ class Vendor:
     
     def swap_items(self, friend, my_item, friends_item):
         if my_item in self.inventory and friends_item in friend.inventory:
-            friend.add(self.remove(my_item))
-            self.add(friend.remove(friends_item))
-            # self.inventory.remove(my_item)
-            # friend.inventory.add(my_item)
-            # friend.inventory.remove(friends_item)
-            # self.inventory.add(friends_item)                 
+            # friend.add(self.remove(my_item))
+            # self.add(friend.remove(friends_item))
+            self.remove(my_item)
+            friend.add(my_item)
+            friend.remove(friends_item)
+            self.add(friends_item)                 
             return True
         else:
             return False
@@ -44,11 +45,26 @@ class Vendor:
     #     remove friends_item from friends inventory, and add to my inventory
     #     return True if it does all this
     #     else False 
-    # def swap_first_item(self, friend):
+
+
+    def swap_first_item(self, friend):
     #     if not self.inventory or not friend.inventory:
-    #         return False
-    #     look at the first item in self.inventory and look at the first in friend.inventory
-    #     remove the first item [0] from self.inventory and add that item to friend.inventory
-    #     remove the first item from friend inventory and add self inventory first item
-    #     return True
-    #     else false
+
+        if len(self.inventory) == 0 or len(friend.inventory) == 0:
+            return False
+        else:
+            self.swap_items(friend, self.inventory[0], friend.inventory[0])
+            return True
+
+        
+        # if self.inventory and friend.inventory: 
+        #     print(self)
+        #     print(friend)
+        #     friend.add(self.remove([0]))
+        #     print(friend.inventory)
+        #     self.add(friend.remove([0]))
+        #     print(friend.add(self.remove([0])))
+        #     return True
+
+
+ 
