@@ -28,14 +28,10 @@ class Vendor:
     '''
     def get_by_category(self, category):
 
-        result = filter(lambda x: (x.category == category), self.inventory)
+        result = filter(lambda item: (item.category == category), self.inventory)
         return(list(result))
 
         # return [item for item in self.inventory if item.category == category]
-
-        # for item in self.inventory:
-        #     if item.category == category:
-        #         self.remove(item)
 
     '''
     Wave 3
@@ -59,10 +55,10 @@ class Vendor:
     This method swap my first item with a friend's first item
     '''
     def swap_first_item(self, friend):
-        if not self.inventory or not friend.inventory:
-            return False
-        # if self.invetory == None or friend.invetory == None:
+        # if not self.inventory or not friend.inventory:
         #     return False
+        if self.inventory == [] or friend.inventory == []:
+            return False
         else:
             return self.swap_items(friend, self.inventory[0], friend.inventory[0])
 
@@ -77,21 +73,31 @@ class Vendor:
             return None
         else:
             items = self.get_by_category(category) # this returns a list of items in the inventory with that matching category
-        
-            condition_list = []
             
-            for item in items: 
-                # return item if item.condition == max(item.condition)
-                condition_list.append(item.condition)
+            cur_max = items[0].condition
+            cur_idx = 0
+
+            for i in range(len(items)):
+                if items[i].condition > cur_max:
+                    cur_max = items[i].condition
+                    cur_idx = i
+                    return items[i] 
+
+            # Another working solution:
+            # condition_list = []
+            
+            # for item in items: 
+            #     condition_list.append(item.condition)
        
-            max_condition = (max(condition_list))
+            # max_condition = (max(condition_list))
 
-            for item in items:
-                if item.condition == max_condition:
-                    return item
-                # print(f"item condition is {item.condition}")
+            # for item in items:
+            #     if item.condition == max_condition:
+            #         return item  
 
-            # (max(genre_map, key=genre_map.get)) if genre_map else None
+            # Working solution with lambda:
+            # return max(items, key=lambda item: item.condition)
+            # Source: https://realpython.com/python-lambda/
     
     '''
     This method swaps the best item of certain categories with another Vendor
@@ -101,8 +107,6 @@ class Vendor:
         my_item = self.get_best_by_category(their_priority)
         their_item = other.get_best_by_category(my_priority)
         
-        # if their_priority not in self.inventory or my_priority not in other.inventory:
-        #     return False
         if not my_item or not their_item:
             return False
         else:
