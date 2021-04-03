@@ -28,10 +28,10 @@ class Vendor:
     
     def swap_items(self, other_vendor, my_item, their_item): 
         if my_item in self.inventory and their_item in other_vendor.inventory: 
-            self.inventory.remove(my_item) 
-            other_vendor.inventory.append(my_item)
-            other_vendor.inventory.remove(their_item)
-            self.inventory.append(their_item)
+            self.remove(my_item)
+            other_vendor.add(my_item)
+            other_vendor.remove(their_item)
+            self.add(their_item)
             return True 
         else: 
             return False
@@ -40,11 +40,7 @@ class Vendor:
         if len(self.inventory) and len(other_vendor.inventory) > 0: 
             self_inventory_1 = self.inventory[0]  
             other_vendor_invetory_1 = other_vendor.inventory[0]
-            self.inventory.remove(self_inventory_1) 
-            other_vendor.inventory.append(self_inventory_1)
-            other_vendor.inventory.remove(other_vendor_invetory_1)
-            self.inventory.append(other_vendor_invetory_1)
-            return True
+            return self.swap_items(other_vendor, self_inventory_1, other_vendor_invetory_1)
         else: 
             return False
     
@@ -64,13 +60,9 @@ class Vendor:
     def swap_best_by_category(self, other, my_priority, their_priority):
         my_best_item = self.get_best_by_category(their_priority)
         their_best_item = other.get_best_by_category(my_priority)
-
+        
         if my_best_item != None and their_best_item != None:
-            self.inventory.remove(my_best_item)
-            other.inventory.append(my_best_item)
-            other.inventory.remove(their_best_item)
-            self.inventory.append(their_best_item)
-            return True 
+            return self.swap_items(other, my_best_item, their_best_item)
         else: 
             return False 
             

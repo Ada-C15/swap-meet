@@ -5,7 +5,6 @@ from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
 
-
 def test_clothing_has_default_category_and_to_str():
     cloth = Clothing()
     assert cloth.category is "Clothing"
