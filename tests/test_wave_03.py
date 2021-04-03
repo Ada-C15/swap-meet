@@ -3,11 +3,11 @@ from swap_meet.vendor import Vendor
 from swap_meet.item import Item
 
 # TEST 9
-@pytest.mark.skip(reason="no way of currently testing this")
+# @pytest.mark.skip(reason="no way of currently testing this")
 def test_item_overrides_to_string():
-    item = Item()
+    item = Item() # item = "" 
 
-    stringified_item = str(item)
+    stringified_item = str(item) 
 
     assert stringified_item == "Hello World!"
 
