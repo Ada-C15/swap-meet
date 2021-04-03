@@ -30,6 +30,10 @@ class Vendor:
         
         return contains_item
 
+    def check_for_empty_list(self, other_list):
+        if not self.inventory or not other_list.inventory:
+            return False
+        return True
 
     def swap_items_helper(self, other_list, my_item, their_item):
         self.inventory.remove(my_item)
@@ -64,15 +68,6 @@ class Vendor:
                     highest_cat = item
 
         return highest_cat
-
-    def check_for_empty_list(self, other_list):
-        empty_list = False
-        if not self.inventory or not other_list.inventory:
-            return empty_list
-        else:
-            empty_list = True
-        return empty_list
-
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         contains_item = self.check_for_empty_list(other)
