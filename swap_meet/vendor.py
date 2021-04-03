@@ -57,9 +57,8 @@ class Vendor:
         imitates swapping the first items in the friends inventory
         """
         if self.inventory != [] and friend_vendor.inventory != []:
-            self.swap_items(
+            return(self.swap_items(
                 friend_vendor,
                 self.inventory[0],
-                friend_vendor.inventory[0])
-            return True
+                friend_vendor.inventory[0]))
         return False
