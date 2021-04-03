@@ -58,13 +58,13 @@ class Vendor:
         return contains_item
 
 
-    def get_best_by_category(self, type, list=None):
+    def get_best_by_category(self, type, other_list=None):
         best_cond = 0
         highest_cat = None
         inventory_list = self.inventory
 
-        if list != None:
-            inventory_list = list
+        if other_list != None:
+            inventory_list = other_list
 
         for item in inventory_list:
             if item.category == type:
@@ -87,7 +87,6 @@ class Vendor:
             if item.category == their_priority:
                 highest_cat = self.get_best_by_category(item.category)
                 contains_item = True
-
         self.inventory.remove(highest_cat)
         other.inventory.append(highest_cat)
 
@@ -95,8 +94,24 @@ class Vendor:
             if item.category == my_priority:
                 highest_cat = self.get_best_by_category(item.category, other.inventory)
                 contains_item = True
-
         other.inventory.remove(highest_cat)
         self.inventory.append(highest_cat)
+
+        return contains_item
+
+    def swap_by_newest(self, other, my_priority, their_priority):
+        contains_item = False
+
+        for item in self.inventory:
+            if item.category == their_priority and item.age == "New":
+                self.inventory.remove(item)
+                other.inventory.append(item)
+                contains_item = True
+
+        for item in other.inventory:
+            if item.category == my_priority and item.age == "New":
+                other.inventory.remove(item)
+                self.inventory.append(item)
+                contains_item = True
 
         return contains_item
