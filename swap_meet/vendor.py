@@ -81,7 +81,7 @@ class Vendor:
                 if items[i].condition > cur_max:
                     cur_max = items[i].condition
                     cur_idx = i
-            return items[i] 
+            return items[cur_idx]
 
             # Another working solution:
             # condition_list = []
