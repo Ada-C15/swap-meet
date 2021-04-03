@@ -112,7 +112,7 @@ class Vendor:
                 break
             
         return best_item
-    
+
     
     def swap_best_by_category(self, other, my_priority, their_priority):
         
@@ -172,7 +172,50 @@ class Vendor:
         
 #____________optional enhancement__________________  
 
-    def swap_by_newest(self):
-        pass   
+   
+    def get_newest_by_category(self, category):        
+        # step 1: Get list of items with the desired category
+        best_item = None
+        list_by_category = self.get_by_category(category)
+               
+        # If there are no items in the inventory that match the category, it returns None       
+        if len(list_by_category) == 0:
+            return None       
         
+        # step 2: Get the best item (with highest condition) from the list in Step1, if there are matching items category
+        list_by_age = []
         
+        for thing in list_by_category:
+            list_by_age.append(thing.age)
+            
+        max_age_value = max(list_by_age) 
+        
+        #returns a single item even if there are duplicates with best condtition filtered by category
+        for thing in list_by_category:
+            if thing.age == max_age_value:
+                best_item = thing
+                break
+            
+        return best_item
+        
+    def swap_by_newest(self, other, my_priority, their_priority):
+         
+        #call the function with the correct parameter to get the best_item for self and other
+        my_newest_item = self.get_newest_by_category(their_priority)
+        
+        their_newest_item = other.get_newest_by_category(my_priority)
+        
+        #Fail first if either of the inventory is empty
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
+            return False
+        
+        #fail second if best item is None for either vendor
+        if my_newest_item == None or their_newest_item == None:
+            return False
+        
+        #fail third if the best item category for either vendor doesn't match 
+        if my_newest_item.category != their_priority or their_newest_item.category != my_priority:
+           return False
+        
+        #calling swap item function from wave 3
+        return self.swap_items(other, my_newest_item, their_newest_item)
