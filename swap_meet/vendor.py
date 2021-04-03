@@ -30,7 +30,7 @@ class Vendor:
         return categorlist
 
    
-    def swap_items(self, swapping_vendor, my_item, their_item):
+    def swap_item(self, swapping_vendor, my_item, their_item):
         
         if my_item not in self.inventory or their_item not in swapping_vendor.inventory:
             return False
@@ -50,13 +50,14 @@ class Vendor:
         if len(self.inventory) == 0 or len(vendor_friend.inventory) == 0:
             return False
         
-        self_first = self.inventory[0]
-        friend_first = vendor_friend.inventory[0]
+        else:
+            self_first = self.inventory[0]
+            friend_first = vendor_friend.inventory[0]
         
-        self.inventory.remove(self_first)
-        vendor_friend.inventory.remove(friend_first)
-        self.inventory.add(friend_first)
-        vendor_friend.inventory.add(self_first)
+            self.remove(self_first)
+            vendor_friend.inventory.remove(friend_first)
+            self.add(friend_first)
+            vendor_friend.add(self_first)
         return True 
      
     
