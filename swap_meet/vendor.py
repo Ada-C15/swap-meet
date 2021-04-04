@@ -70,6 +70,8 @@ class Vendor:
             return True
 
     def get_newest(self):
+        if self.inventory == []:
+            return None
         newest_item = self.inventory[0]
         for item in self.inventory:
             if item.age < newest_item.age:
@@ -93,23 +95,23 @@ sid.add(Clothing(condition=2, age=30))
 
 # self.inventory looks like: [Decor(condition=4), Electronics(condition=3), Clothing(condition=2)]
 
-print(sid.inventory)
-print(sid.get_by_category("Electronics"))
-print(sid.get_best_by_category("Clothing"))
-print(sid.inventory[0].category)
+#print(sid.inventory)
+# print(sid.get_by_category("Electronics"))
+# print(sid.get_best_by_category("Clothing"))
+# print(sid.inventory[0].category)
 
 ren = Vendor()
-print(ren.inventory)
-ren.add(Decor(condition=2, age=17))
-ren.add(Electronics(condition=5, age=4))
-ren.add(Clothing(condition=4, age=108))
+#print(ren.inventory)
+ren.add(Decor(condition=2))
+ren.add(Clothing(condition=5))
+ren.add(Clothing(condition=4))
 
-sid.swap_first_item(ren)
-print(ren.inventory)
+# sid.swap_first_item(ren)
 print(sid.inventory)
-for item in sid.inventory:
-    print(item)
+print(ren.inventory)
+# for item in sid.inventory:
+#     print(item)
 
-sid.swap_by_newest(Ren)
+sid.swap_by_newest(ren)
 print(sid.inventory)
 print(ren.inventory)
