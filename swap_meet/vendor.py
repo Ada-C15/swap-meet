@@ -45,16 +45,7 @@ class Vendor:
         if len(self.inventory) == 0 or len(friend.inventory) == 0:
             return False
             
-        return self.swap_items(friend, self.inventory[0], friend.inventory[0])
-
-        # if len(self.inventory) == 0 or len(friend.inventory) == 0:
-        #     return False
-        # else:
-        #     friend.add(self.inventory[0])
-        #     del self.inventory[0]
-        #     self.add(friend.inventory[0])
-        #     del friend.inventory[0]
-        #     return True        
+        return self.swap_items(friend, self.inventory[0], friend.inventory[0])    
 
     #  wave 06
     def get_best_by_category(self, category):
@@ -80,6 +71,11 @@ class Vendor:
 
     # optional wave 07
     def get_min_age(self):
+        """[summary]
+            find a item has the mininum age in self.inventory list
+        Returns:
+            [type]: an object or None
+        """        
         newest_item = None
         min_age = sys.maxsize
 
@@ -90,16 +86,17 @@ class Vendor:
         
         return newest_item
 
-    def swap_by_newest(self, other):
-        if len(self.inventory) == 0 or len(other.inventory) == 0:
-            return False
+    def swap_by_newest(self, other): 
+        """[summary]
+            swap min age items in inventory list of two vendor instances 
+        Args:
+            other ([type: object]): a Vendor instant contians inventory list
 
+        Returns:
+            [type: bool]: return true if two min age items have been swapped 
+                        otherwise return false
+        """           
         my_newest = self.get_min_age()
         their_newest = other.get_min_age()
 
-        other.add(my_newest)
-        self.remove(my_newest)
-        self.add(their_newest)
-        other.remove(their_newest)
-        
-        return True  
+        return self.swap_items(other, my_newest, their_newest) 
