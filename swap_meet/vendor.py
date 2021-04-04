@@ -2,6 +2,7 @@ from swap_meet.item import Item
 
 
 class Vendor:
+    #useful for setting an initial value to a paramter
     def __init__(self, inventory = None):
         if inventory == None:
             self.inventory = []
@@ -57,13 +58,24 @@ class Vendor:
             return False
 
     def get_best_by_category(self,category):
-      
+      #how to not do for loop twice?
       i_list=[]
       for object in self.get_by_category(category):
         i_list.append(object.condition)
       for object in self.get_by_category(category):
         if object.condition==max(i_list):
           return object
+    
+    
+    def swap_best_by_category(self,other,my_priority,their_priority):
+        if self.inventory != [] and other.inventory != []:
 
+            self.get_best_by_category(their_priority)
+
+            other.get_best_by_category(my_priority)
+            self.swap_items(other,self.get_best_by_category(their_priority),other.get_best_by_category(my_priority))  
+            return True
+        else:
+            return False
             
             
