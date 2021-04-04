@@ -9,6 +9,10 @@ class Item:
         return str
 
     def condition_description(self):
+        """
+        Returns the condition description (string) based upon a numerical value that corresponds
+        to each item condition.  
+        """
         if self.condition <= 1:
             return "This is in terrible condition"
         elif 1 < self.condition <= 2:
