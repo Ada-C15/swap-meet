@@ -1,6 +1,3 @@
-# Test 1 and 2
-
-# For TEST 1, 2 -  WAVE-01 PASSED!
 class Vendor:
     def __init__(self, inventory=None):
         if inventory is None:
@@ -8,27 +5,23 @@ class Vendor:
         else:
             self.inventory = inventory 
     
-# For TEST 3 - WAVE-01  PASSED!
     def add(self, item):
         (self.inventory).append(item) 
-        # list(self.inventory).append(item) ## ??? why can't I do  list(self.inventory).append(item)? and not declare inventory as inventory = []
         return item
-#
-#For TEST 4,5 WAVE-01  PASSED!
+
     def remove(self, item): 
         item_index = None
         for index in range(len(self.inventory)):
             if item == self.inventory[index]:
                 return self.inventory.pop(index)
         return False
-# For TEST 7 & 8  WAVE 02  - PASSED   # Returns a list of `Item`s in the inventory with that category
+
     def get_by_category(self, category):
         return [item for item in self.inventory if item.category == category] 
     
-# FOR TEST  (10, 11, 12, 13, 14) WAVE 03 - PASSED
     def swap_items(self, friend_vendor, my_item, their_item):
-        friend_list = friend_vendor.inventory # ["planta", "gato", "hoja"]
-        my_list = self.inventory # ["cel", "pluma", "piedra"]
+        friend_list = friend_vendor.inventory  
+        my_list = self.inventory  
         if their_item in friend_list and my_item in my_list \
             and their_item != None and my_item != None and my_list != []\
             and friend_list !=[]:
@@ -40,12 +33,9 @@ class Vendor:
         else:
             return False
 
-# FOR TEST  15, 16, 17 - WAVE 04 - PASSED 
     def swap_first_item(self, friend_vendor):
         friend_list = friend_vendor.inventory  
-        my_list = self.inventory  
-        # their_item = friend_list[0] # ["planta", "gato", "hoja"] = "planta"
-        # my_item = self.inventory[0] # ["cel", "pluma", "piedra"] = "cel"
+        my_list = self.inventory 
         if  my_list != [] and friend_list !=[]:
             their_removed = friend_vendor.remove(friend_list[0])
             my_removed  = self.remove(self.inventory[0]) 
@@ -68,7 +58,7 @@ class Vendor:
 
     def swap_best_by_category(self, other, my_priority, \
         their_priority):
-        my_item = self.get_best_by_category(their_priority)  # gato
-        their_item = other.get_best_by_category(my_priority) # liebre
+        my_item = self.get_best_by_category(their_priority)  
+        their_item = other.get_best_by_category(my_priority) 
         swap = self.swap_items(other, my_item, their_item)
         return swap
