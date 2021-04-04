@@ -8,14 +8,4 @@ class Decor(Item):
         return "Something to decorate your space."
 
     def condition_description(self):
-        
-        if self.condition == 5:
-            return "New/Unused"
-        elif self.condition == 4:
-            return "Like New"
-        elif self.condition == 3:
-            return "Used/Average"
-        elif self.condition == 2:
-            return "Very Used"
-        elif self.condition == 1:
-            return "Yikes"
+        return super().condition_description()
