@@ -9,3 +9,6 @@ class Item:
     def __str__(self):
         return "Hello World!"
         # return self.category
+
+    def condition_description(self):
+        return str(self.condition)
