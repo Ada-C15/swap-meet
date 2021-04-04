@@ -69,10 +69,11 @@ class Vendor:
         if vendor_wants == None or self_wants == None:
             return False
         else:
-            self.add(self_wants)
-            other.add(vendor_wants)
-            self.remove(vendor_wants)
-            other.remove(self_wants)
+            self.swap_items(other, vendor_wants, self_wants)
+            # self.add(self_wants)
+            # other.add(vendor_wants)
+            # self.remove(vendor_wants)
+            # other.remove(self_wants)
             return True
         
                 
