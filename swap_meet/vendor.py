@@ -3,6 +3,7 @@
 ############### TEST WAVE 4 (3 tests) PASSED ###############
 # from item.swap_meet import Item - why is this not needed?
 
+### test 1.1 PASSED ### test 1.2 PASSED ###
 class Vendor:
     def __init__(self, inventory = None): #get_by_category,
     # you can't make an argument/parameter of a mutable data type
@@ -13,10 +14,12 @@ class Vendor:
             self.inventory = inventory
         # self.get_by_category = get_by_category() -- this is a Vendor method and does not need to be an attribute.
 
+### test 1.3 PASSED ###
     def add(self, item):
         self.inventory.append(item)
         return item
 
+### test 1.4 PASSED ### test 1.5 PASSED ###
     def remove(self, item):
         if self.inventory == []:
             return None
@@ -28,8 +31,7 @@ class Vendor:
                     self.inventory.remove(remove_item)
                     return remove_item
 
-### test 2.2 PASSED ###
-### test 2.3 PASSED ###
+### test 2.2 PASSED ### test 2.3 PASSED ###
     def get_by_category(self, category):
         items_by_category_list = []
         for item in self.inventory:
@@ -45,11 +47,7 @@ class Vendor:
 # tests 2.3
 #^^^returns an empty list if no item-instances belong to the category passed in.
 
-### test 3.2 PASSED ###
-### test 3.3 PASSED ###
-### test 3.4 PASSED ###
-### test 3.5 PASSED ###
-### test 3.6 PASSED ###
+## PASSED ## test 3.2 ## test 3.3 ## test 3.4 ## test 3.5 ## test 3.6 ##
     def swap_items(self, friendor, my_item, their_item):
         if my_item not in self.inventory or their_item not in friendor.inventory:
             return False
@@ -60,9 +58,7 @@ class Vendor:
             self.inventory.append(their_item)
             return True
 
-    ### test 4.1 PASSED ###
-    ### test 4.2 PASSED ###
-    ### test 4.3 PASSED ###
+### test 4.1 PASSED ### test 4.2 PASSED ### test 4.3 PASSED ###
     def swap_first_item(self, friendor):
         if self.inventory == [] or friendor.inventory == []:
             return False
