@@ -55,5 +55,15 @@ class Vendor:
             return True
         else:
             return False
+
+    def get_best_by_category(self,category):
+      
+      i_list=[]
+      for object in self.get_by_category(category):
+        i_list.append(object.condition)
+      for object in self.get_by_category(category):
+        if object.condition==max(i_list):
+          return object
+
             
             
