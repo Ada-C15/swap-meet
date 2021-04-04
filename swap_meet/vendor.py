@@ -37,7 +37,7 @@ class Vendor:
             return True
     
     def swap_first_item(self, friend_vendor):
-        if len(self.inventory)is 0 or len(friend_vendor.inventory) is 0:
+        if len(self.inventory) == 0 or len(friend_vendor.inventory) == 0:
             return False
         else:
             item_a = self.inventory[0]
@@ -47,14 +47,7 @@ class Vendor:
 
 
         
-        # else:
-        #     self.remove(self.inventory[0])
-        #     self.add(friend_vendor.inventory[0])
-        #     friend_vendor.remove(friend_vendor.inventory[0])
-        #     friend_vendor.add(self.inventory[0])
-            
-        #     return True
-    
+
 
 
 
