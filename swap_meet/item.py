@@ -5,7 +5,6 @@ class Item:
         self.category = category
         self.condition = condition
         
-    # abstract method
     def __str__(self): 
         return "Hello World!"
 
