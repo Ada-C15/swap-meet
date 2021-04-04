@@ -129,3 +129,46 @@ def test_swap_best_by_category_no_other_match():
     assert item_a in tai.inventory
     assert item_b in tai.inventory
     assert item_c in tai.inventory
+
+
+
+def test_get_newest():
+    item_a = Clothing(age=2)
+    item_b = Decor(age=14)
+    item_c = Clothing(age=20)
+    item_d = Decor(age=5)
+    item_e = Clothing(age=85)
+    tai = Vendor(
+        inventory=[item_a, item_b, item_c, item_d, item_e]
+    )
+
+    best_item = tai.get_newest()
+
+    assert best_item.age == 2
+
+
+def test_swap_best_by_age():
+    item_a = Decor(age=6)
+    item_b = Electronics(age=35)
+    item_c = Decor(age=2)
+    tai = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    item_d = Clothing(age=5)
+    item_e = Decor(age=1)
+    item_f = Clothing(age=65)
+    jesse = Vendor(
+        inventory=[item_d, item_e, item_f]
+    )
+
+    result = tai.swap_best_by_age(jesse)
+
+    assert result is True
+    assert len(tai.inventory) is 3
+    assert len(jesse.inventory) is 3
+    assert item_c not in tai.inventory
+    assert item_e in tai.inventory
+    assert item_e not in jesse.inventory
+    assert item_c in jesse.inventory
+    
