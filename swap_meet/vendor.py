@@ -104,14 +104,9 @@ class Vendor:
         output:
 
         """
-        my_list_of_category = self.get_by_category(my_priority)
-        their_list_of_category = self.get_by_category(their_priority)
-
-        if my_priority not in their_list_of_category or their_priority not in my_list_of_category:
-            return False 
-        # else:
-        #     my_item = self.get_best_by_category(their_priority)
-        #     their_item = self.get_best_by_category(my_priority)
-        #     self.swap_items(other, my_item, their_item)
-        #     # return True 
+        my_item = self.get_best_by_category(their_priority)
+        their_item = other.get_best_by_category(my_priority)
+        if my_item == None or their_item == None:
+            return False
+        return self.swap_items(other, my_item, their_item)
 
