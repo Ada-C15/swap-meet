@@ -3,7 +3,7 @@
 
 # create an Item class 
 class Item:
-    def __init__(self, category = None, condition = None):
+    def __init__(self, category = None, condition = None, age = None):
         if category == None:
             self.category = ""
         else:
@@ -12,6 +12,10 @@ class Item:
             self.condition = 0.0
         else:
             self.condition = condition
+        if age == None:
+            self.age = 9999
+        else:
+            self.age = age
 
 
 # class Item: 

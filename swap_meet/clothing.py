@@ -9,9 +9,9 @@ from .item import Item
 #             self.condition = condition
 
 class Clothing(Item):
-    def __init__(self, condition = None):
+    def __init__(self, condition = None, age = None):
         category = "Clothing"
-        super().__init__(category, condition)
+        super().__init__(category, condition, age)
 
 # class Clothing(Item):
 #     def __init__(self, category = "", condition = 0.0):
