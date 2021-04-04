@@ -3,15 +3,8 @@ from .item import Item
 
 class Electronics(Item):
     def __init__(self, condition = None, edge = None):
-        self.category = "Electronics"
-        if condition == None:
-            self.condition = 0
-        else:
-            self.condition = condition
-        if edge == None:
-            self.edge = 0
-        else:
-            self.edge = edge
+        super().__init__(category = "Electronics", condition, edge)
+
     
     '''
     This function is created to customize the string representation 
