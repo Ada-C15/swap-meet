@@ -1,5 +1,6 @@
 ############### TEST WAVE 1 (5 tests) PASSED ###############
 ############### TEST WAVE 2 (3 tests) PASSED ###############
+############### TEST WAVE 4 (3 tests) PASSED ###############
 # from item.swap_meet import Item - why is this not needed?
 
 class Vendor:
@@ -59,3 +60,16 @@ class Vendor:
             self.inventory.append(their_item)
             return True
 
+    ### test 4.1 PASSED ###
+    ### test 4.2 PASSED ###
+    ### test 4.3 PASSED ###
+    def swap_first_item(self, friendor):
+        if self.inventory == [] or friendor.inventory == []:
+            return False
+        else:
+            print("something else")
+            friendor.inventory.append(self.inventory[0])
+            self.inventory.remove(self.inventory[0])
+            self.inventory.append(friendor.inventory[0])
+            friendor.inventory.remove(friendor.inventory[0])
+            return True
