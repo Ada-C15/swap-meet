@@ -11,14 +11,11 @@ class Vendor:
         else:
             self.inventory = inventory
      
-        
     def add(self, item):
-        
         self.inventory.append(item)
         return item
     
     def remove(self, item):
-        
         for thing in self.inventory:
             if item == thing:
                 self.inventory.remove(thing)
@@ -31,7 +28,6 @@ class Vendor:
     #returns list of class Item's objects inventory = [Item_a, Item_b, Item_c]
     
     def get_by_category(self, category):
-        
         new_list_with_items = []
         
         #iterate on the list for each category (state) and check if the item is in there 
@@ -48,11 +44,9 @@ class Vendor:
         for i in item_list:
             if i == item:
                 return True
-            
         return False
             
     def swap_items(self, Vendor, my_item, their_item):
-        
         my_inventory = self.inventory
         their_inventory = Vendor.inventory
         
@@ -99,7 +93,6 @@ class Vendor:
         
         # step 2: Get the best item (with highest condition) from the list in Step1, if there are matching items category
         list_by_condition = []
-        
         for thing in new_list_by_category:
             list_by_condition.append(thing.condition)
             
@@ -110,7 +103,6 @@ class Vendor:
             if thing.condition == max_condition_value:
                 best_item = thing
                 break
-            
         return best_item
 
     
@@ -118,7 +110,6 @@ class Vendor:
         
         #call the function with the correct parameter to get the best_item for self and other
         my_best_item = self.get_best_by_category(their_priority)
-        
         their_best_item = other.get_best_by_category(my_priority)
         
         #Fail first if either of the inventory is empty
@@ -137,7 +128,7 @@ class Vendor:
         return self.swap_items(other, my_best_item, their_best_item)
         
     
-        #OMMITED LINES OF CODE DUE TO DRY YOUR CODE
+        #OMMITED LINES OF CODE DUE TO DRY THE CODE
         ''' #if the categories match then remove the best item from self vendor to other vendor
         self_sawp_item = self.swap_item(self.inventory, other.inventory, my_best_item)
         
@@ -166,8 +157,6 @@ class Vendor:
                 other.inventory.remove(their_best_item)
                 self.inventory.append(their_best_item)
                 break '''
-            
-    
     
         
 #____________optional enhancement__________________  
@@ -184,10 +173,8 @@ class Vendor:
         
         # step 2: Get the best item (with highest condition) from the list in Step1, if there are matching items category
         list_by_age = []
-        
         for thing in list_by_category:
             list_by_age.append(thing.age)
-            
         max_age_value = max(list_by_age) 
         
         #returns a single item even if there are duplicates with best condtition filtered by category
@@ -202,7 +189,6 @@ class Vendor:
          
         #call the function with the correct parameter to get the best_item for self and other
         my_newest_item = self.get_newest_by_category(their_priority)
-        
         their_newest_item = other.get_newest_by_category(my_priority)
         
         #Fail first if either of the inventory is empty
