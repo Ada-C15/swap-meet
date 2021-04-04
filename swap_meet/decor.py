@@ -3,7 +3,7 @@ from .item import Item
 
 class Decor(Item):
     def __init__(self, condition = None, edge = None):
-        super().__init__(category = "Decor", condition, edge)
+        super().__init__("Decor", condition, edge)
     
     '''
     This function is created to customize the string representation 

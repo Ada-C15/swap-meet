@@ -3,7 +3,7 @@ from .item import Item
 
 class Clothing(Item):
     def __init__(self, condition = None, edge = None):
-        super().__init__(category = "Clothing", condition, edge)
+        super().__init__("Clothing", condition, edge)
 
     
     '''
