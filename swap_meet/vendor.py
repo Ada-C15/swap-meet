@@ -67,7 +67,7 @@ class Vendor:
         that matches provided category and has highest condition rating
         '''
         list_by_category = self.get_by_category(category)
-        if list_by_category == []: # why does None not work?
+        if list_by_category == []:
             return None
         else:
             best_item = list_by_category[0]
