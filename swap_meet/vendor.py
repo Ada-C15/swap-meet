@@ -75,3 +75,21 @@ class Vendor:
             return True
         else:
             return False
+
+    def swap_by_newest(self, other):
+        if len(self.inventory) and len(other.inventory):
+            mine_to_swap = self.inventory[0]
+            theirs_to_swap = other.inventory[0]
+
+            for my_item in self.inventory:
+                if mine_to_swap.age > my_item.age:
+                    mine_to_swap = my_item
+
+            for their_item in other.inventory:
+                if theirs_to_swap.age > their_item.age:
+                    theirs_to_swap = their_item
+
+            self.swap_items(other, mine_to_swap, theirs_to_swap)
+            return True
+        else:
+            return False
