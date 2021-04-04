@@ -52,28 +52,9 @@ class Vendor:
         return highest_condition_item
 
 
-
-            
-
-### Wave 6
-
-# The first three tests in wave 6 imply:
-
-# - `Vendor`s have a method named `get_best_by_category`, which will get the item with the best condition in a certain category
-#   - It takes one argument: a string that represents a category
-#   - This method looks through the instance's `inventory` for the item with the highest `condition` and matching `category`
-#     - It returns this item
-#     - If there are no items in the `inventory` that match the category, it returns `None`
-#     - It returns a single item even if there are duplicates (two or more of the same item with the same condition)
-
-# The last three tests in wave 5 imply:
-
-# - `Vendor`s have a method named `swap_best_by_category`, which will swap the best item of certain categories with another `Vendor`
-#   - It takes in three arguments
-#     - `other`, which represents another `Vendor` instance to trade with
-#     - `my_priority`, which represents a category that the `Vendor` wants to receive
-#     - `their_priority`, which represents a category that `other` wants to receive
-#   - The best item in my inventory that matches `their_priority` category is swapped with the best item in `other`'s inventory that matches `my_priority`
-#     - It returns `True`
-#     - If the `Vendor` has no item that matches `their_priority` category, swapping does not happen, and it returns `False`
-#     - If `other` has no item that matches `my_priority` category, swapping does not happen, and it returns `False`
+    def swap_best_by_category(self, other, my_priority,their_priority):
+        my_item = self.get_best_by_category(their_priority)
+        their_item = other.get_best_by_category(my_priority)
+        if my_item == None or their_item == None:
+            return False 
+        return self.swap_items(other, my_item, their_item)
