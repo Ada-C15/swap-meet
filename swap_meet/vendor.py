@@ -11,10 +11,12 @@ class Vendor:
             self.inventory = inventory
 
     def add(self, item):
+        '''Adds item to instance's inventory'''
         self.inventory.append(item)
         return item
 
     def remove(self, item):
+        '''Removes item from instance's inventory'''
         if item not in self.inventory:
             return False
         else:
@@ -22,6 +24,10 @@ class Vendor:
         return item
 
     def get_by_category(self, category):
+        '''
+        Returns list of items from instance's inventory
+        that match provided category
+        '''
         item_list = []
         for item in self.inventory:
             if category == item.category:
@@ -29,6 +35,10 @@ class Vendor:
         return item_list
 
     def swap_items(self, friend, my_item, their_item):
+        '''
+        Swaps provided Item instance from user's inventory with provided
+        Item instance from another user's inventory
+        '''
         if my_item not in self.inventory or their_item not in friend.inventory:
             return False
         else:
@@ -39,6 +49,10 @@ class Vendor:
             return True
 
     def swap_first_item(self, friend):
+        '''
+        Utilizes swap_items method to exchange first items of user's and
+        friend's inventories
+        '''
         if not self.inventory or not friend.inventory:
             return False
         else:
@@ -48,6 +62,10 @@ class Vendor:
             return True
 
     def get_best_by_category(self, category):
+        '''
+        Utilizes get_by_category to return Item instance in user's inventory
+        that matches provided category and has highest condition rating
+        '''
         list_by_category = self.get_by_category(category)
         if list_by_category == []: # why does None not work?
             return None
@@ -59,17 +77,25 @@ class Vendor:
         return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
+        '''
+        Utilizes best_by_category and swap_items to exchange Item
+        instances of a particular category with the best condition
+        between user and friend
+        '''
         my_list_by_category = self.get_by_category(their_priority)
         their_list_by_category = other.get_by_category(my_priority)
         if my_list_by_category == [] or their_list_by_category == []:
             return False
         else:
-            my_item_to_swap = self.get_best_by_category(their_priority)
-            their_item_to_swap = other.get_best_by_category(my_priority)
-            self.swap_items(other, my_item_to_swap, their_item_to_swap)
+            my_item = self.get_best_by_category(their_priority)
+            their_item = other.get_best_by_category(my_priority)
+            self.swap_items(other, my_item, their_item)
             return True
 
     def get_newest(self):
+        '''
+        Returns Item instance with the lowest age from the user's inventory
+        '''
         if self.inventory == []:
             return None
         newest_item = self.inventory[0]
@@ -79,39 +105,11 @@ class Vendor:
         return newest_item
 
     def swap_by_newest(self, other):
-        my_item_to_swap = self.get_newest()
-        their_item_to_swap = other.get_newest()
-        self.swap_items(other, my_item_to_swap, their_item_to_swap)
+        '''
+        Utilizes get_newest and swap_items to exchange the newest item
+        from user's and friend's inventories
+        '''
+        my_item = self.get_newest()
+        their_item = other.get_newest()
+        self.swap_items(other, my_item, their_item)
         return True
-
-# test
-
-sid = Vendor()
-# print(sid.inventory)
-sid.add(Decor(condition=4, age=2))
-sid.add(Electronics(condition=3, age=25))
-sid.add(Clothing(condition=2, age=30))
-#print(sid.inventory) # is there a way to get the __str__ for the entire list?
-
-# self.inventory looks like: [Decor(condition=4), Electronics(condition=3), Clothing(condition=2)]
-
-#print(sid.inventory)
-# print(sid.get_by_category("Electronics"))
-# print(sid.get_best_by_category("Clothing"))
-# print(sid.inventory[0].category)
-
-ren = Vendor()
-#print(ren.inventory)
-ren.add(Decor(condition=2))
-ren.add(Clothing(condition=5))
-ren.add(Clothing(condition=4))
-
-# sid.swap_first_item(ren)
-print(sid.inventory)
-print(ren.inventory)
-# for item in sid.inventory:
-#     print(item)
-
-sid.swap_by_newest(ren)
-print(sid.inventory)
-print(ren.inventory)

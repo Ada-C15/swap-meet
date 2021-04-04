@@ -32,7 +32,7 @@ def test_get_newest_with_duplicates():
 
     assert newest_item.age == 7
 
-def test_get_newest_from_my_empty_returns_false():
+def test_get_newest_from_empty_returns_false():
     sid = Vendor(
         inventory=[]
     )
