@@ -17,7 +17,13 @@ def test_get_newest_returns_newest_item():
 
     assert result is item_c
 
-    
+def test_get_newest_returns_none_with_empty_inventory():
+    johannes = Vendor()
+
+    result = johannes.get_newest()
+
+    assert result is None
+
 def test_swap_by_newest():
     item_a = Decor(age=2)
     item_b = Electronics(age=7)
