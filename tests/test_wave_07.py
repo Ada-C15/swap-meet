@@ -59,3 +59,14 @@ def test_swap_by_newest_works_with_really_old_items():
     assert item_f in johannes.inventory
     assert item_f not in live.inventory
     assert item_a in live.inventory
+
+def test_swap_by_newest_returns_false_with_empty_inventory():
+    johannes = Vendor()
+    
+    live = Vendor()
+
+    result = johannes.swap_by_newest(
+        other=live
+    )
+
+    assert result is False
