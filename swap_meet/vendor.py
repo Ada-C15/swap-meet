@@ -30,13 +30,10 @@ class Vendor:
             self.add(their_item)
             return True
         
-            
-
-# defining a method called swap method has 3 arguments
-# how to remove an item from inventory 
-# it removes the their_item from the vendors invntory and adds it to the friends inventory
-# It returns true if all of the above is met
-# if vendor inventory doesn't contain my_item or friends inventory doesn't contain their_item       
+    def swap_first_item(self, vendor_friend):
+        if vendor_friend.inventory or self.inventory == 0:
+            return False
+        elif first_item in  
 
 
 
