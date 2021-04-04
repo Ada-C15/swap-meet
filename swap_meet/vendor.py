@@ -67,6 +67,15 @@ class Vendor:
         else:
             self.swap_items(other, vendor_wants, self_wants)
             return True
+
+    def get_newest(self, age):
+        best_age = self.inventory[0]
+        best_item = None
+        for item in self.inventory:
+            if item.age < best_age:
+                best_age = item.age
+                best_item = item
+        return best_item
         
                 
     
