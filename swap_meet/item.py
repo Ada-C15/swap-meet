@@ -1,10 +1,11 @@
 class Item:
-    def __init__(self, condition = 0, category = None):
+    def __init__(self, age, condition = 0, category = None):
         if category == None:
             self.category = ""
         else:
             self.category = category
         self.condition = condition
+        self.age = age
 
     def __str__ (self):
         return "Hello World!"

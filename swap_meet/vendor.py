@@ -96,6 +96,34 @@ class Vendor:
 
             return True
 
+#OPTIONAL METHOD
 
+    def find_newest_item(self, inventory):
+        first_item = self.inventory[0]
+        newest = first_item.age 
+        newest_item = None
+
+        for item in self.inventory:
+            if item.age < newest:
+                newest = item.age
+        
+        for item in self.inventory:
+            if item.age == newest:
+                newest_item = item
+        
+        return newest_item
+    
+
+    def swap_by_newest(self, other): 
+
+        my_newest_item = self.find_newest_item()
+        their_newest_item = other.find_newest_item()
+        
+        self.inventory.append(their_newest_item)
+        other.inventory.append(my_newest_item)
+        self.inventory.remove(my_newest_item)
+        other.inventory.remove(their_newest_item)
+
+        return True
 
 
