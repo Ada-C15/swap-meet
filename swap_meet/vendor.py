@@ -33,3 +33,18 @@ class Vendor:
             return True
         else:
             return False
+
+    def swap_first_item(self, vendor):
+        if self.inventory and vendor.inventory != []:
+            my_item = self.inventory[0]
+            their_item = vendor.inventory[0]
+            self.remove(my_item)
+            vendor.remove(their_item)
+            self.add(their_item)
+            vendor.add(my_item)
+            return True
+        else:
+            return False
+
+    
+        
