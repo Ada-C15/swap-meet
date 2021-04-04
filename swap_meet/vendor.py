@@ -18,7 +18,6 @@ class Vendor:
             self.inventory.remove(item)
         else:
             return False
-        
         return item 
     
     def get_by_category(self, category):
@@ -46,10 +45,7 @@ class Vendor:
             print(self_first_item)
         else:
             return False
-        vendor.add(self_first_item)
-        self.add(vendor_first_item)
-        vendor.remove(vendor_first_item)
-        self.remove(self_first_item)
+        self.swap_items(vendor, self_first_item, vendor_first_item)
         return True
 
     def get_best_by_category(self, category):
@@ -70,10 +66,6 @@ class Vendor:
             return False
         else:
             self.swap_items(other, vendor_wants, self_wants)
-            # self.add(self_wants)
-            # other.add(vendor_wants)
-            # self.remove(vendor_wants)
-            # other.remove(self_wants)
             return True
         
                 
