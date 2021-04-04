@@ -34,7 +34,7 @@ class Vendor:
             return False
     
     def swap_first_item(self, Vendor):
-        if len(Vendor.inventory) == 0 or len(self.inventory) == 0:
+        if Vendor.inventory == [] or self.inventory == []:
             return False
         else:
             self.inventory.append(Vendor.inventory[0])
@@ -57,7 +57,7 @@ class Vendor:
         their_best_item = other.get_best_by_category(my_priority)
         my_best_item = self.get_best_by_category(their_priority)
 
-        if len(self.inventory) == 0 or len(other.inventory) == 0:
+        if self.inventory == [] or other.inventory == []:
             return False
         else:
             return self.swap_items(other, my_best_item, their_best_item)
