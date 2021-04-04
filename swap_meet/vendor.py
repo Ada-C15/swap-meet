@@ -1,6 +1,5 @@
 from .item import Item
-# Create a vendor class that has an inventory attribute 
-# the inventory attribute can come as a parameter but should not be required 
+
 
 class Vendor: 
     def __init__(self, inventory = None):
@@ -40,9 +39,7 @@ class Vendor:
     def swap_first_item(self, vendor):
         if len(self.inventory) >= 1 and len(vendor.inventory)>= 1:
             self_first_item = self.inventory[0]
-            print(self_first_item)
             vendor_first_item = vendor.inventory[0]
-            print(self_first_item)
         else:
             return False
         self.swap_items(vendor, self_first_item, vendor_first_item)
@@ -69,7 +66,7 @@ class Vendor:
             return True
 
     def get_newest(self):
-        best_age = 9999
+        best_age = 999999
         best_item = None
         for item in self.inventory:
             if item.age == None:
