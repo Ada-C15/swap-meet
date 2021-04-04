@@ -5,7 +5,8 @@ from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
 
-
+# TEST 23 - PASSED
+# @pytest.mark.skip(reason="no way of currently testing this")
 def test_best_by_category():
     item_a = Clothing(condition=2.0)
     item_b = Decor(condition=2.0)
@@ -21,7 +22,8 @@ def test_best_by_category():
     assert best_item.category == "Clothing"
     assert best_item.condition == pytest.approx(4.0)
 
-
+# TEST 24 - PASSED
+# @pytest.mark.skip(reason="no way of currently testing this")
 def test_best_by_category_no_matches_is_none():
     item_a = Decor(condition=2.0)
     item_b = Decor(condition=2.0)
@@ -34,7 +36,8 @@ def test_best_by_category_no_matches_is_none():
 
     assert best_item is None
 
-
+# TEST 25 - PASSED
+# @pytest.mark.skip(reason="no way of currently testing this")
 def test_best_by_category_with_duplicates():
     item_a = Clothing(condition=2.0)
     item_b = Clothing(condition=4.0)
@@ -48,7 +51,8 @@ def test_best_by_category_with_duplicates():
     assert best_item.category == "Clothing"
     assert best_item.condition == pytest.approx(4.0)
 
-
+# TEST 26 - 
+# @pytest.mark.skip(reason="no way of currently testing this")
 def test_swap_best_by_category():
     item_a = Decor(condition=2.0)
     item_b = Electronics(condition=4.0)
@@ -78,7 +82,8 @@ def test_swap_best_by_category():
     assert item_f not in jesse.inventory
     assert item_c in jesse.inventory
 
-
+# TEST 27
+# @pytest.mark.skip(reason="no way of currently testing this")
 def test_swap_best_by_category_no_match_is_false():
     tai = Vendor(
         inventory=[]
@@ -104,7 +109,8 @@ def test_swap_best_by_category_no_match_is_false():
     assert item_b in jesse.inventory
     assert item_c in jesse.inventory
 
-
+# TEST 28
+# @pytest.mark.skip(reason="no way of currently testing this")
 def test_swap_best_by_category_no_other_match():
     item_a = Clothing(condition=2.0)
     item_b = Decor(condition=4.0)
