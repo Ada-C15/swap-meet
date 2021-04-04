@@ -23,3 +23,21 @@ class Vendor:
             if category == item.category:
                 list_of_items_in_category.append(item)
         return list_of_items_in_category
+
+#Wave 3
+    def swap_items(self, friend, item, friend_item):
+        if item not in self.inventory or friend_item not in friend.inventory:
+            return False
+        else:
+            self.remove(item)
+            friend.add(item)
+            self.add(friend_item)
+            friend.remove(friend_item)
+            return True  
+#Wave 4
+    def swap_first_item(self, friend):
+        if not self.inventory or not friend.inventory:
+            return False 
+        else:
+            self.swap_items(friend, self.inventory[0], friend.inventory[0])
+            return True
