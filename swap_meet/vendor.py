@@ -5,9 +5,11 @@ class Vendor:
         else:
             self.inventory = inventory
 
+
     def add(self, item):
         self.inventory.append(item)
         return item
+
 
     def remove(self, item):
         if item in self.inventory:
@@ -16,6 +18,7 @@ class Vendor:
         else:
             return False
 
+
     def get_by_category(self, category):
         category_items = []
         for specific_item in self.inventory:
@@ -23,6 +26,7 @@ class Vendor:
                 category_items.append(specific_item)
 
         return category_items
+
 
     def swap_items(self, vendor, my_item, their_item):
         if my_item not in self.inventory or their_item not in vendor.inventory:
@@ -34,6 +38,7 @@ class Vendor:
 
         return True
 
+
     def swap_first_item(self, vendor):
         if not self.inventory or not vendor.inventory:
             return False
@@ -44,7 +49,20 @@ class Vendor:
         return True
 
 
+    def get_best_by_category(self, category):
+        items_list = []
+        best_condition = 0
+        for match in self.inventory:
+            if match.category == category:
+                items_list.append(match)
+        if not items_list:
+            return None
+        for item in items_list:
+            if item.condition > best_condition:
+                best_condition = item.condition
+                goodie = item
 
+        return goodie
 
 
 
