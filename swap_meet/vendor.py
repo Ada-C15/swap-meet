@@ -43,3 +43,19 @@ class Vendor:
 # ^^^returns a list of item-instances that belong to the category passed in.
 # tests 2.3
 #^^^returns an empty list if no item-instances belong to the category passed in.
+
+### test 3.2 PASSED ###
+### test 3.3 PASSED ###
+### test 3.4 PASSED ###
+### test 3.5 PASSED ###
+### test 3.6 PASSED ###
+    def swap_items(self, friendor, my_item, their_item):
+        if my_item not in self.inventory or their_item not in friendor.inventory:
+            return False
+        else:
+            self.inventory.remove(my_item)
+            friendor.inventory.append(my_item)
+            friendor.inventory.remove(their_item)
+            self.inventory.append(their_item)
+            return True
+
