@@ -8,8 +8,17 @@ class Clothing(Item):
         else:
             self.condition = float(condition)
     
+    """
+    This function utilizes inheritance and takes the 
+    functionality from the condition.description method
+    defined in the Item class.
+    """
     def condition_description(self):
         return super().condition_description()
 
+    """
+    This method personalizes the output for when 
+    str() is called, and returns the provided message.
+    """
     def __str__(self):
         return "The finest clothing you could wear."
