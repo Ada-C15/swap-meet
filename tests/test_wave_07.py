@@ -70,3 +70,31 @@ def test_swap_by_newest_returns_false_with_empty_inventory():
     )
 
     assert result is False
+
+
+def test_swap_by_newest_swaps_first_item_when_all_items_are_same_age():
+    item_a = Clothing(age=5)
+    item_b = Decor(age=5)
+    item_c = Electronics(age=5)
+    johannes = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    item_d = Electronics(age=5)
+    item_e = Decor(age=5)
+    item_f = Clothing(age=5)
+    live = Vendor(
+        inventory=[item_d, item_e, item_f]
+    )
+
+    result = johannes.swap_by_newest(
+        other = live
+    )
+
+    assert result is True
+    assert len(johannes.inventory) is 3
+    assert len(live.inventory) is 3
+    assert item_a not in johannes.inventory
+    assert item_d in johannes.inventory
+    assert item_d not in live.inventory
+    assert item_a in live.inventory
