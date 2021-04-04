@@ -1,6 +1,10 @@
 from swap_meet.item import Item
 
+#wave_5
 class Decor(Item):
+    """
+    inheritance code from method condittion_description 
+    """
     def __init__(self, category = "Decor", condition = 0):
         self.category = "Decor"
         self.condition = condition

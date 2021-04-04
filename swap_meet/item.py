@@ -1,15 +1,15 @@
-# from swap_meet.clothing import Clothing
-# from swap_meet.decor import Decor
-# from swap_meet.electronics import Electronics
 
+#wave_2
 class Item():
     def __init__(self, category ="", condition=0):
         self.category = category
         self.conditon = condition 
 
+#wave_3
     def __str__(self):
         return "Hello World!"
 
+#wave_5
     def condition_description(self):
         """
         input: checks the condition of items
