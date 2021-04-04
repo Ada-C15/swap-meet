@@ -2,6 +2,9 @@ from .item import Item
 
 
 class Vendor: 
+    """
+    Define a class that can keep inventory 
+    """
     def __init__(self, inventory = None):
         if inventory == None:
                 self.inventory = []
@@ -9,10 +12,16 @@ class Vendor:
             self.inventory = inventory
 
     def add(self, item):
+        """
+        Takes in an item and adds it to the Vendor objects inventory attribute
+        """
         self.inventory.append(item)
         return item
 
     def remove(self, item):
+        """
+        Takes in an item and removes it from the Vendor objects invntry attribute
+        """
         if item in self.inventory:
             self.inventory.remove(item)
         else:
@@ -20,6 +29,10 @@ class Vendor:
         return item 
     
     def get_by_category(self, category):
+        """
+        Takes in a preferred category and returns all items in vendor 
+        inventory that match that category
+        """
         item_by_category = []
         for item in self.inventory:
             if item.category == category:
@@ -27,6 +40,11 @@ class Vendor:
         return item_by_category
 
     def swap_items(self, vendor, item_a, item_b):
+        """
+        Takes in an instance of vendor, and two instances of items:
+        checks to see if the items are in the respective .inventory 
+        attributes and removes/adds them if they are
+        """
             if item_a in self.inventory and item_b in vendor.inventory:
                 self.remove(item_a)
                 vendor.add(item_a)
@@ -37,6 +55,10 @@ class Vendor:
             return True
     
     def swap_first_item(self, vendor):
+        """
+        Takes in an instance of vendor and compares inventory lists, 
+        swaps first item of each list if the list contains >= 1 item
+        """
         if len(self.inventory) >= 1 and len(vendor.inventory)>= 1:
             self_first_item = self.inventory[0]
             vendor_first_item = vendor.inventory[0]
@@ -46,6 +68,10 @@ class Vendor:
         return True
 
     def get_best_by_category(self, category):
+        """
+        Takes in a category and iterates over item instances in 
+        self.inventory, returns item in best condition 
+        """
         best_condition = 0
         best_item = None
         for item in self.inventory:
@@ -56,6 +82,11 @@ class Vendor:
         return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
+        """
+        Makes use of the best by category funct. for self and other vendor 
+        based off of the category priorities passed in. 
+        swaps items from respective inv. lists if they are present
+        """
         self_wants = other.get_best_by_category(my_priority)
 
         vendor_wants = self.get_best_by_category(their_priority)
@@ -66,6 +97,10 @@ class Vendor:
             return True
 
     def get_newest(self):
+        """
+        iterates over item objects in self.inventory and returns item 
+        with the youngest age in (int)
+        """
         best_age = 999999
         best_item = None
         for item in self.inventory:
@@ -77,6 +112,10 @@ class Vendor:
         return best_item
 
     def swap_best_by_age(self, other):
+        """
+        Makes use of the get newest funct for self and other, then 
+        swaps the return items if they are present. 
+        """
         self_wants = other.get_newest()
         vendor_wants = self.get_newest()
         if self_wants == None or vendor_wants == None:
