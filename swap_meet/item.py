@@ -6,7 +6,7 @@ class Item:
         self.age = age
 
     def __str__(self):
-        return "Hello, World!"
+        return "Hello World!"
 
     def condition_description(self):
         '''
