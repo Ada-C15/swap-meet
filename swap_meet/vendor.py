@@ -25,9 +25,12 @@ class Vendor:
                 items.append(item)
         return items
         
+    def swap_items(self, vendor,  my_item, their_item):
+        if my_item in self.inventory and their_item in vendor.inventory:  
 
-
-        # - Instances of `Vendor` have an instance method named `get_by_category`
-#   - It takes one argument: a string, representing a category
-#   - This method returns a list of `Item`s in the inventory with that category
-
+            self.remove(my_item)
+            vendor.add(my_item) 
+            vendor.remove(their_item)
+            self.add(their_item)
+            return True  
+        return False
