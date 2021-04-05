@@ -6,6 +6,12 @@ class Vendor:
             self.inventory = []
         else:
             self.inventory = inventory
+    
+    #def __str__(self):
+    
+
+    def __repr__(self):
+        return "Vendor('{}')".format(self.inventory)
 
         
     
@@ -56,8 +62,7 @@ class Vendor:
         #self is fatimah
         # self.inventory #Fatimah
         # print(vendor.inventory)
-        if vendor.inventory == []:
-            return False
+        
         if my_item in self.inventory and vendor_item in vendor.inventory:
             self.add(vendor_item)
             self.remove(my_item)
@@ -68,6 +73,42 @@ class Vendor:
     
     #wave 4
 
-    def swap_first_item():
-        pass
+    def swap_first_item(self,vendor):
+        """
+        function: swaps and removes item
+        input: vendor
+        output: True if successful, or False if empty list for vendor encountered
+        """
+        if self.inventory == [] or vendor.inventory == []:
+            return False
+        
+        
+        self_first_item = self.inventory[0]
+        vendor_first_item = vendor.inventory[0]
+        self.remove(self_first_item)
+        self.add(vendor_first_item)
+        vendor.remove(vendor_first_item)
+        vendor.add(self_first_item)
+        return True
+
+
+    #Wave 5
+        
+
+
+
+
+
+    #Wave 6
+
+       
+       
+       
+
+
+        
+
+        
+
+        
         
