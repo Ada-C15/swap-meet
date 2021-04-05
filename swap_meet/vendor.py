@@ -45,14 +45,14 @@ class Vendor:
         checks to see if the items are in the respective .inventory 
         attributes and removes/adds them if they are
         """
-            if item_a in self.inventory and item_b in vendor.inventory:
-                self.remove(item_a)
-                vendor.add(item_a)
-                self.add(item_b)
-                vendor.remove(item_b)
-            else: 
-                return False
-            return True
+        if item_a in self.inventory and item_b in vendor.inventory:
+            self.remove(item_a)
+            vendor.add(item_a)
+            self.add(item_b)
+            vendor.remove(item_b)
+        else: 
+            return False
+        return True
     
     def swap_first_item(self, vendor):
         """
@@ -122,17 +122,7 @@ class Vendor:
             return False
         else:
             self.swap_items(other, vendor_wants, self_wants)
+
         return True
-        
-                
-    
-    
-
-
-
-
-
-
-
 
 
