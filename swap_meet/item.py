@@ -1,8 +1,5 @@
 class Item:
-    def __ini__(self, category = ""):
+    def __init__(self, category = ""):
         self.category = category
-        return something
-    
-    def vendor.get_by_category 
-    means that I need to create
-    an instance method in vendor
+    def __str__(self):
+        return "Hello World!"
