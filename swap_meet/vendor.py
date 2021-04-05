@@ -1,6 +1,6 @@
 from .item import Item
 
-class Vendor(Item):
+class Vendor:
     def __init__(self, inventory = None):
         if inventory == None:
             self.inventory = []
@@ -60,9 +60,7 @@ class Vendor(Item):
     def swap_first_item(self, vendor_friend):
         if not vendor_friend.inventory or not self.inventory:
             return False
-        my_item = self.inventory[0]
-        their_item = vendor_friend.inventory[0]
-        return self.swap_items(vendor_friend, my_item, their_item)
+        return self.swap_items(vendor_friend, self.inventory[0], vendor_friend.inventory[0])
     
 
     '''

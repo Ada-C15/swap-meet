@@ -1,17 +1,8 @@
 class Item:
-    def __init__(self, category = None, condition = None, edge = None):
-        if category == None:
-            self.category = ""
-        else:
-            self.category = category
-        if condition == None:
-            self.condition = 0
-        else:
-            self.condition = condition
-        if edge == None:
-            self.edge = 0
-        else:
-            self.edge = edge
+    def __init__(self, category = "", condition = 0, edge = 0):
+        self.category = category
+        self.condition = condition
+        self.edge = edge
     
     '''
     This function is created to customize the string representation 

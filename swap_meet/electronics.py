@@ -2,7 +2,7 @@ from .item import Item
 
 
 class Electronics(Item):
-    def __init__(self, condition = None, edge = None):
+    def __init__(self, condition = 0, edge = 0):
         super().__init__("Electronics", condition, edge)
 
     
