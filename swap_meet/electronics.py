@@ -1,7 +1,8 @@
 class Electronics:
 
-    def __init__(self):
+    def __init__(self, condition = None):
         self.category = "Electronics"
+        self.condition = 3.5
     
 
     def __str__(self):
