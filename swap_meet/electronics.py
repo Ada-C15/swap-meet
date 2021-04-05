@@ -9,6 +9,7 @@ class Electronics(Item):
     category: str
     condition: int or float (default is 0)
     """
+
     def __init__(self, condition=0):
         """
         PARAMETERS: condition int or float (defaults to 0)
@@ -18,4 +19,3 @@ class Electronics(Item):
 
     def __str__(self):
         return "A gadget full of buttons and secrets."
-

@@ -9,6 +9,7 @@ class Clothing(Item):
     category: str
     condition: int or float
     """
+
     def __init__(self, condition=0):
         """
         PARAMETERS: condition int or float (defaults to 0)
@@ -18,4 +19,3 @@ class Clothing(Item):
 
     def __str__(self):
         return "The finest clothing you could wear."
-

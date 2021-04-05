@@ -9,6 +9,7 @@ class Decor(Item):
     category: str
     condition: int or float
     """
+
     def __init__(self, condition=0):
         """
         PARAMETERS: condition int or float (defaults to 0)
@@ -18,4 +19,3 @@ class Decor(Item):
 
     def __str__(self):
         return "Something to decorate your space."
-
