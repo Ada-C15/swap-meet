@@ -20,10 +20,10 @@ class Vendor:
             self.inventory.remove(item)#if I use the remove method
             return item
     
-    def get_by_category(self, types_of_items):
+    def get_by_category(self, category):
         matching_items = [] #this method returns a list of Items in inventory w that catego
         for item in self.inventory:
-            if types_of_items == item.category:
+            if category == item.category:
                 matching_items.append(item)
 
         return  matching_items
@@ -41,14 +41,10 @@ class Vendor:
             return False
 
 
-    #     add my_item to friends inventory (and friend is just another Vendor instance)
-    #     remove friends_item from friends inventory, and add to my inventory
-    #     return True if it does all this
-    #     else False 
+ 
 
 
     def swap_first_item(self, friend):
-    #     if not self.inventory or not friend.inventory:
 
         if len(self.inventory) == 0 or len(friend.inventory) == 0:
             return False
@@ -56,15 +52,25 @@ class Vendor:
             self.swap_items(friend, self.inventory[0], friend.inventory[0])
             return True
 
-        
-        # if self.inventory and friend.inventory: 
-        #     print(self)
-        #     print(friend)
-        #     friend.add(self.remove([0]))
-        #     print(friend.inventory)
-        #     self.add(friend.remove([0]))
-        #     print(friend.add(self.remove([0])))
-        #     return True
+    def get_best_by_category(self, category):
+        list_of_categorys = self.get_by_category(category)
+    #if no items in inventory matched the passed in category, return none
+        if len(list_of_categorys) == 0: #if not list_of categorys
+            return None
+        top_condition = -1
+        top_item = None
+        for item in list_of_categorys:
+            if item.condition > top_condition:
+                top_condition = item.condition
+                top_item = item
+        return top_item
+
+
+    #Look through self.inventory. for items with matching category.If item is highest value, like 5
+    #account for duplicate items
+    # return a single item. 
+
+
 
 
  
