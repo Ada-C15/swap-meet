@@ -2,11 +2,15 @@ from __future__ import annotations
 # Necessary import for use of the Vendor type inside its own class
 
 from .item import Item
-from typing import List, Literal, Union
+from typing import List, Literal, Union, TypeVar, Generic
 
-# Vendor class that uses str items
+# BasicVendor class that uses str items or Items
 # For use in test_wave_01.py
-class StrVendor:
+
+T = TypeVar('T', str, Item)
+
+
+class BasicVendor(Generic[T]):
     """
     A class to represent a vendor
 
@@ -14,16 +18,16 @@ class StrVendor:
     inventory: list of items (default is [])
     """
 
-    def __init__(self, inventory: List[str] = None):
+    def __init__(self, inventory: List[T] = None):
         """
         PARAMETERS: list of items, optional (default is [])
         """
         if inventory is None:
             inventory = []
 
-        self.inventory = inventory
+        self._inventory = inventory
 
-    def add(self, item: str) -> str:
+    def add(self, item: T) -> T:
         """
         Adds an item to the Vendor's inventory
         returns that same item
@@ -31,7 +35,7 @@ class StrVendor:
         self.inventory.append(item)
         return item
 
-    def remove(self, item: str) -> Union[str, bool]:
+    def remove(self, item: T) -> Union[T, Literal[False]]:
         """
         Removes and returns the item from the Vendor's inventory
         if the item was present.
@@ -43,44 +47,15 @@ class StrVendor:
         self.inventory.remove(item)
         return item
 
+    @property
+    def inventory(self):
+        return self._inventory
 
-# Vendor class that uses Item items
-class Vendor:
+
+class Vendor(BasicVendor[Item]):
     """
-    A class to represent a vendor
-
-    Attributes
-    inventory: list of items (default is [])
+    A class that extends BasicVendor with methods only supported for Items
     """
-
-    def __init__(self, inventory: List[Item] = None):
-        """
-        PARAMETERS: list of items, optional (default is [])
-        """
-        if inventory is None:
-            inventory = []
-
-        self.inventory = inventory
-
-    def add(self, item: Item) -> Item:
-        """
-        Adds an item to the Vendor's inventory
-        returns that same item
-        """
-        self.inventory.append(item)
-        return item
-
-    def remove(self, item: Item) -> Union[Item, Literal[False]]:
-        """
-        Removes and returns the item from the Vendor's inventory
-        if the item was present.
-        Otherwise returns False
-        """
-        if item not in self.inventory:
-            return False
-
-        self.inventory.remove(item)
-        return item
 
     def get_by_category(self, category: str) -> List[Item]:
         """
@@ -99,12 +74,12 @@ class Vendor:
 
         my_item = self.remove(own_item)
         their_item = other.remove(other_item)
-        
+
         if my_item and their_item:
             other.add(my_item)
             self.add(their_item)
             return True
-        
+
         return False
 
     def swap_first_item(self, other: Vendor) -> bool:

@@ -13,15 +13,31 @@ class Item:
     """
 
     def __init__(self, category: str = "", condition: float = 0, age: float = 0):
-        self.category = category
-        self.condition = condition
-        self.age = age
+        self._category = category
+        self._condition = condition
+        self._age = age
 
     def __str__(self) -> str:
         return "Hello World!"
 
     def __eq__(self, other: Item) -> bool:
         return id(self) == id(other)
+
+    @property
+    def category(self) -> str:
+        return self._category
+
+    @property
+    def condition(self) -> float:
+        return self._condition
+
+    @condition.setter
+    def condition(self, new_condition) -> None:
+        self._condition = new_condition
+
+    @property
+    def age(self) -> float:
+        return self._age
 
     def condition_description(self) -> str:
         """
