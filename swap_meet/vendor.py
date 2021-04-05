@@ -61,18 +61,35 @@ class Vendor:
         return True 
     
     def get_best_by_category(self, category):
-        # this method looks through the instances inventory for the item with the highest condition AND matches category string. return this item. if no items in that category return NONE
         
         list_of_items  = self.get_by_category(category)
         
         for item in list_of_items:
-            if item not in category:
+            if list_of_items == []:
                 return None 
         highest_num = 0
         for item in list_of_items:
-            if condition > highest_num:
-                highest_num = condition
+            if item.condition > highest_num:
+                highest_num = item.condition
         for item in list_of_items:
-            if highest_num in item:
+            if highest_num == item.condition:
                 return item 
+    
+    def swap_best_by_category(self, other, my_priority,their_priority):
+ 
+        my_list = self.get_by_category(their_priority)
+        other_vendor_list = other.get_by_category(my_priority)
         
+        if my_list == [] or other_vendor_list == []:
+            return False
+        
+        other_vendor_best = other.get_best_by_category(my_priority)
+        my_best = self.get_best_by_category(their_priority)
+
+        self.swap_items(other,my_best,other_vendor_best)
+        other.swap_items(self,other_vendor_best,my_best)  
+        return True   # i want to use swap_items(self, swapping_vendor, my_item, their_item):
+
+
+
+
