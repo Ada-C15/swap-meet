@@ -32,7 +32,7 @@ class Item:
             return "BNWOT! Brand New Without Tags"
         elif self.age >= 1 and self.age <= 2.5:
             return "Preloved!"
-        elif self.age >= 2.5 and self.age <= 4.5::
+        elif self.age >= 2.5 and self.age <= 4.5:
             return "Like new. Frugality at its finest"
         else:
             return "Retrospective! Let's say a Vintage"

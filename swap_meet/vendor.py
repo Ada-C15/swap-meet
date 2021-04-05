@@ -72,8 +72,8 @@ class Vendor:
 
     #...Optional Enhancement...
     def get_newest_by_category(self, category):
-    ''' --- Explanation ---
-    This method returns a newest item in given category
+        ''' --- Explanation ---
+        This method returns a newest item in given category
 	- get the newest item in a certain category
     - make a list that matches to matching category
     - if list is not empty - we have matching category 
