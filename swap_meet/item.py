@@ -1,7 +1,8 @@
 class Item: 
-    def __init__(self, category="", condition=0):
+    def __init__(self, category="", condition=0, age=1000):
         self.category = category
         self.condition = float(condition)
+        self.age = float(age)
 
     def __str__(self): 
         return "Hello World!"
@@ -17,6 +18,8 @@ class Item:
             return "This item may not be in the perfect condition, but you may need it one day!"
         else: 
             return "One person's trash might be another person's treasure!"
+    
+    
 
 
         
