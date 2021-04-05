@@ -96,7 +96,8 @@ $ source venv/bin/activate
 
 ```bash
 # Must be in activated virtual environment
-$ pytest tests/test_wave_01.py
+$ 
+
 ```
 
 4. Focus on the top test failure. Read through the test failure, and understand why the failure is happening. Confirm your findings with a classmate.
