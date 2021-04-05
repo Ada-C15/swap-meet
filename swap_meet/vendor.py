@@ -4,6 +4,7 @@
 
 class Vendor:
     def __init__(self, inventory=None):
+        self.inventory = inventory
         if inventory == None:
             self.inventory = []
         else:
@@ -24,8 +25,8 @@ class Vendor:
 
 # ***WAVE2***
     def get_by_category(self, category):
-        items_matching_category = []
         self.category = category
+        items_matching_category = []
         for item in self.inventory:
             if item.category == category:
                 items_matching_category.append(item)
