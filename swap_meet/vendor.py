@@ -3,7 +3,6 @@ from swap_meet.electronics import Electronics
 from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 
-
 class Vendor:
     def __init__(self, inventory=None):
         if inventory == None:
@@ -32,12 +31,10 @@ class Vendor:
 
     def swap_items(self, vendor, my_item, their_item):
         if my_item in self.inventory and their_item in vendor.inventory:
-            # remove my item and give it to them
             self.inventory.remove(my_item)
-            vendor.inventory.append(my_item)
-            # remove their item and add to me
+            vendor.add(my_item)
             vendor.inventory.remove(their_item)
-            self.inventory.append(their_item)
+            self.add(their_item)
             return True
         else:
             return False
@@ -68,11 +65,8 @@ class Vendor:
     def swap_best_by_category(self, other, my_priority, their_priority):
         my_best = self.get_best_by_category(their_priority)
         their_best = other.get_best_by_category(my_priority)
-
         if my_best != None and their_best != None:
             self.swap_items(other, my_best, their_best)
             return True
         else:
             return False
-
-
