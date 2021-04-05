@@ -30,7 +30,7 @@ class Vendor:
         return categorlist
 
    
-    def swap_item(self, swapping_vendor, my_item, their_item):
+    def swap_items(self, swapping_vendor, my_item, their_item):
         
         if my_item not in self.inventory or their_item not in swapping_vendor.inventory:
             return False
@@ -59,10 +59,20 @@ class Vendor:
             self.add(friend_first)
             vendor_friend.add(self_first)
         return True 
-     
     
-
-    
-
-    
-
+    def get_best_by_category(self, category):
+        # this method looks through the instances inventory for the item with the highest condition AND matches category string. return this item. if no items in that category return NONE
+        
+        list_of_items  = self.get_by_category(category)
+        
+        for item in list_of_items:
+            if item not in category:
+                return None 
+        highest_num = 0
+        for item in list_of_items:
+            if condition > highest_num:
+                highest_num = condition
+        for item in list_of_items:
+            if highest_num in item:
+                return item 
+        
