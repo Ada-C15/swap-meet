@@ -54,6 +54,11 @@ class Vendor:
         friend.inventory.remove(friend.inventory[0])
         friend.inventory.insert(0,first_item)
         return True
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        if item.category == their_priority:
+            return True
+
     
 
         
