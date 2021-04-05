@@ -1,6 +1,5 @@
 # import pytest
-# from swap_meet.Item import Item
-# from swap_meet.vendor import Vendor
+# from swap_meet.item import Item
 
 
 class Vendor:
@@ -10,13 +9,21 @@ class Vendor:
         else:
             self.inventory = inventory
 
-    def add(self, new_item):
-        self.inventory.append(new_item)
-        return new_item
+    def add(self, item):
+        self.inventory.append(item)
+        return item
 
-    def remove(self, item_to_remove):
+    def remove(self, item):
         if item_to_remove in self.inventory:
-            self.inventory.remove(item_to_remove)
-            return item_to_remove
+            self.inventory.remove(item)
+            return item
         else:
             return False
+
+# ***WAVE2***
+    def get_by_category(self, category):
+        items_matching_category = []
+        for items in self.inventory:
+            if item.category == category:
+                items_matching_category.append(items)
+        return items_matching_category
