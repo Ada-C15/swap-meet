@@ -7,7 +7,6 @@ class Item():
     def __str__(self):
         return "Hello World!"
 
-    # condition does not need to be param because condition is established in instance
     def condition_description(self):
     
             if self.condition == 0:
