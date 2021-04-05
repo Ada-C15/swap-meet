@@ -70,4 +70,36 @@ class Vendor:
         return self.swap_items(other, my_best_item, their_best_item)
 
 
+    #...Optional Enhancement...
+    def get_newest_by_category(self, category):
+    ''' --- Explanation ---
+    This method returns a newest item in given category
+	- get the newest item in a certain category
+    - make a list that matches to matching category
+    - if list is not empty - we have matching category 
+    - loop through the list and check the newest item'''
+        newest_items = []
+        old_item = 100
+        newest_item = 0
+        for lifespan in self.inventory:
+            if lifespan.category == category:
+                newest_items.append(lifespan)
+        if not newest_items:
+            return None
+        for item in newest_items:
+            if item.age < old_item:
+                old_item = item.age
+                newest_item = item
+
+        return newest_item
+
+    def swap_by_newest(self, other, my_newest, their_newest):
+        my_newest = self.get_newest_by_category(their_newest)
+        their_newest = other.get_newest_by_category(my_newest)
+
+        return self.swap_items(other, my_newest, their_newest)
+
+
+
+
 
