@@ -60,7 +60,7 @@ class Vendor:
 ########################### This is the optional part #####################################
 
     def get_newest(self):
-        least_old_item = 99
+        least_old_item = 999
         newest_item = None
         for item in self.inventory:
             if item.age < least_old_item:

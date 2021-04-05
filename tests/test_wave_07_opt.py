@@ -19,7 +19,7 @@ def test_items_have_age_as_int():
 
 def test_get_newest():
     item_a = Clothing(age=2)
-    item_b = Decor(age=2)
+    item_b = Decor(age=3)
     item_c = Clothing(age=4)
     item_d = Decor(age=5)
     item_e = Clothing(age=3)
