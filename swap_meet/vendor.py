@@ -45,12 +45,9 @@ class Vendor:
         else:
             return False
 
+# ***WAVE 4***
     def swap_first_item(self, Vendor):
         # self.Vendor = Vendor
         if (self.inventory and Vendor.inventory):
-            self.inventory.append(Vendor.inventory[0])
-            Vendor.inventory.append(self.inventory[0])
-            self.inventory.remove(self.inventory[0])
-            Vendor.inventory.remove(Vendor.inventory[0])
-            return True
+            return self.swap_items(Vendor, self.inventory[0], Vendor.inventory[0])
         return False
