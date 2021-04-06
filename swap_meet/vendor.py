@@ -58,7 +58,17 @@ class Vendor:
 
 # ------------- Wave 4 -------------
 
-
+    def swap_first_item(self,friend_vendor):
+        # if not self.inventory or not friend_vendor.inventory:
+        #     return False
+        if len(self.inventory) == 0 or len(friend_vendor.inventory) == 0:
+                return False
+        else:
+            first_item = self.inventory[0]
+            first_friend_item = friend_vendor.inventory[0]
+            # self.inventory.remove(first_item)
+            self.swap_items(friend_vendor,first_item,first_friend_item)
+            return True 
 
 
 
@@ -67,6 +77,11 @@ class Vendor:
 
 
 # ------------- Wave 5 -------------
+
+
+
+
+
 
 
 
