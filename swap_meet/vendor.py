@@ -1,0 +1,22 @@
+class Vendor:
+
+    def __init__(self, inventory=[]):
+        self.inventory = inventory
+
+    def add(self, item):
+        self.inventory.append(item)
+        return item
+
+    def remove(self, item):
+        if item not in self.inventory:
+            return False
+        elif item in self.inventory:
+            self.inventory.remove(item)
+            return item
+
+    # def get_by_category(self, category):
+    #     list_of_items = []
+    #     for self.item in self.inventory:
+    #         if self.item == category:
+    #             list_of_items.append(self.item)
+    #             return list_of_items
