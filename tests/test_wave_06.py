@@ -6,7 +6,7 @@ from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
 
 
-def test_best_by_category():
+def test_best_by_category(): 
     item_a = Clothing(condition=2.0)
     item_b = Decor(condition=2.0)
     item_c = Clothing(condition=4.0)
@@ -49,7 +49,7 @@ def test_best_by_category_with_duplicates():
     assert best_item.condition == pytest.approx(4.0)
 
 
-def test_swap_best_by_category():
+def test_swap_best_by_category(): ###################################
     item_a = Decor(condition=2.0)
     item_b = Electronics(condition=4.0)
     item_c = Decor(condition=4.0)
@@ -79,16 +79,16 @@ def test_swap_best_by_category():
     assert item_c in jesse.inventory
 
 
-def test_swap_best_by_category_no_match_is_false():
+def test_swap_best_by_category_no_match_is_false(): #
     tai = Vendor(
-        inventory=[]
+        inventory=[] # empty
     )
 
     item_a = Clothing(condition=2.0)
     item_b = Decor(condition=4.0)
     item_c = Clothing(condition=4.0)
     jesse = Vendor(
-        inventory=[item_a, item_b, item_c]
+        inventory=[item_a, item_b, item_c] # C2, D4, C4
     )
 
     result = tai.swap_best_by_category(

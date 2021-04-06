@@ -2,14 +2,12 @@ import pytest
 from swap_meet.vendor import Vendor
 from swap_meet.item import Item
 
-def test_item_overrides_to_string():
+def test_item_overrides_to_string(): # passing; shows that item overrides string
     item = Item()
-
     stringified_item = str(item)
-
     assert stringified_item == "Hello World!"
 
-def test_swap_items_returns_true():
+def test_swap_items_returns_true(): # passing; shows that swap logic is working
     item_a = Item(category="clothing")
     item_b = Item(category="clothing")
     item_c = Item(category="clothing")
@@ -36,7 +34,7 @@ def test_swap_items_returns_true():
     assert item_b in jolie.inventory
     assert result is True
 
-def test_swap_items_when_my_item_is_missing_returns_false():
+def test_swap_items_when_my_item_is_missing_returns_false(): # failing; 
     item_a = Item(category="clothing")
     item_b = Item(category="clothing")
     item_c = Item(category="clothing")
@@ -50,7 +48,7 @@ def test_swap_items_when_my_item_is_missing_returns_false():
         inventory=[item_d, item_e]
     )
 
-    result = fatimah.swap_items(jolie, item_e, item_d)
+    result = fatimah.swap_items(jolie, item_e, item_d)       # other seller, mine, theirs
 
     assert len(fatimah.inventory) is 3
     assert item_d not in fatimah.inventory
