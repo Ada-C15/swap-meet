@@ -6,7 +6,7 @@ class Vendor:
             self.inventory = []
         else:
             self.inventory = inventory
-    
+
     def add(self, item):
         result = self.inventory.append(item)
         return item
@@ -40,10 +40,6 @@ class Vendor:
             return True
 
     def swap_first_item(self, other_vendor):
-        # first vendor is self.inventory
-        # second vendor is other_vendor.inventory
-        # You could potentially use super here or call the 
-        # swap_items method because it is similar?
         if self.inventory == [] or other_vendor.inventory == []:
             return False
         else:
@@ -55,4 +51,30 @@ class Vendor:
                 if item == other_vendor.inventory[0]:
                     self.inventory.append(item)
                     other_vendor.inventory.remove(item)
+            return True
+
+    def get_best_by_category(self, category):
+        largest_num = 0
+        largest_item = None
+        for item in self.inventory:
+            if category == item.category:
+                if item.condition > largest_num:
+                    largest_num = item.condition
+                    largest_item = item
+        return largest_item
+    
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        
+        if self.inventory == [] or other.inventory == []:
+            return False
+        else:
+            vendor_item = other.get_best_by_category(my_priority)
+            other_item = self.get_best_by_category(their_priority)
+
+            self.inventory.append(vendor_item)
+            other.inventory.append(other_item)
+
+            self.inventory.remove(other_item)
+            other.inventory.remove(vendor_item)
+
             return True
