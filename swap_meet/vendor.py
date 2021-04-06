@@ -61,8 +61,27 @@ class Vendor:
 
         self.inventory.append(vendor.inventory.pop(0))
         vendor.inventory.append(self.inventory.pop(0))
-        
+
         return True
         
+    def get_best_by_category(self, category):
+
+        matched_categories = []
+        for item in self.inventory:
+            if item.category == category:
+                matched_categories.append(item)
+        
+        if not matched_categories:
+            return None
+
+        best_item = ""
+        highest_condition = 0
+        for item in matched_categories:
+            if item.condition > highest_condition:
+                highest_condition = item.condition
+                best_item = item
+        return best_item
+
+
         
 
