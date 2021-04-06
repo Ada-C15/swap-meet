@@ -18,8 +18,8 @@ class Vendor:
             self.inventory.remove(item)
             
             return item
-        else:
-            return False
+        #else:
+        return False
     
     def get_by_category(self,category):
         category_list=[]
@@ -40,22 +40,29 @@ class Vendor:
             self.inventory.append(item_d)
         
             return True
-        else:
-            return False
+        #else:
+        return False
 
 
     def swap_first_item(self,friend):
         if self.inventory != [] and friend.inventory != []:
-            my_first_item=self.inventory[0]
-            friend_first_item=friend.inventory[0]
-
-            self.inventory.remove(my_first_item)
-            friend.inventory.remove(friend_first_item)
-            self.inventory.append(friend_first_item)
-            friend.inventory.append(my_first_item)
+            self.swap_items(friend,self.inventory[0],friend.inventory[0])
+            
             return True
-        else:
-            return False
+        #else:
+        return False
+        
+        # if self.inventory != [] and friend.inventory != []:
+        #     my_first_item=self.inventory[0]
+        #     friend_first_item=friend.inventory[0]
+
+        #     self.inventory.remove(my_first_item)
+        #     friend.inventory.remove(friend_first_item)
+        #     self.inventory.append(friend_first_item)
+        #     friend.inventory.append(my_first_item)
+        #     return True
+        # else:
+        #     return False
 
     def get_best_by_category(self,category):
       #how to not do for loop twice?
@@ -70,12 +77,9 @@ class Vendor:
     def swap_best_by_category(self,other,my_priority,their_priority):
         if self.inventory != [] and other.inventory != []:
 
-            self.get_best_by_category(their_priority)
-
-            other.get_best_by_category(my_priority)
             self.swap_items(other,self.get_best_by_category(their_priority),other.get_best_by_category(my_priority))  
             return True
-        else:
-            return False
+        #else:
+        return False
             
             
