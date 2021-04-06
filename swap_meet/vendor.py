@@ -7,11 +7,13 @@ class Vendor:
 
 
     def add(self, item):
+
         self.inventory.append(item)
         return item
 
 
     def remove(self, item):
+
         if item in self.inventory:
             self.inventory.remove(item)
             return item
@@ -19,6 +21,7 @@ class Vendor:
             return False
 
     def get_by_category(self, category):
+
         matching_items = []
         for item in self.inventory:
             if item.category == category:
@@ -48,30 +51,28 @@ class Vendor:
         else:
             return False
 
+    def get_best_by_category(self, category):
 
+        list_of_items = self.get_by_category(category)
 
+        for item in list_of_items:
+            if list_of_items == []:
+                return None
+        
+        best_condition = 0.0
+        for item in list_of_items:
+            if item.condition > best_condition:
+                best_condition = item.condition
+        for item in list_of_items:
+            if best_condition == item.condition:
+                return item 
 
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        
+        my_best_item = self.get_best_by_category(their_priority)
+        their_best_item = other.get_best_by_category(my_priority)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def condition_description(self):
-    #     condition_description = ""
-    #     if self.condition == 0.0:
-    #         condition_description = a
-    #     elif self.condition ==
+        if their_best_item == None or my_best_item == None:
+            return False
+        else: 
+            return self.swap_items(other, my_best_item, their_best_item)
