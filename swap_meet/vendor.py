@@ -1,6 +1,6 @@
 
 # import pytest
-from swap_meet.item import Item
+# from swap_meet.item import Item
 
 
 class Vendor:
