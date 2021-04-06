@@ -64,6 +64,7 @@ def test_swap_best_by_category():
         inventory=[item_d, item_e, item_f]
     )
 
+
     result = tai.swap_best_by_category(
         other=jesse,
         my_priority="Clothing",
