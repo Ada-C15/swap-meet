@@ -25,8 +25,7 @@ class Vendor:
         if item in self.inventory:
             self.inventory.remove(item)
             return item
-        else:
-            return False
+        return False
 
     def get_by_category(self, category):
         """
@@ -56,7 +55,7 @@ class Vendor:
         takes one argument friend_vendor
         imitates swapping the first items in the friends inventory
         """
-        if self.inventory != [] and friend_vendor.inventory != []:
+        if self.inventory and friend_vendor.inventory:
             return(self.swap_items(
                 friend_vendor,
                 self.inventory[0],
