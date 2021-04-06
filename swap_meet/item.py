@@ -1,6 +1,7 @@
 class Item():
     def __init__(self, category = None, condition = 0):
-        
+
+        self.condition = condition
         if category == None:
             self.category = ""
         elif type(category) != str:
