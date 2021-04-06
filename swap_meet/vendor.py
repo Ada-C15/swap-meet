@@ -1,3 +1,4 @@
+
 # import pytest
 from swap_meet.item import Item
 
@@ -24,6 +25,7 @@ class Vendor:
             return False
 
 # ***WAVE 2***
+
     def get_by_category(self, category):
         items_matching_category = []
         for item in self.inventory:
@@ -37,8 +39,18 @@ class Vendor:
         if (my_item in self.inventory) and (their_item in Vendor.inventory):
             self.remove(my_item)
             self.add(their_item)
-            Vendor.inventory.remove(their_item)
-            Vendor.inventory.append(my_item)
+            Vendor.add(my_item)
+            Vendor.remove(their_item)
             return True
         else:
             return False
+
+    def swap_first_item(self, Vendor):
+        # self.Vendor = Vendor
+        if (self.inventory and Vendor.inventory):
+            self.inventory.append(Vendor.inventory[0])
+            Vendor.inventory.append(self.inventory[0])
+            self.inventory.remove(self.inventory[0])
+            Vendor.inventory.remove(Vendor.inventory[0])
+            return True
+        return False
