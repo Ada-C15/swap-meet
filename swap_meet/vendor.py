@@ -26,9 +26,7 @@ class Vendor:
         return items
 
     def swap_items(self, friend, my_item, their_item):
-        if my_item not in self.inventory:
-            return False
-        if their_item not in friend.inventory:
+        if my_item not in self.inventory or their_item not in friend.inventory:
             return False
         self.inventory.remove(my_item)
         friend.inventory.append(my_item)
@@ -45,12 +43,13 @@ class Vendor:
         self_item = self.inventory[0]
         friend_item = friend.inventory[0]
         # This adds the last key items that I took out of the above list.
-
-        self.inventory[0] = friend_item
-        friend.inventory[0] = self_item
-        # Made sure to add True at the end so that it wont end my function
+        self.swap_items(friend, self_item, friend_item)
         return True
 
+        # self.inventory[0] = friend_item
+        # friend.inventory[0] = self_item
+        # # Made sure to add True at the end so that it wont end my function
+# WAVE 6---------------------------------------------------------------------------------
     def get_best_by_category(self, category):
         default_item = Item("", condition = 0)
         item_to_return = default_item
@@ -65,12 +64,37 @@ class Vendor:
 
         return item_to_return
 
-                    # """
-                    # The second if statement compares to see if the condition of
-                    # the item is better vaule than the last item
-                    # """
-                    # """
-            # once I went through my inventory I used a if statement
-            # to to check and compare that the 
-            # categories were matching
-            # """
+    def swap_best_by_category(self, other, their_priority, my_priority):
+        my_item_to_swap = self.get_best_by_category(their_priority)
+        their_item_to_swap = other.get_best_by_category(my_priority)
+        
+        if their_item_to_swap == None or my_item_to_swap == None:
+            return False
+        self.swap_items(other, my_item_to_swap, their_item_to_swap)
+        return True
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        # my_list = self.get_by_category(their_priority)
+        # other_vendor_list = other.get_by_category(my_priority)
+
+        # if my_list == [] or other_vendor_list == []:
+        #     return False
+
+        # other_vendor_best = other.get_best_by_category(my_priority)
+        # my_best = self.get_best_by_category(their_priority)
+
+        # self.swap_items(other, my_best, other_vendor_best)
+        # other.swap_items(self, other_vendor_best, my_best)
+        # return True
+            
