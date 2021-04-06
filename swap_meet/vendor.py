@@ -1,5 +1,3 @@
-
-# import pytest
 # from swap_meet.item import Item
 
 
@@ -51,3 +49,17 @@ class Vendor:
         if (self.inventory and Vendor.inventory):
             return self.swap_items(Vendor, self.inventory[0], Vendor.inventory[0])
         return False
+
+
+#  ***WAVE 5***
+
+    def get_best_by_category(self, category):
+        categories_list = self.get_by_category(category)
+
+
+# def get_by_category(self, category):
+#     items_matching_category = []
+#     for item in self.inventory:
+#         if category == item.category:
+#             items_matching_category.append(item)
+#     return items_matching_category
