@@ -69,16 +69,13 @@ class Vendor:
         """
         category_items_list = self.get_by_category(category)
         if len(category_items_list) > 0:
-            cond_list = []
+            item_with_best_condition = None
             for item in category_items_list:
-                cond_list.append(item.condition)
-            best_cond = max(cond_list)
-            print(best_cond)
-            for item in category_items_list:
-                if item.condition == best_cond:
-                    return item
-        else:
-            return None
+                if (item_with_best_condition is None) or (
+                        item.condition > item_with_best_condition.condition):
+                    item_with_best_condition = item
+            return item_with_best_condition
+        return None
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         """
