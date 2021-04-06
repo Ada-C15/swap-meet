@@ -54,6 +54,15 @@ class Vendor:
             friend.inventory.append(my_item)
             swapped = True
         return swapped
-    
 
-        
+# ---- Wave 6 ----- #
+    def get_best_by_category(self, category): 
+        category_items = self.get_by_category(category)
+        items_conditions = []
+        best_item = None
+        for item in category_items: 
+            items_conditions.append(item.condition)
+            best_condition = max(items_conditions)
+            if best_condition == item.condition:  
+                best_item = item
+        return best_item
