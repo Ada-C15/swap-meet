@@ -1,5 +1,7 @@
 
-from swap_meet.vendor import Vendor
+# from swap_meet.vendor import Vendor
+
+# ***WAVE 1***
 
 
 class Item:
@@ -9,3 +11,8 @@ class Item:
             self.category = ""
         else:
             self.category = category
+
+# ***WAVE 3***
+
+    def __str__(self):
+        return "Hello World!"
