@@ -72,18 +72,12 @@ class Vendor():
         best_list = []
         compare_dic = {}
         max_val = ""
-        mismatched = []
-    
-        #if category not in self.inventory:
-            #return None
         
         for item in self.inventory:         
             if item.category == category:
                 best_list.append(item)
-            elif item.category != category:
-                mismatched.append(item)
-        
-        if len(mismatched) == len(self.inventory):
+
+        if best_list == []:
             return None
         
         else:
@@ -92,20 +86,27 @@ class Vendor():
 
 
         
-    def test_swap_best_by_category(self, other, my_priority, their_priority):
+    def swap_best_by_category(self, other, my_priority, their_priority):
 
         their_priority_best = ""
         my_priority_best = ""
+        mismatched_self = []
+        mismatched_other = []
 
         for item in self.inventory:
             if their_priority == item.category:
                 their_priority_best = self.get_best_by_category(their_priority)
-        
-        
+
+        if their_priority_best == "":
+            return False
+
         for item in other.inventory:
             if my_priority == item.category:
                 my_priority_best = other.get_best_by_category(my_priority)
-        
+
+        if my_priority_best == "":
+            return False
+
         for item in other.inventory:
             if item == my_priority_best:
                 other.remove(item)
@@ -116,7 +117,9 @@ class Vendor():
                 self.inventory.remove(item)
                 self.inventory.append(my_priority_best)
         
-    #self.swap_items(other, my_priority_best, their_priority_best)
+        return True
+        
+    
         
         
 
