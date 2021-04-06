@@ -62,3 +62,20 @@ class Vendor:
                 self.inventory[0],
                 friend_vendor.inventory[0]))
         return False
+
+    def get_best_by_category(self, category):
+        """
+        gets the item with the best condition in a certain category
+        """
+        category_items_list = self.get_by_category(category)
+        if len(category_items_list) > 0:
+            cond_list = []
+            for item in category_items_list:
+                cond_list.append(item.condition)
+            best_cond = max(cond_list)
+            print(best_cond)
+            for item in category_items_list:
+                if item.condition == best_cond:
+                    return item
+        else:
+            return None
