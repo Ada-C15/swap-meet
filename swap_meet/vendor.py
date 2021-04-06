@@ -43,14 +43,7 @@ class Vendor:
         if self.inventory == [] or other_vendor.inventory == []:
             return False
         else:
-            for item in self.inventory:
-                if item == self.inventory[0]:
-                    other_vendor.inventory.append(item)
-                    self.inventory.remove(item)
-            for item in other_vendor.inventory:
-                if item == other_vendor.inventory[0]:
-                    self.inventory.append(item)
-                    other_vendor.inventory.remove(item)
+            self.swap_items(other_vendor,self.inventory[0],other_vendor.inventory[0])
             return True
 
     def get_best_by_category(self, category):
@@ -70,11 +63,6 @@ class Vendor:
         else:
             vendor_item = other.get_best_by_category(my_priority)
             other_item = self.get_best_by_category(their_priority)
-
-            self.inventory.append(vendor_item)
-            other.inventory.append(other_item)
-
-            self.inventory.remove(other_item)
-            other.inventory.remove(vendor_item)
+            self.swap_items(other, other_item, vendor_item)
 
             return True
