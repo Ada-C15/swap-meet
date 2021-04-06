@@ -1,9 +1,7 @@
-#from .item import Item
-#from item import Item
 
 class Vendor:
-    def __init__(self, inventory=None): #needs to be optional keyword arg
-        #inventory is a list
+    def __init__(self, inventory=None): 
+        
         if inventory == None:
             self.inventory = []
         else:
@@ -13,15 +11,15 @@ class Vendor:
         self.inventory.append(item)
         return item
     
-    def remove(self, item): #can this function be called remove?
+    def remove(self, item): 
         if item not in self.inventory:
             return False 
         if item in self.inventory:
-            self.inventory.remove(item)#if I use the remove method
+            self.inventory.remove(item)
             return item
     
     def get_by_category(self, category):
-        matching_items = [] #this method returns a list of Items in inventory w that catego
+        matching_items = [] 
         for item in self.inventory:
             if category == item.category:
                 matching_items.append(item)
@@ -41,8 +39,6 @@ class Vendor:
             return False
 
 
- 
-
 
     def swap_first_item(self, friend):
 
@@ -54,8 +50,7 @@ class Vendor:
 
     def get_best_by_category(self, category):
         list_of_categorys = self.get_by_category(category)
-    #if no items in inventory matched the passed in category, return none
-        if len(list_of_categorys) == 0: #if not list_of categorys
+        if not list_of_categorys: 
             return None
         top_condition = -1
         top_item = None
@@ -65,12 +60,12 @@ class Vendor:
                 top_item = item
         return top_item
 
-
-    #Look through self.inventory. for items with matching category.If item is highest value, like 5
-    #account for duplicate items
-    # return a single item. 
-
-
-
-
- 
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        item_for_other = self.get_best_by_category(their_priority)
+        item_for_self = other.get_best_by_category(my_priority)
+        if item_for_other and item_for_self:
+            self.swap_items(other, item_for_other, item_for_self)
+            return True
+        else:
+            return False
+        
