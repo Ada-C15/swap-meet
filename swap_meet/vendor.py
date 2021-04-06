@@ -1,4 +1,4 @@
-#from .item import Item
+from .item import Item
 class Vendor:
     def __init__(self, inventory = []):
         self.inventory = inventory
@@ -24,18 +24,13 @@ class Vendor:
                 friends_vendor.remove(their_item)
                 return True
         return False
-    # def swap_items(self, friends_vendor, my_item, their_item):
-    #     for items in self.inventory:
-    #         if my_item in self.inventory and my_item not in friends_vendor.inventory and their_item in friends_vendor.inventory:
-    #             self.add(their_item)
-    #             self.remove(my_item)
-    #             return True 
-    #     for items in friends_vendor.inventory:
-    #         if their_item in friends_vendor.inventory and their_item not in self.inventory and my_item in self.inventory:
-    #             friends_vendor.add(my_item)
-    #             friends_vendor.remove(their_item)
-    #             return True
-    #     return False
-    
-        
+    def swap_first_item(self,friends_vendor):
+        if len(self.inventory) == 0 or len(friends_vendor.inventory) == 0:
+            return False 
+        else:
+            friends_vendor.add(self.inventory[0])
+            self.remove(self.inventory[0])
+            self.add(friends_vendor.inventory[0])
+            friends_vendor.remove(friends_vendor.inventory[0])
+            return True
         
