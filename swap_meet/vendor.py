@@ -1,4 +1,4 @@
-import swap_meet.item
+from swap_meet.item import Item
 
 class Vendor():
 
@@ -35,8 +35,6 @@ class Vendor():
             return category_list
     
     def swap_items(self, other_vendor, self_item, other_item):
-        found_item_other = False
-        found_item_self = False
         
         if self_item not in self.inventory or other_item not in other_vendor.inventory:
             return False
@@ -68,6 +66,64 @@ class Vendor():
             self.inventory[0] = first_item_other
             
         return True
+    
+    def get_best_by_category(self, category):
+
+        best_list = []
+        compare_dic = {}
+        max_val = ""
+        mismatched = []
+    
+        #if category not in self.inventory:
+            #return None
+        
+        for item in self.inventory:         
+            if item.category == category:
+                best_list.append(item)
+            elif item.category != category:
+                mismatched.append(item)
+        
+        if len(mismatched) == len(self.inventory):
+            return None
+        
+        else:
+            max_val = max(best_list, key=lambda item: item.condition)
+            return max_val
+
+
+        
+    def test_swap_best_by_category(self, other, my_priority, their_priority):
+
+        their_priority_best = ""
+        my_priority_best = ""
+
+        for item in self.inventory:
+            if their_priority == item.category:
+                their_priority_best = self.get_best_by_category(their_priority)
+        
+        
+        for item in other.inventory:
+            if my_priority == item.category:
+                my_priority_best = other.get_best_by_category(my_priority)
+        
+        for item in other.inventory:
+            if item == my_priority_best:
+                other.remove(item)
+                other.inventory.append(their_priority_best)       
+            
+        for item in self.inventory:
+            if item == their_priority_best:
+                self.inventory.remove(item)
+                self.inventory.append(my_priority_best)
+        
+    #self.swap_items(other, my_priority_best, their_priority_best)
+        
+        
+
+
+        
+
+        
         
 
 
