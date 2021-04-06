@@ -30,7 +30,6 @@ def test_get_newest_returns_youngest():
     assert newest_item.age == 1
 
 
-
 def test_get_newest_with_duplicates():
     item_a = Clothing(age=10)
     item_b = Clothing(age=6)
@@ -72,5 +71,24 @@ def test_swap_by_newest():
     assert item_e not in jesse.inventory
     assert item_c in jesse.inventory
 
+def test_swap_by_newest_no_age_is_false():
+    item_d = Electronics()
+    tai = Vendor(
+        inventory=[item_d]
+    )
 
-# test what happens if NO ages are given ... 
+    item_a = Clothing()
+    item_b = Decor()
+    item_c = Clothing()
+    jesse = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    result = tai.swap_by_newest(other=jesse)
+
+    assert result is False
+    assert len(tai.inventory) is 1
+    assert len(jesse.inventory) is 3
+    assert item_a in jesse.inventory
+    assert item_b in jesse.inventory
+    assert item_c in jesse.inventory

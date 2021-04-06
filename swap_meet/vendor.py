@@ -67,22 +67,23 @@ class Vendor:
 
     #optional enhancements
     def get_newest(self):
-        youngest_item = None
-        age_of_youngest = 100000
+        newest_item = None
+        age_of_newest = 100000
         for item in self.inventory:
-            if item.age < age_of_youngest:
-                youngest_item = item
-                age_of_youngest = item.age
-        return youngest_item
+            if item.age == None:
+                continue
+            elif item.age < age_of_newest:
+                newest_item = item
+                age_of_newest = item.age
+        return newest_item
 
     def swap_by_newest(self, other):
-        if len(self.inventory) == 0 or len(other.inventory) == 0:
+        if self.get_newest() == None or other.get_newest() == None:
             return False
         else:
             self.swap_items(other, self.get_newest(), other.get_newest()) 
             return True
 
-    
-    
-    # make an "eligible to participate in swap" method to replace
-    # all of the len > 0 
+
+    # consider making an "eligible to participate in swap" method to replace
+    # all of the checking for len(items_list) > 0 
