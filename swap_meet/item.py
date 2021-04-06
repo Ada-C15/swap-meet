@@ -3,9 +3,11 @@ class Item:
     def __init__(self, category = "", condition = 0): # THIS IS THE INITIALIZER 
         self.category = category
         self.condition = condition
+        
     def __str__(self):
         return "Hello World!"
-    def condition_description(self): # THIS CONDITION WILL BE PASSED TO THE CLASSES 
+        
+    def condition_description(self): # THIS CONDITION  WILL BE PASSED TO THE CLASSES 
         if self.condition == 0:
             return 'scam'
         
