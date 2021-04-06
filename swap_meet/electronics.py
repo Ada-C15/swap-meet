@@ -4,11 +4,7 @@ class Electronics(Item):
 
 
     def __init__(self, condition = None):
-        self.category = "Electronics"
-        if condition:
-            self.condition = float(condition)
-        else:
-            self.condition = ""
+        super().__init__("Electronics", condition)
 
 
     def __str__(self):

@@ -11,10 +11,7 @@ class Item:
         if condition:
             self.condition = float(condition)
         else:
-            self.condition = ""
-\
-
-
+            self.condition = 0
 
 
     def __str__(self):
@@ -23,13 +20,13 @@ class Item:
     
 
     def condition_description(self):
-        if self.condtion > 4.0 :
+        if self.condition > 4.0 :
             return "super duper best condition"
-        elif self.conditon > 3.0 :
+        elif self.condition > 3.0 :
             return "pretty alright!"
-        elif self.conditon > 2.0 :
+        elif self.condition > 2.0 :
             return "Has seen better days"
         elif self.condition > 1.0 :
             return "maybe wash it once you get home"
-        elif self.conditon >= 0.0 :
+        elif self.condition >= 0.0 :
             return "pretty terrible!!!"
