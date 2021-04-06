@@ -72,17 +72,42 @@ class Vendor:
 
 
 
-
-
-
-
 # ------------- Wave 5 -------------
-
-
-
-
-
-
+# this is using inheritance and the super method
 
 
 # ------------- Wave 6  -------------
+
+    def get_best_by_category(self, category):
+        highest_condition = 0
+        quality_item = None
+        matching_category_items = self.get_by_category(category)
+        
+        if matching_category_items == []:
+            return None
+        
+        for item in matching_category_items:
+            if item.condition > highest_condition:
+                highest_condition = item.condition
+                quality_item = item
+        
+        return quality_item        
+        
+    
+    def swap_best_by_category(self,other,my_priority,their_priority):
+        # this will return the best item from my priority category
+        my_category = self.get_best_by_category(my_priority)
+        # this will return the best item from thier priority category
+        other_category = self.get_best_by_category(their_priority)
+
+        # self.swap_items(friend_vendor,my_item,their_item):
+        if other_category not in self.inventory or my_category not in other.inventory: 
+            return False
+        else: 
+            self.inventory.remove(my_category) 
+            other.inventory.append(my_category)
+            other.inventory.remove(other_category) 
+            self.inventory.append(other_category)
+            return True      
+
+
