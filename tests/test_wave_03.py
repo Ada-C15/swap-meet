@@ -22,8 +22,10 @@ def test_swap_items_returns_true():
     jolie = Vendor(
         inventory=[item_d, item_e]
     )
-
+    
+    print(fatimah.inventory)
     result = fatimah.swap_items(jolie, item_b, item_d)
+    print(fatimah.inventory)
 
     assert len(fatimah.inventory) is 3
     assert item_b not in fatimah.inventory
