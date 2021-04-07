@@ -61,7 +61,7 @@ $ source venv/bin/activate
 Verify that you're in a python3 virtual environment by running:
 
 - `$ python --version` should output a Python 3 version
-- `$ pip --version` should output that it is working with Python 3
+- `$ python --version` should output that it is working with Python 3
 
 6. Install dependencies once at the beginning of this project with
 
@@ -84,7 +84,7 @@ Summary of one-time project setup:
 1. When you want to begin work on this project, ensure that your virtual environment is activated:
 
 ```bash
-$ source venv/bin/activate
+$ e
 ```
 
 2. Find the test file that contains the test you want to run.
