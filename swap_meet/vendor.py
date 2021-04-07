@@ -32,6 +32,16 @@ class Vendor:
             return False
         return self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
 
+    def get_newest(self):
+        newest = min(self.inventory, key = lambda x: x.age)
+        return newest
+
+    def swap_newest(self, other_vendor):
+        if not self.inventory or not other_vendor.inventory:
+            return False
+        return self.swap_items(other_vendor, self.get_newest(), other_vendor.get_newest())
+
+
     def get_best_by_category(self, category):
         category_list = self.get_by_category(category) 
         if len(category_list) == 0:

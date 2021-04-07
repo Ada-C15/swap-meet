@@ -104,7 +104,6 @@ def test_swap_best_by_category_no_match_is_false():
     assert item_b in jesse.inventory
     assert item_c in jesse.inventory
 
-
 def test_swap_best_by_category_no_other_match():
     item_a = Clothing(condition=2.0)
     item_b = Decor(condition=4.0)
@@ -129,3 +128,43 @@ def test_swap_best_by_category_no_other_match():
     assert item_a in tai.inventory
     assert item_b in tai.inventory
     assert item_c in tai.inventory
+
+def test_get_newest():
+    item_a = Clothing(age=0)
+    item_b = Decor(age=5)
+    item_c = Clothing(age=6)
+    item_d = Decor(age=2)
+    sal = Vendor(
+        inventory=[item_a, item_b, item_c, item_d]
+    )
+
+    newest_item = sal.get_newest()
+
+    assert newest_item.category == "Clothing"
+    assert newest_item.age == 0
+
+def test_swap_newest():
+    item_a = Clothing(age=0)
+    item_b = Decor(age=5)
+    item_c = Clothing(age=6)
+    sal = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    item_d = Decor(age=1)
+    item_e = Electronics(age=5)
+    kary = Vendor(
+        inventory=[item_d, item_e]
+    )
+
+    result = sal.swap_newest(kary)
+
+    assert len(sal.inventory) is 3
+    assert item_a not in sal.inventory
+    assert item_b in sal.inventory
+    assert item_d in sal.inventory
+    assert len(kary.inventory) is 2
+    assert item_d not in kary.inventory
+    assert item_e in kary.inventory
+    assert item_a in kary.inventory
+    assert result is True
