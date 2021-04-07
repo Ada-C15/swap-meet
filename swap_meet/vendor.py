@@ -1,5 +1,4 @@
 class Vendor():
-    pass
     def __init__(self, inventory = False):
         self.inventory = list() 
         
@@ -21,7 +20,6 @@ class Vendor():
     #wave2
     def get_by_category(self, category):
         matching_items = []
-        pass
 
         for item in self.inventory:
             if item.category == category:
