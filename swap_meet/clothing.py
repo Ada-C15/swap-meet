@@ -1,5 +1,5 @@
 ############### TEST WAVE 5 (5 tests) PASSED ###############
-from .item import Item
+from item import Item
 
 ### test 5.1 PASSED ###
 # Has an attribute category that is "Clothing"
