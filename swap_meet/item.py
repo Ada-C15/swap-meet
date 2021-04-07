@@ -16,6 +16,7 @@ class Item:
     def __init__(self, category=""):
         self.condition = 0
         self.category = category
+        self.age = 0
 
     # Wave 5
 

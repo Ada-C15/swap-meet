@@ -123,11 +123,10 @@ class Vendor:
         best_cond = 0
         best_item = None
 
-        for item in self.inventory:
-            if item_category == item.category:
-                if item.condition > best_cond:
-                    best_item = item
-                    best_cond = item.condition
+        for item in self.get_by_category(item_category):
+            if item.condition > best_cond:
+                best_item = item
+                best_cond = item.condition
         return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
@@ -154,3 +153,49 @@ class Vendor:
             return False
         else:
             return self.swap_items(other, mine, theirs)
+
+    def get_by_newest(self):
+        """`swap_by_newest`s helper method.
+        This is an instance method, so any instance can access to get the first newest `item` in their `inventory`.
+
+        TODO:
+            - Implement this method in a way that it also checks the categories
+                or conditions of the items.
+            - Have a special class for Vintage Items.
+
+        Returns:
+            newest_item: A single `item`, even if there are duplicates (two or 
+                more of the same item with the same `condition`). 
+                If there are no items in the `inventory` that match the `category`, returns `None`.
+        """
+
+        if self.inventory:
+            newest_item = self.inventory[0]
+            min_age = newest_item.age
+
+            for item in self.inventory:
+                if item.age < min_age:
+                    newest_item = item
+                    min_age = item.age
+            return newest_item
+        return None
+
+    def swap_by_newest(self, friend):
+        """Swaps the newest item in the inventory with another `Vendor`.
+
+        Args:
+            friend (object): An instance of another `Vendor`, representing the
+                friend that this `Vendor` instance is swapping with.
+
+        Returns:
+            bool: If any of both `Vendor` instances doesn't have an item in
+                their inventory, the swap does not occur; otherwise, returns True.
+        """
+
+        my_newest_item = self.get_by_newest()
+        their_newest_item = friend.get_by_newest()
+
+        if not my_newest_item or not their_newest_item:
+            return False
+        else:
+            self.swap_items(friend, my_newest_item, their_newest_item)
