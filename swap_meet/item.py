@@ -1,10 +1,14 @@
+from datetime import datetime
+today = datetime.today()
+
 class Item():
-    def __init__(self, category = None, condition = 0, age = None):
+    def __init__(self, category = None, condition = 0, year = 0):
         if category == None:
             category = ""
         self.category = category
         self.condition = condition
-        self.age = age
+        self.year = year
+        self.age = today.year - year
 
     def __str__(self):
         return "Hello World!"
