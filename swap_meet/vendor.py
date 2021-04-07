@@ -34,7 +34,7 @@ class Vendor():
 
     def swap_first_item(self, other_vendor):
         if self.inventory and other_vendor.inventory:
-            # Using .pop() against Bertrand Meyer's express wishes \_('-')_/
+            # Using .pop() against Bertrand Meyer's wishes \_('-')_/
             self.inventory.append(other_vendor.inventory.pop(0))
             other_vendor.inventory.append(self.inventory.pop(0))
             return True
@@ -56,12 +56,12 @@ class Vendor():
             their_item = other.get_best_by_category(my_priority)
             return self.swap_items(other, my_item, their_item)
 
+# Optional Enhancements:
     def get_newest_item(self):
-        newest_age = 0
+        newest_year = 0
         newest_item = None
         for item in self.inventory:
-            if item.age > newest_age:
-                newest_age = item.age
+            if item.year > newest_year:
                 newest_item = item
         return newest_item
 
