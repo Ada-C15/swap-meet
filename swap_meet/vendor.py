@@ -1,5 +1,4 @@
 from swap_meet.item import Item
-# You need to run the file from the root directory (swap-meet) using a relative path like so: $ python3 -m swap_meet.vendor 
 
 class Vendor:
     # Vendor() has an attribute 'inventory' which is by default an empty list, and Vendor() takes an argument 'inventory'
@@ -48,7 +47,6 @@ class Vendor:
 
     def swap_first_item(self, friend):
 
-        # guard clause
         if not self.inventory or not friend.inventory:
             return False
 
@@ -100,6 +98,8 @@ class Vendor:
                 other.remove(other_item)
         
         return True
+
+
 
 
 

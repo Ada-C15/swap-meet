@@ -1,6 +1,6 @@
 
 class Item:
-    # There is an Item class in an item module, which has a 'category' attribute that is initialized as an empty string
+
     def __init__(self, category="", condition=0):
         self.category = category
         self.condition = condition
@@ -12,15 +12,15 @@ class Item:
 
     def condition_description(self):
         if self.condition == 0:
-            return "extreme meeds"
+            return "absolutely disappointing"
         elif self.condition == 1:
-            return "insufferable"
+            return "disappointing"
         elif self.condition == 2:
             return "meeds"
         elif self.condition == 3:
             return "meeds plus"
         elif self.condition == 4:
-            return "workable"
+            return "grood"
         elif self.condition == 5:
-            return "dynamite"
+            return "dYnAmItE"
         
