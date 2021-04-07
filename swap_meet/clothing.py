@@ -1,5 +1,5 @@
 ############### TEST WAVE 5 (5 tests) PASSED ###############
-from item import Item
+from swap_meet.item import Item
 
 ### test 5.1 PASSED ###
 # Has an attribute category that is "Clothing"

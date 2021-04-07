@@ -1,5 +1,6 @@
 ############### TEST WAVE 5 (5 tests) PASSED ###############
-from .item import Item
+from swap_meet.item import Item
+
 ### test 5.3 PASSED ###
 # Has an attribute category that is "Electronics"
 class Electronics(Item):
