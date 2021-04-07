@@ -56,5 +56,3 @@ class Vendor:
 
         return self.swap_items(other, my_new_best, their_new_best)
         
-    def swap_by_newest(self, other, my_age, their_age):
-        pass
