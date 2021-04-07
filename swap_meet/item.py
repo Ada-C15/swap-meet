@@ -21,6 +21,3 @@ class Item:
             return "Like Brand New"
         else:
             return "Invalid Number"
-
-def return_condition(self):
-    return self.condition
