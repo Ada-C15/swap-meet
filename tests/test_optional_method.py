@@ -94,3 +94,26 @@ def test_swap_by_newest_empty_inventory_returns_False():
     assert item_d in jesse.inventory
     assert item_e in jesse.inventory
     assert item_f in jesse.inventory
+
+def test_swap_by_newest_empty_other_inventory():
+    item_a = Decor(year=2001)
+    item_b = Electronics(year=1937)
+    item_c = Decor(year=2016)
+    madison = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    jesse = Vendor(
+        inventory=[]
+    )
+
+    result = madison.swap_by_newest(
+        other_vendor=jesse,
+    )
+
+    assert result is False
+    assert len(madison.inventory) is 3
+    assert len(jesse.inventory) is 0
+    assert item_a in madison.inventory
+    assert item_b in madison.inventory
+    assert item_c in madison.inventory
