@@ -1,7 +1,4 @@
 from swap_meet.item import Item
-from swap_meet.clothing import Clothing
-from swap_meet.decor import Decor
-from swap_meet.electronics import Electronics
 
 class Vendor:
 
@@ -62,7 +59,27 @@ class Vendor:
         their_best_item = other.get_best_by_category(my_priority)
         result = self.swap_items(other, my_best_item, their_best_item)
         return result
+    
+    # Optional Enhancements: item by age
 
+    def get_newest_item(self):
+        lowest_value = self.inventory[0].age
+        newest_item = None
+        for item in self.inventory:
+            if item.age < lowest_value:
+                lowest_value = item.age
+                newest_item = item
+        return newest_item
+
+    def swap_by_newest(self, business_partner, my_newest_item, their_newest_item):
+        
+        if len(self.inventory) == 0 or len(business_partner.inventory) == 0:
+            return False
+        else:
+            my_newest_item = self.get_newest_item()
+            their_newest_item = business_partner.get_newest_item()
+            result = self.swap_items(business_partner, my_newest_item, their_newest_item)
+            return result
 
         
 
