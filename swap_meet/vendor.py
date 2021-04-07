@@ -33,7 +33,7 @@ class Vendor:
         if len(self.inventory) > 0 and len(vendor.inventory) > 0:
             my_first_item = self.inventory [0]
             their_first_item = vendor.inventory[0]
-            return self.swap_items(vendor, my_first_item, their_first_item)
+            return self.swap_items(vendor, my_first_item, their_first_item) #adjusted line for "DRY"
         else:
             return False
     def get_best_by_category(self, category):
@@ -49,7 +49,7 @@ class Vendor:
         my_item = self.get_best_by_category(their_priority)
         their_item = other.get_best_by_category(my_priority)
         if my_item and their_item:
-            return self.swap_items(other, my_item, their_item)
+            return self.swap_items(other, my_item, their_item) #adjusted line for "DRY"
         else:
             return False
 
