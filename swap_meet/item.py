@@ -24,25 +24,23 @@ class Item:
 # this method turns an item instance into the string "Hello world"
 
 ### test 5.5 F ###
-    def condition_description(self, condition): 
+    def condition_description(self):
         condition_description = ""
-        if condition < 0 or condition > 5:
-            return None
-        elif condition <= 1:
-            condition_description = "A hot mess"
-        elif condition <= 2 and condition > 1:
-            condition_description = "some wear and tear, the condition is fair"
-        elif condition <= 3 and condition > 2:
-            condition_description = "pleantifly medicore"
-        elif condition <= 4 and condition > 3:
-            condition_description = "pretty darn good"
-        elif condition <= 5 and condition > 4:
+        # if self.condition < 0 or condition > 5:
+            # return None
+        if 4 < self.condition <= 5:
             condition_description = "supreme"
+        elif 3 <= self.condition <= 4:
+            condition_description = "pretty darn good"
+        elif 2 <= self.condition <= 3:
+            condition_description = "pleantifly medicore"
+        elif 1 <= self.condition <= 2:
+            condition_description = "some wear and tear, the condition is fair"
+        elif self.condition <= 1:
+            condition_description = "A hot mess"
         return str(condition_description)
 
-# All three classes and the Item class have an instance method
-# named condition_description, which should describe the condition in words 
-# based on the value, assuming they all range from 0 to 5. These can be basic 
-# descriptions (eg. 'mint', 'heavily used') but feel free to have fun with these 
-# (e.g. 'You probably want a glove for this one..."). The one requirement is that 
-# the condition_description for all three classes above have the same behavior.
+# if self.condition <= 5 and self.condition > 4:
+# elif self.condition <= 4 and condition > 3:
+# elif self.condition <= 3 and condition > 2:
+# elif self.condition <= 2 and condition > 1:

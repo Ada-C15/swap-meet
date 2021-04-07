@@ -1,6 +1,7 @@
 ############### TEST WAVE 1 (5 tests) PASSED ###############
 ############### TEST WAVE 2 (3 tests) PASSED ###############
 ############### TEST WAVE 4 (3 tests) PASSED ###############
+############### TEST WAVE 6 (6 tests) ###############
 # from item.swap_meet import Item - why is this not needed?
 
 ### test 1.1 PASSED ### test 1.2 PASSED ###
@@ -69,3 +70,24 @@ class Vendor:
             self.inventory.append(friendor.inventory[0])
             friendor.inventory.remove(friendor.inventory[0])
             return True
+
+### test 6.1 PASSED ### test 6.2 PASSED ### test 6.3 PASSED ###
+    def get_best_by_category(self, category):
+        def get_condition(item):
+            return item.condition
+        items_by_category = self.get_by_category(category)
+        if len(items_by_category) > 0:
+            return max(items_by_category, key=get_condition)
+        else:
+            return None
+
+
+### test 6.4 PASSED ### test 6.5 PASSED ### test 6.6 PASSED ###
+    def swap_best_by_category(self, other, my_priority, their_priority):
+
+        my_category = self.get_best_by_category(their_priority)
+        their_category = other.get_best_by_category(my_priority)
+        success = self.swap_items(other, my_category, their_category)
+        return success
+
+
