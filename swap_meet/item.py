@@ -16,7 +16,7 @@ class Item:
             return (f"The condition rating of this item is a {condition}, it's in good condition and gently used.")
         elif condition >= 2.0:
             return (f"The condition rating of this item is a {condition}, it's in fair condition and has cosmetic flaws and signs of use.")
-        elif condition >= 0.0:
+        else:
             return (f"The condition rating of this item is a {condition}, it's in poor condition and has some major cosmetic flaws.")
         
 

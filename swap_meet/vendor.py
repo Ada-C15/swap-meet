@@ -22,7 +22,7 @@ class Vendor:
             self.inventory.remove(remove_item)
             return remove_item
 
-#Wave2    
+#Wave 2     
     def get_by_category(self, category):
         category_list = []
         for item in self.inventory:
@@ -67,9 +67,11 @@ class Vendor:
         return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
+        
         my_best_item = self.get_best_by_category(their_priority)
         if my_best_item == None:
             return False
+        
         their_best_item = other.get_best_by_category(my_priority)
         if their_best_item == None:
             return False
