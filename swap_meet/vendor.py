@@ -47,8 +47,9 @@ class Vendor:
         best_condition = 0
 
         for item in self.inventory:
-            if item.condition > best_condition:
-                best_condition = item.condition
+            if item.category == category:
+                if item.condition > best_condition:
+                    best_condition = item.condition
 
         for item in self.inventory:
             if item.category == category and item.condition == best_condition:
