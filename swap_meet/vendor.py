@@ -49,7 +49,7 @@ class Vendor:
         # self.inventory[0] = friend_item
         # friend.inventory[0] = self_item
         # # Made sure to add True at the end so that it wont end my function
-# WAVE 6---------------------------------------------------------------------------------
+
     def get_best_by_category(self, category):
         default_item = Item("", condition = 0)
         item_to_return = default_item
@@ -72,29 +72,3 @@ class Vendor:
             return False
         self.swap_items(other, my_item_to_swap, their_item_to_swap)
         return True
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        # my_list = self.get_by_category(their_priority)
-        # other_vendor_list = other.get_by_category(my_priority)
-
-        # if my_list == [] or other_vendor_list == []:
-        #     return False
-
-        # other_vendor_best = other.get_best_by_category(my_priority)
-        # my_best = self.get_best_by_category(their_priority)
-
-        # self.swap_items(other, my_best, other_vendor_best)
-        # other.swap_items(self, other_vendor_best, my_best)
-        # return True
-            
