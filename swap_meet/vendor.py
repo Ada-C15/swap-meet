@@ -74,7 +74,7 @@ class Vendor:
 
     
     def get_best_by_category(self,category):
-         """
+        """
         function: Gets all the items by category
         input: category
         output: True if successful, or False if empty list for vendor encountered
