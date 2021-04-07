@@ -4,10 +4,6 @@ class Vendor:
             self.inventory = []
         else:
             self.inventory = inventory
-    #def __str__(self):
-
-    def __repr__(self):
-        return "Vendor('{}')".format(self.inventory)
  
     def add(self, item):
         """
@@ -42,17 +38,14 @@ class Vendor:
                 by_category_list.append(item)
         return by_category_list
         
-   #wave 3  
+   
     def swap_items(self, vendor,my_item,vendor_item ): 
         """
         function: checks Items are in inventory 
         input: Self, Vendor and Items to swap
         output: Booleon (True for success)
         """
-        #self is fatimah
-        # self.inventory #Fatimah
-        # print(vendor.inventory)
-        
+     
         if my_item in self.inventory and vendor_item in vendor.inventory:
             self.add(vendor_item)
             self.remove(my_item)
@@ -61,7 +54,7 @@ class Vendor:
             return True
         return False
     
-    #wave 4
+   
     def swap_first_item(self,vendor):
         """
         function: swaps and removes item
@@ -79,9 +72,13 @@ class Vendor:
         vendor.add(self_first_item)
         return True
 
-    #Wave 6
-    def get_best_by_category(self,category):
     
+    def get_best_by_category(self,category):
+         """
+        function: Gets all the items by category
+        input: category
+        output: True if successful, or False if empty list for vendor encountered
+        """
         if self.get_by_category == None:
             return None
 
@@ -95,7 +92,10 @@ class Vendor:
         # my_priority is category that the Vendor wants to receive
         # their_priority represents the category the other Vendor wants
         """
-        output: Boolean.  True -- if best item in inventory that matches `their_priority` category is swapped with the best item in `other`'s inventory that matches `my_priority`
+        function: Best item in inventory that matches category is swapped with the best item in `other`'s inventory that matches `my_priority`
+        input: `their_priority`, my priority, other (the other vendor)
+        output: Boolean.  
+
         False -- If the `Vendor` has no item that matches `their_priority` category, swapping does not happen, and it returns `False.  - If `other` has no item that matches `my_priority` category, swapping does not happen, and it returns `False`
         """
         
@@ -110,40 +110,11 @@ class Vendor:
         
         
 
-        # self.add(their_trade_to_me)
-        # self.remove(my_trade_to_other)
-        # other.add(their_trade_to_me)
-        # other.remove(my_trade_to_me)
-
         
-        
-        # item_for_other = self.get_best_by_category(their_priority)
-        # other.add(item_for_other
-        # self.remove(item_for_other)
-        # item_for_self = other.get_best_by_category(my_priority)
-        # self.add(item_for_self)
-        # other.remove(item_for_self)
-        # return True
-        # else: 
-            
-        #      return False   
 
 
-        # best_condition = 0
-        # my_list = self.get_by_category(category)
-        # print("list>>",my_list)
+       
 
-        # for item  self.my_list:
-        #     print("item<<", item)
-        # best_condition = my_list[0]
-        # print("best_condition>>",best_condition)
-        # #     print("item>>", item)
-        # for item.category in my_list:
-        #     if item in my_list > best_condition:
-        #         print("item>>", item)
-        #         best_condition = item
-        #         print("best_condition>>", best_condition)
-        #     return best_condition
 
 
            
