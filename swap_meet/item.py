@@ -7,9 +7,16 @@ class Item:
         self.condition = condition
 
     def __str__(self):
+        ''' 
+        reassigns the stringified item
+        '''
         return "Hello World!"
     
     def condition_description(self):
+        ''' 
+        based on the condition number outputs
+        the appropriate condition description for the item.
+        '''
         if self.condition == 5:
             five_condition_description = "Great Condition"
             return five_condition_description

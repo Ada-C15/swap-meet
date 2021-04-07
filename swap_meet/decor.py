@@ -7,5 +7,8 @@ class Decor(Item):
         self.condition = condition
 
     def __str__(self):
+        ''' 
+        reassigns the stringified item
+        '''
         return "Something to decorate your space."
 

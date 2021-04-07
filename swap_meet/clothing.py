@@ -6,4 +6,7 @@ class Clothing(Item):
         self.condition = condition
 
     def __str__(self):
+        ''' 
+        reassigns the stringified item
+        '''
         return "The finest clothing you could wear."

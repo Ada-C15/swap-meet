@@ -7,4 +7,7 @@ class Electronics(Item):
         self.condition = condition
 
     def __str__(self):
+        ''' 
+        reassigns the stringified item
+        '''
         return "A gadget full of buttons and secrets."
