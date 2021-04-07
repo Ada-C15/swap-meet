@@ -54,6 +54,7 @@ class Vendor:
 
         # removes first item in `inventory` of `friend` and adds to `inventory` of recipient Vendor
         friend_first_item = friend.inventory[0]
+        
         friend.remove(friend_first_item)
         self.add(friend_first_item)
 
@@ -63,6 +64,44 @@ class Vendor:
         friend.add(self_first_item)
 
         return True
+
+    def get_best_by_category(self, category):
+
+        best_item_condition = 0
+        best_item = 0
+        
+        # loopin' through stuff
+        for item in self.inventory:
+            # if the '`category` attribute of `item` matches the argument passed into `get_best_by_category()` AND if the item's condition rating > highest found so far in loop:
+            if item.category == category and item.condition >= best_item_condition:
+                # update the best_item variables to reflect the best-condition item found so far  
+                best_item_condition = item.condition
+                best_item = item
+        
+        # (?) wondering if there is a way to make this into a guard clause instead of having to put this after the loop:
+        if best_item == 0:
+            return None
+    
+        return best_item
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+
+        if not self.inventory or not other.inventory:
+            return False
+
+        for my_item in self.inventory:
+            if my_item.category == their_priority:
+                other.add(my_item)
+                self.remove(my_item)
+        
+        for other_item in other.inventory:
+            if other_item.category == my_priority:
+                self.add(other_item)
+                other.remove(other_item)
+        
+        return True
+
+
 
         
 

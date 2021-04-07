@@ -87,3 +87,43 @@
 ==============================================================================
 
 # Wave 5
+
+### def test_clothing_has_default_category_and_to_str():
+
+### def test_decor_has_default_category_and_to_str():
+
+### def test_electronics_has_default_category_and_to_str():
+
+### def test_items_have_condition_as_float():
+- [X] The `Clothing, Decor, Electronics, Item` classes have an attribute `condition` which stores a float value
+- [X] `condition` has to be initialized as a float value
+
+### def test_items_have_condition_descriptions_that_are_the_same_regardless_of_type():
+- [ ] The `Clothing, Decor, Electronics, Item` classes have an instance method `condition_description`
+
+==============================================================================
+
+# Wave 6
+
+### def test_best_by_category():
+- [X] `Vendor` should have an instance method `get_best_by_category()` 
+    - [X] takes `category` as an argument 
+    - [X] loops over each `item` instance inside the `inventory` list attribute of `Vendor` 
+    - [x] if the '`category` attribute of `item` matches the argument passed into `get_best_by_category()`, the method returns the `item` with the highest `condition` (attribute of `item`) value 
+
+### def test_best_by_category_no_matches_is_none():
+- [X] `get_best_by_category()` returns `None` if method finds no items with matching `category` attribute
+
+### def test_best_by_category_with_duplicates():
+- [X] this test should pass if that `get_best_by_category()`  was written correctly to begin with
+
+### def test_swap_best_by_category():
+- [X] `Vendor` has an instance method `swap_best_by_category()`
+    - [X] takes 3 arguments: `other, my_priority, their_priority`
+    - [ ] compare each item in `inventory` attribute between self and `other`
+        - [ ] keep swapping items until no items with `my_priority` category remain in `other.inventory` and vice versa 
+    - [ ] returns `True` 
+
+### def test_swap_best_by_category_no_match_is_false():
+
+### def test_swap_best_by_category_no_other_match():
