@@ -21,20 +21,6 @@ class Item:
             return "Like Brand New"
         else:
             return "Invalid Number"
-        
 
-    # def condition_description(self):
-    #     descripiton = ""
-    #     if self.condition == 0:
-    #         description = "Poor"
-    #     elif self.condition > 0 and self.condition <= 1:
-    #         description = "Fair"
-    #     elif self.condition > 1 and self.condition <= 2:
-    #         description = "Gently Used"
-    #     elif self.condition > 2 and self.condition <= 3:
-    #         description = "Good Condition"
-    #     elif self.condition > 3 and self.condition <= 4:
-    #         description = "Excellent Condition"
-    #     elif self.condition > 4 and self.condition <= 5:
-    #         description = "Like Brand New"
-    #     return description
+def return_condition(self):
+    return self.condition
