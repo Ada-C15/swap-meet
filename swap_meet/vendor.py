@@ -21,18 +21,16 @@ class Vendor:
         for item in self.inventory:
             if item.category == category:
                 items.append(item)
-        
         return items
 
     def swap_items(self, vendor, my_item, their_item):
-        my_inventory = self.inventory
-        friend_inventory = vendor.inventory
-        if my_item in my_inventory and their_item in friend_inventory:
-            friend_inventory.append(my_item)
-            my_inventory.remove(my_item)
-            my_inventory.append(their_item)
-            friend_inventory.remove(their_item)
+        if my_item in self.inventory and their_item in vendor.inventory:
+            vendor.inventory.append(my_item)
+            self.inventory.remove(my_item)
+            self.inventory.append(their_item)
+            vendor.inventory.remove(their_item)
             return True
+
         return False
 
     def swap_first_item(self, vendor):
@@ -58,6 +56,5 @@ class Vendor:
 
         return self.swap_items(other, my_new_best, their_new_best)
         
-
-
-    
+    def swap_by_newest(self, other, my_age, their_age):
+        pass

@@ -129,3 +129,6 @@ def test_swap_best_by_category_no_other_match():
     assert item_a in tai.inventory
     assert item_b in tai.inventory
     assert item_c in tai.inventory
+
+def test_swap_by_newest():
+    pass
