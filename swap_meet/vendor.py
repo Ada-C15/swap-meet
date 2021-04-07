@@ -41,6 +41,7 @@ class Vendor:
     def get_best_by_category(self, category):
         items_in_category = self.get_by_category(category)
         if len(items_in_category) > 0:
+            #lambda lets me define a func in a single line
             return max(items_in_category, key = lambda item: item.condition) 
         else:
             return None
