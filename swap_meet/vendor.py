@@ -1,20 +1,14 @@
-# from .item import Item # Do I need this
-
 class Vendor:
     def __init__(self, inventory = None):
         if inventory == None:
             self.inventory = []
         else:
             self.inventory = inventory
-    
     #def __str__(self):
-    
 
     def __repr__(self):
         return "Vendor('{}')".format(self.inventory)
-
-        
-    
+ 
     def add(self, item):
         """
         function: adds Item to inventory 
@@ -30,7 +24,7 @@ class Vendor:
         input: Item to remove
         output: Item list if True, or False
         """
-        
+
         try:
             self.inventory.remove(item)
             return item
@@ -39,16 +33,12 @@ class Vendor:
 
     def get_by_category(self, category):
         """
-        function: checks Items are in inventory 
-        input: Self, Vendor and Items to swap
-        output: Booleon (True for success)
+        function: groups the items by category passed in
         """
+
         by_category_list = []
-        # print("Category:", category)
         for item in self.inventory:
-            #print("item>>", item)
             if item.category == category:
-                # print("I am category clothing")
                 by_category_list.append(item)
         return by_category_list
         
@@ -72,7 +62,6 @@ class Vendor:
         return False
     
     #wave 4
-
     def swap_first_item(self,vendor):
         """
         function: swaps and removes item
@@ -81,8 +70,7 @@ class Vendor:
         """
         if self.inventory == [] or vendor.inventory == []:
             return False
-        
-        
+
         self_first_item = self.inventory[0]
         vendor_first_item = vendor.inventory[0]
         self.remove(self_first_item)
@@ -91,15 +79,75 @@ class Vendor:
         vendor.add(self_first_item)
         return True
 
+    #Wave 6
+    def get_best_by_category(self,category):
+    
+        if self.get_by_category == None:
+            return None
 
-    #Wave 5
+        best_item = None
+        for item in self.get_by_category(category):
+            if best_item == None or item.condition > best_item.condition:
+                best_item = item
+        return best_item
+
+    def swap_best_by_category(self,other,my_priority,their_priority):
+        # my_priority is category that the Vendor wants to receive
+        # their_priority represents the category the other Vendor wants
+        """
+        output: Boolean.  True -- if best item in inventory that matches `their_priority` category is swapped with the best item in `other`'s inventory that matches `my_priority`
+        False -- If the `Vendor` has no item that matches `their_priority` category, swapping does not happen, and it returns `False.  - If `other` has no item that matches `my_priority` category, swapping does not happen, and it returns `False`
+        """
+        
+        if other.get_by_category(my_priority) == None or self.get_by_category(their_priority)== None:
+            return False
+
+        my_trade_to_other = self.get_best_by_category(their_priority)
+        their_trade_to_me = other.get_best_by_category(my_priority)
+
+        result = self.swap_items(other,my_trade_to_other,their_trade_to_me)
+        return result
+        
         
 
+        # self.add(their_trade_to_me)
+        # self.remove(my_trade_to_other)
+        # other.add(their_trade_to_me)
+        # other.remove(my_trade_to_me)
+
+        
+        
+        # item_for_other = self.get_best_by_category(their_priority)
+        # other.add(item_for_other
+        # self.remove(item_for_other)
+        # item_for_self = other.get_best_by_category(my_priority)
+        # self.add(item_for_self)
+        # other.remove(item_for_self)
+        # return True
+        # else: 
+            
+        #      return False   
 
 
+        # best_condition = 0
+        # my_list = self.get_by_category(category)
+        # print("list>>",my_list)
+
+        # for item  self.my_list:
+        #     print("item<<", item)
+        # best_condition = my_list[0]
+        # print("best_condition>>",best_condition)
+        # #     print("item>>", item)
+        # for item.category in my_list:
+        #     if item in my_list > best_condition:
+        #         print("item>>", item)
+        #         best_condition = item
+        #         print("best_condition>>", best_condition)
+        #     return best_condition
 
 
-    #Wave 6
+           
+
 
        
        
