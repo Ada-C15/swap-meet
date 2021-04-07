@@ -1,23 +1,3 @@
-#wave 1 read.me
-# - There is a module (file) named `vendor.py` inside of the `swap_meet` package (folder)
-'''- Inside this module, there is a class named `Vendor`
-- Each `Vendor` will have an attribute named `inventory`, which is an empty list by default
-- When we create initialize an instance of `Vendor`, we can optionally pass in a list with the keyword argument `inventory`
-
-The remaining tests in wave 1 imply:
-
-- Every instance of `Vendor` has an instance method named `add`, which takes in one item
-- This method adds the item to the `inventory`
-- This method returns the item that was added
-
-- Similarly, every instance of `Vendor` has an instance method named `remove`, which takes in one item
-- This method removes the matching item from the `inventory`
-- This method returns the item that was removed
-- If there is no matching item in the `inventory`, the method should return `False`'''
-
-#import item to pass wave two tests
-from swap_meet.item import Item
-
 class Vendor:
     def __init__(self, inventory = None):
         if inventory == None:
@@ -36,14 +16,13 @@ class Vendor:
         else:
             return False
 
-#wave two: 
     def get_by_category(self, category):
         matched = []
         for item in self.inventory:
             if item.category == category:
                 matched.append(item)
         return matched 
-#wave 3
+
     def swap_items(self, them, my_item, their_item):
         if their_item not in them.inventory or my_item not in self.inventory:
             return False 
@@ -53,23 +32,32 @@ class Vendor:
             them.inventory.remove(their_item)
             self.inventory.append(their_item)
             return True
-#wave 4 
+
     def swap_first_item(self, them):
         if len(self.inventory) == 0 or len(them.inventory) == 0:
             return False
         return self.swap_items(them, self.inventory[0], them.inventory[0])
 
+    '''def my_max(items):
+            macs = None
+            for i in items:
+                if macs is None or i.condition > macs.condition:
+                    macs = i
+            return macs'''
 
-
-
+    def get_best_by_category(self, category):
+        def get_condition(item):
+            return item.condition
+        items_in_category = self.get_by_category(category)
+        #def my_max would go here if using not using built in max
+        if len(items_in_category) > 0: 
+            #would have returned my_max(items_in_category) if not using built in max
+            return max(items_in_category, key= get_condition)
+        else:
+            return None
     
-
-
-
-
-
-
-
-
-
-
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_category = self.get_best_by_category(their_priority)
+        their_category = other.get_best_by_category(my_priority)
+        total = self.swap_items(other, my_category, their_category)
+        return total
