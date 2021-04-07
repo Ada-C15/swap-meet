@@ -7,14 +7,14 @@ class Item:
     def __str__(self):
         return "Hello World!"
 
-    def condition_description(self, value = range(0,6)):
-        if value == range(0, 1):
+    def condition_description(self):
+        if self.condition in range(0, 1):
             return "Excellent condition."
-        elif value == range(1, 2):
+        elif self.condition in range(1, 2):
             return "Great condition."
-        elif value == range(2, 3):
+        elif self.condition in range(2, 3):
             return "Used."
-        elif value == range(3, 4):
+        elif self.condition in range(3, 4):
             return "Moderately used."
-        elif value == 5:
+        elif self.condition == 5:
             return "Heavily used."

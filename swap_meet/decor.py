@@ -1,6 +1,6 @@
 from swap_meet.item import Item
 
-class Decor:
+class Decor(Item):
     
     def __init__(self, condition = 0):
         self.category = "Decor"

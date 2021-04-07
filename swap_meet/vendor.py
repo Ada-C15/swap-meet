@@ -41,4 +41,10 @@ class Vendor:
         their_first_item = friend.inventory[0]
         self.swap_items(friend, my_first_item, their_first_item)
         return True
+    
+    def get_best_by_category(self, category):
+        pass
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        pass
 
