@@ -1,4 +1,3 @@
-#from swap_meet.vendor import Vendor
 
 
 class Item:
@@ -13,9 +12,12 @@ class Item:
 
 
     def __str__(self):
+        #stringifying corresponding instance
         return "Hello World!"
 
     def condition_description(self):
+        """ Condition description based on item's rating """
+        
         if self.condition == 5.0:
             return "That is so FETCH! 💅🏽"
         elif self.condition== 4.0:

@@ -3,19 +3,14 @@ from swap_meet.vendor import Vendor
 
 
 class Electronics(Item):
+    """ Child class inherits condition descriptions from Items class"""
     
-    def __init__(self,condition=None):
+    def __init__(self,category="",condition=None):
         self.category="Electronics"
-        if condition==None:
-        
-            self.condition=0
-        else:
-            self.condition=float(condition)
+        self.condition=condition
+
             
     def __str__(self):
         return "A gadget full of buttons and secrets."
     
-
-    def condition_description(self):
-        
-        return super().condition_description() 
+ 
