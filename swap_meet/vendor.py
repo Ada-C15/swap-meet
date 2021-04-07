@@ -16,9 +16,11 @@ class Vendor:
 
     def get_by_category(self, category):
         item_list = []
+
         for item in self.inventory:
             if item.category == category:
                 item_list.append(item)
+
         return item_list
 
     def swap_items(self, vendor, my_item, their_item):
@@ -33,6 +35,7 @@ class Vendor:
     def check_for_empty_list(self, other_list):
         if not self.inventory or not other_list.inventory:
             return False
+
         return True
 
     def swap_items_helper(self, other_list, my_item, their_item):
@@ -45,6 +48,7 @@ class Vendor:
 
     def swap_first_item(self, vendor):
         contains_item = self.check_for_empty_list(vendor)
+
         if not contains_item:
             return contains_item
 
@@ -54,23 +58,25 @@ class Vendor:
 
 
     def get_best_by_category(self, type, other_list=None):
-        best_cond = 0
-        highest_cat = None
         inventory_list = self.inventory
-
+        
         if other_list is not None:
             inventory_list = other_list
 
+        best_condition = 0
+        highest_category = None
+
         for item in inventory_list:
             if item.category == type:
-                if best_cond < item.condition:
-                    best_cond = item.condition
-                    highest_cat = item
+                if best_condition < item.condition:
+                    best_condition = item.condition
+                    highest_category = item
 
-        return highest_cat
+        return highest_category
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         contains_item = self.check_for_empty_list(other)
+
         if not contains_item:
             return contains_item
 
@@ -90,6 +96,7 @@ class Vendor:
 
     def swap_by_newest(self, other, my_priority, their_priority):
         contains_item = self.check_for_empty_list(other)
+
         if not contains_item:
             return contains_item
 
