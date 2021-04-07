@@ -65,3 +65,4 @@ def test_swap_first_item_from_their_empty_returns_false():
     assert len(fatimah.inventory) is 3
     assert len(jolie.inventory) is 0
     assert result is False
+
