@@ -9,9 +9,6 @@ class Vendor:
         else:
             self.inventory = inventory
 
-    def __str__(self):
-        return ""
-
     def add(self, item):
         self.inventory.append(item)
         return item
@@ -28,90 +25,81 @@ class Vendor:
 
     def get_by_category(self, category):
         # returns a list of all items in the inventory with the specified category 
-        items_list = []
-        for item in self.inventory:
-            if item.category == category:
-                items_list.append(item)
+        items_list = [item for item in self.inventory if item.category == category]
         return items_list
-
 
 # WAVE 3
     
     def swap_items(self, vendor, my_item, their_item):
         # swaps the two specified items between two vendors
-        if my_item in self.inventory and their_item in vendor.inventory:
-            vendor.inventory.append(my_item) 
-            self.inventory.remove(my_item) 
-            self.inventory.append(their_item) 
-            vendor.inventory.remove(their_item) 
-            return True
-        else:
+        if my_item not in self.inventory or their_item not in vendor.inventory:
             return False
-
+        else:
+            vendor.add(my_item) 
+            self.remove(my_item) 
+            self.add(their_item) 
+            vendor.remove(their_item) 
+            return True
 
 # WAVE 4
     
     def swap_first_item(self, vendor):
-        # swaps the first item in each vendor's inventory with the specified other vendor
-        if len(self.inventory) != 0 and len(vendor.inventory) != 0:
-            self.swap_items(vendor, self.inventory[0], vendor.inventory[0])
-            return True
-        else:
+        # swaps the first item in each vendor's inventory with the other's
+        if len(self.inventory) == 0 or len(vendor.inventory) == 0:
             return False
-    
+        else:
+            self.swap_items(vendor, self.inventory[0], vendor.inventory[0])
+            return True    
 
 # WAVE 6
 
     def get_best_by_category(self, category):
         # returns item in best condition within the specified category
-        if len(self.inventory) == 0:
+        items_in_category = self.get_by_category(category)
+        if items_in_category == []:
             return None
         else:
-            items_in_category = self.get_by_category(category)
-            max_condition = 0
-            max_item = None
+            best_condition_item = items_in_category[0]
             for item in items_in_category:
-                if item.condition > max_condition:
-                    max_condition = item.condition
-                    max_item = item
-            return max_item
+                if item.condition > best_condition_item.condition:
+                    best_condition_item = item
+            return best_condition_item
     
     def swap_best_by_category(self, other, my_priority, their_priority):
         # swaps items in best condition within each vendor's favorite categories between the vendors 
-        if len(other.get_by_category(my_priority)) == 0 \
-            or len(self.get_by_category(their_priority)) == 0:
+        their_priority_best = self.get_best_by_category(their_priority)
+        my_priority_best = other.get_best_by_category(my_priority)
+
+        if their_priority_best == None or my_priority_best  == None:
             return False
         else:
-            my_priority_best = other.get_best_by_category(my_priority)
-            their_priority_best = self.get_best_by_category(their_priority)
             self.swap_items(other, their_priority_best, my_priority_best)
             return True
 
 
 # OPTIONAL
+# It makes the most sense to me to swap newest by favorite category
 
     def get_newest_by_category(self, category):
-         # returns newest item within the specified category
-        if len(self.inventory) == 0:
+        # returns newest item within the specified category
+        items_in_category = self.get_by_category(category)
+        if items_in_category == []:
             return None
         else:
-            items_in_category = self.get_by_category(category)
-            min_age = 60
-            min_item = None
+            newest_item_cat = items_in_category[0]
             for item in items_in_category:
-                if item.age < min_age:
-                    min_age = item.age
-                    min_item = item
-            return min_item
+                if item.age < newest_item_cat.age:
+                    newest_item_cat = item
+            return newest_item_cat
 
     def swap_newest_by_category(self, other, my_priority, their_priority):
-         # swaps newest items within each vendor's favorite categories between the vendors 
-        if len(other.get_by_category(my_priority)) == 0 \
-            or len(self.get_by_category(their_priority)) == 0:
+        # swaps newest items within each vendor's favorite categories between them 
+        their_priority_best = self.get_newest_by_category(their_priority)
+        my_priority_best = other.get_newest_by_category(my_priority)
+
+        if their_priority_best == None or my_priority_best  == None:
             return False
         else:
-            my_priority_best = other.get_newest_by_category(my_priority)
-            their_priority_best = self.get_newest_by_category(their_priority)
             self.swap_items(other, their_priority_best, my_priority_best)
             return True
         
