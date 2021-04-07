@@ -38,21 +38,10 @@ class Vendor:
             return False
         return self.swap_items(them, self.inventory[0], them.inventory[0])
 
-    '''def my_max(items):
-            macs = None
-            for i in items:
-                if macs is None or i.condition > macs.condition:
-                    macs = i
-            return macs'''
-
     def get_best_by_category(self, category):
-        def get_condition(item):
-            return item.condition
         items_in_category = self.get_by_category(category)
-        #def my_max would go here if using not using built in max
-        if len(items_in_category) > 0: 
-            #would have returned my_max(items_in_category) if not using built in max
-            return max(items_in_category, key= get_condition)
+        if len(items_in_category) > 0:
+            return max(items_in_category, key = lambda item: item.condition) 
         else:
             return None
     
