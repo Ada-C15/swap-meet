@@ -1,5 +1,3 @@
-# from swap_meet.item import Item
-
 class Vendor:
     def __init__(self, inventory=None):
         self.inventory = inventory
@@ -20,16 +18,12 @@ class Vendor:
             return item
         return False
 
-# ***WAVE 2***
-
     def get_by_category(self, category):
         items_matching_category = []
         for item in self.inventory:
             if category == item.category:
                 items_matching_category.append(item)
         return items_matching_category
-
-# ***WAVE 3***
 
     def swap_items(self, Vendor, my_item, their_item):
         if (my_item in self.inventory) and (their_item in Vendor.inventory):
@@ -40,14 +34,10 @@ class Vendor:
             return True
         return False
 
-# ***WAVE 4***
-
     def swap_first_item(self, Vendor):
         if (self.inventory and Vendor.inventory):
             return self.swap_items(Vendor, self.inventory[0], Vendor.inventory[0])
         return False
-
-#  ***WAVE 6***
 
     def get_best_by_category(self, category):
         list = []
