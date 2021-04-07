@@ -72,7 +72,34 @@ class Vendor:
 
         return self.swap_items(other, self.get_best_by_category(their_priority), other.get_best_by_category(my_priority))
 
+    # Optional Enhancement attempt
+    def swap_by_newest(self, vendor, my_priority, their_priority):
+
+        if not self.get_by_category(their_priority) or not vendor.get_by_category(my_priority):
+            return False
+
+        my_item_age_tracker = self.get_by_category(their_priority)[0].age
+        my_newest_item = self.get_by_category(their_priority)[0]
+
+        for item in self.get_by_category(their_priority):
+            if item.age < my_item_age_tracker:
+                my_item_age_tracker = item.age
+                my_newest_item = item
         
+        their_item_age_tracker = vendor.get_by_category(my_priority)[0].age
+        their_newest_item = vendor.get_by_category(my_priority)[0]
+
+        for item in vendor.get_by_category(my_priority):
+            if item.age < their_item_age_tracker:
+                their_item_age_tracker = item.age
+                their_newest_item = item
+        
+        return self.swap_items(vendor, my_newest_item, their_newest_item)
+        
+
+            
+
+
         
 
 
