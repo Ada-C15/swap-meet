@@ -1,5 +1,14 @@
-class Decor:
-    def __init__(self, category):
+from swap_meet.item import Item
+class Electronics(Item):
+    def __init__(self, condition = 0):
         self.category = "Electronics"
+        self.condition = condition
     def __str__(self):
         return "A gadget full of buttons and secrets."
+    # def __init__(self):
+    #     Item.__init__(self)
+    #     self.category = "Electronics"
+    # def __str__(self):
+    #     return "A gadget full of buttons and secrets."
+    # def condition_description(self):
+    #     super().condition_description()

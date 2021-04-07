@@ -33,4 +33,6 @@ class Vendor:
             self.add(friends_vendor.inventory[0])
             friends_vendor.remove(friends_vendor.inventory[0])
             return True
+    def get_best_by_category(self, category):
+        pass
         
