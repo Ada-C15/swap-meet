@@ -27,8 +27,14 @@ class Vendor:
         contains_item = False
 
         if my_item in self.inventory and their_item in vendor.inventory:
-            self.swap_items_helper(vendor, my_item, their_item)
+            self.inventory.remove(my_item)
+            vendor.inventory.append(my_item)
+
+            vendor.inventory.remove(their_item)
+            self.inventory.append(their_item)
             contains_item = True
+        else:
+            return contains_item
         
         return contains_item
 
@@ -47,12 +53,12 @@ class Vendor:
 
 
     def swap_first_item(self, vendor):
-        contains_item = self.check_for_empty_list(vendor)
+        contains_item = False
 
-        if not contains_item:
+        if not self.inventory or not vendor.inventory:
             return contains_item
-
-        self.swap_items_helper(vendor, self.inventory[0], vendor.inventory[0])
+        else:
+            contains_item = self.swap_items(vendor, self.inventory[0], vendor.inventory[0])
 
         return contains_item
 
