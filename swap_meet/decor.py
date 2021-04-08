@@ -13,8 +13,3 @@ class Decor(Item):
 
         return "Something to decorate your space."
     
-    def condition_description(self):
-        '''prints instance condition,
-        employing condition_description from parent class (Item)'''
-
-        return super().condition_description()

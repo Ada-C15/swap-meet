@@ -12,9 +12,3 @@ class Electronics(Item):
         '''prints message for class'''
 
         return "A gadget full of buttons and secrets."
-    
-    def condition_description(self):
-        '''prints instance condition,
-        employing condition_description from parent class (Item)'''
-
-        return super().condition_description()

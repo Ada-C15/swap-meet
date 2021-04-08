@@ -12,9 +12,3 @@ class Clothing(Item):
         '''prints message for class'''
 
         return "The finest clothing you could wear."
-
-    def condition_description(self):
-        '''prints instance condition,
-        employing condition_description from parent class (Item)'''
-
-        return super().condition_description()
