@@ -81,22 +81,12 @@ class Vendor:
         return highest_category
 
     def swap_best_by_category(self, other, my_priority, their_priority):
-        contains_item = self.check_for_empty_list(other)
+        contains_item = False
+        
+        my_item = self.get_best_by_category(their_priority, self.inventory)
+        their_item = self.get_best_by_category(my_priority, other.inventory)
 
-        if not contains_item:
-            return contains_item
-
-        my_item = None
-        for item in self.inventory:
-            if item.category == their_priority:
-                my_item = self.get_best_by_category(item.category)
-
-        their_item = None
-        for item in other.inventory:
-            if item.category == my_priority:
-                their_item = self.get_best_by_category(item.category, other.inventory)
-
-        self.swap_items_helper(other, my_item, their_item)
+        contains_item = self.swap_items(other, my_item, their_item)
 
         return contains_item
 
