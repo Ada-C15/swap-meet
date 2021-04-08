@@ -83,7 +83,7 @@ class Vendor:
         my_item = None
         for item in self.inventory:
             if item.category == their_priority:
-                my_item = self.get_best_by_category(item.category, self.inventory)
+                my_item = self.get_best_by_category(item.category)
 
         their_item = None
         for item in other.inventory:
