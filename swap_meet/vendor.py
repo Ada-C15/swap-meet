@@ -38,20 +38,6 @@ class Vendor:
         
         return contains_item
 
-    def check_for_empty_list(self, other_list):
-        if not self.inventory or not other_list.inventory:
-            return False
-
-        return True
-
-    def swap_items_helper(self, other_list, my_item, their_item):
-        self.inventory.remove(my_item)
-        other_list.inventory.append(my_item)
-
-        other_list.inventory.remove(their_item)
-        self.inventory.append(their_item)
-
-
     def swap_first_item(self, vendor):
         contains_item = False
 
@@ -91,21 +77,18 @@ class Vendor:
         return contains_item
 
     def swap_by_newest(self, other, my_priority, their_priority):
-        contains_item = self.check_for_empty_list(other)
-
-        if not contains_item:
+        contains_item = False
+        if not self.inventory or not other.inventory:
             return contains_item
 
-        my_item = None
         for item in self.inventory:
             if item.category == their_priority and item.age == "New":
-                my_item = item
+                self.inventory.remove(item)
+                other.inventory.append(item)
 
-        their_item = None
         for item in other.inventory:
             if item.category == my_priority and item.age == "New":
-                their_item = item
-
-        self.swap_items_helper(other, my_item, their_item)
+                other.inventory.remove(item)
+                self.inventory.append(item)
 
         return contains_item
