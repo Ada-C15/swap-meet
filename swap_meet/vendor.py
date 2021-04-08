@@ -70,7 +70,7 @@ class Vendor:
         their_priority_best = self.get_best_by_category(their_priority)
         my_priority_best = other.get_best_by_category(my_priority)
 
-        if their_priority_best == None or my_priority_best  == None:
+        if their_priority_best == None or my_priority_best == None:
             return False
         else:
             self.swap_items(other, their_priority_best, my_priority_best)
@@ -97,7 +97,7 @@ class Vendor:
         their_priority_best = self.get_newest_by_category(their_priority)
         my_priority_best = other.get_newest_by_category(my_priority)
 
-        if their_priority_best == None or my_priority_best  == None:
+        if their_priority_best == None or my_priority_best == None:
             return False
         else:
             self.swap_items(other, their_priority_best, my_priority_best)
