@@ -79,28 +79,28 @@ class Vendor():
 
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     
-    from item import Item
-    item1 = Item("jacket")
+#     from item import Item
+#     item1 = Item("jacket")
 
 
-    x = Vendor()
-    print(x.inventory)
+#     x = Vendor()
+#     print(x.inventory)
     
-    y = Vendor([item1])
-    print(y.inventory)
+#     y = Vendor([item1])
+#     print(y.inventory)
 
-    x.add(1)
-    print(x.inventory)
+#     x.add(1)
+#     print(x.inventory)
 
-    print (x.remove(3))
+#     print (x.remove(3))
  
-    if x.remove(1):
-        print("remove 1")
+#     if x.remove(1):
+#         print("remove 1")
 
-    y.get_by_category("jacket")
-    print(y.get_by_category)
+#     y.get_by_category("jacket")
+#     print(y.get_by_category)
    
         
 
