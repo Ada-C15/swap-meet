@@ -16,3 +16,11 @@ class Item:
             return "kind of worth it"
         elif 0 <= self.condition <= 3:
             return "you get what you pay for"
+    
+    def age_description(self):
+        if self.condition <= 1:
+            return f"{self.age} years old"
+        elif 2 < self.condition <= 4:
+            return f"{self.age} years old"
+        elif 4 <= self.age:
+            return f"{self.age} years old"
