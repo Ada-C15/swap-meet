@@ -7,16 +7,16 @@ from swap_meet.electronics import Electronics
 
 
 def test_swap_by_newest():
-    item_a = Decor(age="Vintage")
-    item_b = Electronics(age="New")
-    item_c = Decor(age="New")
+    item_a = Decor(age=5.0)
+    item_b = Electronics(age=4.0)
+    item_c = Decor(age=1.0)
     tai = Vendor(
         inventory=[item_a, item_b, item_c]
     )
 
-    item_d = Clothing(age="Vintage")
-    item_e = Decor(age="New")
-    item_f = Clothing(age="New")
+    item_d = Clothing(age=2.0)
+    item_e = Decor(age=5.0)
+    item_f = Clothing(age=4.0)
     jesse = Vendor(
         inventory=[item_d, item_e, item_f]
     )
@@ -41,9 +41,9 @@ def test_swap_by_newest_no_match_is_false():
     inventory=[]
     )
 
-    item_a = Clothing(age="Vintage")
-    item_b = Decor(age="New")
-    item_c = Clothing(age="New")
+    item_a = Clothing(age=5.0)
+    item_b = Decor(age=2.0)
+    item_c = Clothing(age=1.0)
     jesse = Vendor(
         inventory=[item_a, item_b, item_c]
     )
@@ -63,9 +63,9 @@ def test_swap_by_newest_no_match_is_false():
 
 
 def test_swap_by_newest_no_other_match():
-    item_a = Clothing(age="Vintage")
-    item_b = Decor(age="New")
-    item_c = Clothing(age="New")
+    item_a = Clothing(age=5.0)
+    item_b = Decor(age=2.0)
+    item_c = Clothing(age=1.0)
     tai = Vendor(
         inventory=[item_a, item_b, item_c]
     )

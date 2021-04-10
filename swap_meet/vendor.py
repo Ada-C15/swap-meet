@@ -33,20 +33,21 @@ class Vendor:
             vendor.inventory.remove(their_item)
             self.inventory.append(their_item)
             contains_item = True
-        else:
-            return contains_item
         
         return contains_item
 
+
     def swap_first_item(self, vendor):
         contains_item = False
-
         if not self.inventory or not vendor.inventory:
             return contains_item
-        else:
-            contains_item = self.swap_items(vendor, self.inventory[0], vendor.inventory[0])
 
-        return contains_item
+        # if not self.inventory or not vendor.inventory:
+        #     return contains_item
+        # else:
+        #     contains_item = self.swap_items(vendor, self.inventory[0], vendor.inventory[0])
+
+        return self.swap_items(vendor, self.inventory[0], vendor.inventory[0])
 
 
     def get_best_by_category(self, type, other_list=None):
@@ -81,14 +82,28 @@ class Vendor:
         if not self.inventory or not other.inventory:
             return contains_item
 
+        
+        my_newest_age = 10
         for item in self.inventory:
-            if item.category == their_priority and item.age == "New":
-                self.inventory.remove(item)
-                other.inventory.append(item)
+            if item.age < my_newest_age:
+                my_newest_age = item.age
 
+        my_item = None
+        for item in self.inventory:
+            if item.category == their_priority and item.age == my_newest_age :
+                my_item = item
+
+        
+        their_newest_age = 10
+        for item in self.inventory:
+            if item.age < their_newest_age:
+                their_newest_age = item.age
+
+        their_item = None
         for item in other.inventory:
-            if item.category == my_priority and item.age == "New":
-                other.inventory.remove(item)
-                self.inventory.append(item)
+            if item.category == my_priority:
+                their_item = item
+
+        contains_item = self.swap_items(other, my_item, their_item)
 
         return contains_item
