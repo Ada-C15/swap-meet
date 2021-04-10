@@ -33,8 +33,6 @@ class Vendor:
             vendor.inventory.remove(their_item)
             self.inventory.append(their_item)
             contains_item = True
-        else:
-            return contains_item
         
         return contains_item
 
