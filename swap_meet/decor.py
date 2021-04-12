@@ -40,6 +40,3 @@ class Decor(Item):
 
 
 
-
-    # def __init__(self):
-    #     Item.__init__(self, "Decor")
