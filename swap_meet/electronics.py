@@ -44,6 +44,3 @@ class Electronics(Item):
 
 
 
-    # def __init__(self):
-    #     Item.__init__(self, "Electronics")
-
