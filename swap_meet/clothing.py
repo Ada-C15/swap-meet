@@ -44,9 +44,3 @@ class Clothing(Item):
 
 
 
-   # # the category for all instances of clothing is "clothing"
-    # def __init__(self, category = "", condition=0):
-    #     # self.category = "Clothing"
-    #     # self.condition = condition
-    #     Item.__init__(self, "Clothing", condition)
-
