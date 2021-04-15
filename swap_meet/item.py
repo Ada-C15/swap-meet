@@ -11,19 +11,17 @@ class Item:
         # return self.category
 
     def condition_description(self):
-
         description = ""
-        if self.condition == 0:
+        if 0.0 <= self.condition < 1.0:
             description = "Seems uselesss, unless ..."
-        elif self.condition == 1:
+        elif 1.0 <= self.condition < 2.0:
             description = "Happy if you can give it a try!"
-        elif self.condition == 2:
+        elif 2 <= self.condition < 3.0:
             description = "Used - Fair"
-        elif self.condition == 3:
+        elif 3 <= self.condition < 4.0:
             description = "Used - Good"
-        elif self.condition == 4:
+        elif 4 <= self.condition < 5.0:
             description = "Used - Like new"
-        elif self.condition == 5:
-            description = "New"
+        else:
+            description = "Brand New"
         return description
-    # Juliana - conditions in a list
