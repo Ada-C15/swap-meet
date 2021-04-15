@@ -4,6 +4,7 @@ class Vendor:
             self.inventory = []
         else:
             self.inventory = inventory
+        # self.inventory = inventory or []
 
     def __str__(self):
         return self.inventory
