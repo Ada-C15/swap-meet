@@ -8,19 +8,19 @@ from swap_meet.electronics import Electronics
 
 def test_clothing_has_default_category_and_to_str():
     cloth = Clothing()
-    assert cloth.category is "Clothing"
+    assert cloth.category == "Clothing"
     assert str(cloth) == "The finest clothing you could wear."
 
 
 def test_decor_has_default_category_and_to_str():
     decor = Decor()
-    assert decor.category is "Decor"
+    assert decor.category == "Decor"
     assert str(decor) == "Something to decorate your space."
 
 
 def test_electronics_has_default_category_and_to_str():
     electronics = Electronics()
-    assert electronics.category is "Electronics"
+    assert electronics.category == "Electronics"
     assert str(electronics) == "A gadget full of buttons and secrets."
 
 
